@@ -1,77 +1,81 @@
 "use client";
 
 import { useState } from "react";
+import { useLang } from "./LangContext";
 
-type Treatment = { icon: string; title: string; desc: string };
+type Treatment = { icon: string; titleKey: string; descKey: string; fallbackTitle: string };
 type TabKey = "beauty" | "medical" | "wellness";
 
+// 시술명(title)은 영어/원어 그대로 표시하기 위해 fallback 사용.
+// 상세 설명(desc)만 i18n.
 const DATA: Record<TabKey, Treatment[]> = {
   beauty: [
-    { icon: "◈", title: "울쎄라 (Ulthera)", desc: "피부 깊은 층 콜라겐 자극, 리프팅의 표준 장비" },
-    { icon: "◇", title: "써마지 (Thermage FLX)", desc: "고주파 기반 탄력 개선, 다운타임 최소화" },
-    { icon: "▲", title: "울트라포머 MPT", desc: "다단계 리프팅, 부위별 맞춤 설계" },
-    { icon: "▽", title: "HIFU 리프팅", desc: "초음파 집속 에너지로 윤곽 정리" },
-    { icon: "●", title: "티타늄 리프팅", desc: "최신 고출력 HIFU, 즉각적 리프팅 효과" },
-    { icon: "○", title: "리쥬란 (Rejuran)", desc: "연어 PDRN, 피부 재생·결 개선" },
-    { icon: "◐", title: "쥬베룩 / 스킨부스터", desc: "볼륨 + 탄력, 피부 속부터 회복" },
-    { icon: "◑", title: "피코레이저", desc: "색소·잡티·모공 정밀 케어" },
+    { icon: "◈", titleKey: "", descKey: "treat.b1.d", fallbackTitle: "울쎄라 (Ulthera)" },
+    { icon: "◇", titleKey: "", descKey: "treat.b2.d", fallbackTitle: "써마지 (Thermage FLX)" },
+    { icon: "▲", titleKey: "", descKey: "treat.b3.d", fallbackTitle: "울트라포머 MPT" },
+    { icon: "▽", titleKey: "", descKey: "treat.b4.d", fallbackTitle: "HIFU 리프팅" },
+    { icon: "●", titleKey: "", descKey: "treat.b5.d", fallbackTitle: "티타늄 리프팅" },
+    { icon: "○", titleKey: "", descKey: "treat.b6.d", fallbackTitle: "리쥬란 (Rejuran)" },
+    { icon: "◐", titleKey: "", descKey: "treat.b7.d", fallbackTitle: "쥬베룩 / 스킨부스터" },
+    { icon: "◑", titleKey: "", descKey: "treat.b8.d", fallbackTitle: "피코레이저" },
   ],
   medical: [
-    { icon: "✚", title: "프리미엄 건강검진", desc: "VIP 종합검진·정밀 영상검사·종양 마커" },
-    { icon: "⌬", title: "안티에이징 검사", desc: "호르몬·텔로미어·노화도 정밀 분석" },
-    { icon: "⌭", title: "줄기세포 치료", desc: "면역·재생·항노화 프로그램" },
-    { icon: "⌯", title: "탈모 케어", desc: "두피 진단·모발이식·메조테라피" },
-    { icon: "◉", title: "치과 (임플란트·미백)", desc: "심미·임플란트·교정 통합 케어" },
-    { icon: "⌖", title: "비만 관리", desc: "위고비·삭센다·인바디 맞춤 관리" },
-    { icon: "⌗", title: "도수·체형 교정", desc: "척추·골반·자세 교정 프로그램" },
-    { icon: "⌘", title: "여성·갱년기 케어", desc: "호르몬·부인과·갱년기 종합 케어" },
+    { icon: "✚", titleKey: "treat.m1.t", descKey: "treat.m1.d", fallbackTitle: "프리미엄 건강검진" },
+    { icon: "⌬", titleKey: "treat.m2.t", descKey: "treat.m2.d", fallbackTitle: "안티에이징 검사" },
+    { icon: "⌭", titleKey: "treat.m3.t", descKey: "treat.m3.d", fallbackTitle: "줄기세포 치료" },
+    { icon: "⌯", titleKey: "treat.m4.t", descKey: "treat.m4.d", fallbackTitle: "탈모 케어" },
+    { icon: "◉", titleKey: "treat.m5.t", descKey: "treat.m5.d", fallbackTitle: "치과 (임플란트·미백)" },
+    { icon: "⌖", titleKey: "treat.m6.t", descKey: "treat.m6.d", fallbackTitle: "비만 관리" },
+    { icon: "⌗", titleKey: "treat.m7.t", descKey: "treat.m7.d", fallbackTitle: "도수·체형 교정" },
+    { icon: "⌘", titleKey: "treat.m8.t", descKey: "treat.m8.d", fallbackTitle: "여성·갱년기 케어" },
   ],
   wellness: [
-    { icon: "♨", title: "프리미엄 마사지", desc: "아로마·림프·딥티슈 회복 마사지" },
-    { icon: "❀", title: "스파 & 사우나", desc: "강남·청담 럭셔리 스파 큐레이션" },
-    { icon: "✿", title: "헤드스파", desc: "두피 진정·스트레스 케어" },
-    { icon: "❁", title: "회복 호텔 패키지", desc: "시술 직후 회복 동선 맞춤 호텔" },
-    { icon: "✾", title: "힐링 투어", desc: "강남·한옥·궁궐·미식 코스 디자인" },
-    { icon: "❃", title: "웰니스 검진", desc: "한방·체질 분석·웰니스 코칭" },
-    { icon: "✸", title: "요가 / 명상", desc: "프라이빗 클래스·1:1 코칭" },
-    { icon: "✦", title: "K-Food 미식 투어", desc: "오마카세·미슐랭·한정식 큐레이션" },
+    { icon: "♨", titleKey: "treat.w1.t", descKey: "treat.w1.d", fallbackTitle: "프리미엄 마사지" },
+    { icon: "❀", titleKey: "treat.w2.t", descKey: "treat.w2.d", fallbackTitle: "스파 & 사우나" },
+    { icon: "✿", titleKey: "treat.w3.t", descKey: "treat.w3.d", fallbackTitle: "헤드스파" },
+    { icon: "❁", titleKey: "treat.w4.t", descKey: "treat.w4.d", fallbackTitle: "회복 호텔 패키지" },
+    { icon: "✾", titleKey: "treat.w5.t", descKey: "treat.w5.d", fallbackTitle: "힐링 투어" },
+    { icon: "❃", titleKey: "treat.w6.t", descKey: "treat.w6.d", fallbackTitle: "웰니스 검진" },
+    { icon: "✸", titleKey: "treat.w7.t", descKey: "treat.w7.d", fallbackTitle: "요가 / 명상" },
+    { icon: "✦", titleKey: "treat.w8.t", descKey: "treat.w8.d", fallbackTitle: "K-Food 미식 투어" },
   ],
 };
 
-const TABS: { key: TabKey; label: string }[] = [
-  { key: "beauty", label: "피부·리프팅" },
-  { key: "medical", label: "건강검진·메디컬" },
-  { key: "wellness", label: "웰니스·회복" },
+const TABS: { key: TabKey; labelKey: string }[] = [
+  { key: "beauty", labelKey: "treat.tab.beauty" },
+  { key: "medical", labelKey: "treat.tab.medical" },
+  { key: "wellness", labelKey: "treat.tab.wellness" },
 ];
 
 export default function Treatments() {
+  const { t } = useLang();
   const [tab, setTab] = useState<TabKey>("beauty");
 
   return (
     <>
       <div className="treat-tabs">
-        {TABS.map((t) => (
+        {TABS.map((tabItem) => (
           <button
-            key={t.key}
-            className={`tab ${tab === t.key ? "active" : ""}`}
-            onClick={() => setTab(t.key)}
+            key={tabItem.key}
+            className={`tab ${tab === tabItem.key ? "active" : ""}`}
+            onClick={() => setTab(tabItem.key)}
           >
-            {t.label}
+            {t(tabItem.labelKey)}
           </button>
         ))}
       </div>
 
-      {TABS.map((t) => (
+      {TABS.map((tabItem) => (
         <div
-          key={t.key}
-          className={`treat-panel ${tab === t.key ? "active" : ""}`}
+          key={tabItem.key}
+          className={`treat-panel ${tab === tabItem.key ? "active" : ""}`}
         >
           <div className="treat-grid">
-            {DATA[t.key].map((item, i) => (
+            {DATA[tabItem.key].map((item, i) => (
               <div key={i} className="treat-card">
                 <div className="treat-icon">{item.icon}</div>
-                <h4>{item.title}</h4>
-                <p>{item.desc}</p>
+                <h4>{item.titleKey ? t(item.titleKey) : item.fallbackTitle}</h4>
+                <p>{t(item.descKey)}</p>
               </div>
             ))}
           </div>
