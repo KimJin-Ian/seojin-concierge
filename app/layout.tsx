@@ -65,11 +65,25 @@ export const metadata: Metadata = {
     type: "website",
     locale: "ko_KR",
     alternateLocale: ["en_US", "zh_CN", "ja_JP"],
+    images: [
+      {
+        url: `${SITE_URL}/og-image.png?v=2`,
+        width: 1200,
+        height: 630,
+        alt: "The Wellness N — Korea Medical & K-Beauty Concierge",
+        type: "image/png",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "The Wellness N — Korea Medical & K-Beauty Concierge",
     description: "강남 의료관광·K-뷰티 컨시어지. 줄기세포·피코토닝·안티에이징·K-pop 투어.",
+    images: [`${SITE_URL}/og-image.png?v=2`],
+  },
+  icons: {
+    icon: [{ url: "/favicon.png", type: "image/png", sizes: "64x64" }],
+    apple: [{ url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" }],
   },
   robots: {
     index: true,

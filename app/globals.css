@@ -198,6 +198,41 @@ header {
 .hero-card-1 { top: 30px;   right: 40px; width: 280px; border: 1px solid var(--line); z-index: 2; }
 .hero-card-2 { bottom: 30px; left: 0;    width: 260px; background: var(--accent); color: #fff; z-index: 1; }
 .hero-card-3 { top: 220px;  right: 0;    width: 230px; background: var(--cream); z-index: 3; }
+
+/* 일본어·태국어·베트남어·인도네시아어는 텍스트가 길어 stack에서 겹치므로 grid로 분리 */
+html[lang="ja"] .hero-visual,
+html[lang="th"] .hero-visual,
+html[lang="vi"] .hero-visual,
+html[lang="id"] .hero-visual {
+  position: static;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  height: auto;
+}
+html[lang="ja"] .hero-card,
+html[lang="th"] .hero-card,
+html[lang="vi"] .hero-card,
+html[lang="id"] .hero-card {
+  position: static;
+  width: auto;
+  height: auto;
+  min-height: 200px;
+  max-height: none;
+}
+html[lang="ja"] .hero-card .card-text,
+html[lang="th"] .hero-card .card-text,
+html[lang="vi"] .hero-card .card-text,
+html[lang="id"] .hero-card .card-text {
+  -webkit-line-clamp: 4;
+}
+/* 3번째 카드(K-pop)는 풀폭 */
+html[lang="ja"] .hero-card-3,
+html[lang="th"] .hero-card-3,
+html[lang="vi"] .hero-card-3,
+html[lang="id"] .hero-card-3 {
+  grid-column: 1 / -1;
+}
 .card-label { font-size: 11px; letter-spacing: 0.2em; opacity: 0.7; margin-bottom: 8px; text-transform: uppercase; }
 .card-title { font-size: 18px; font-weight: 500; margin-bottom: 6px; }
 .card-text { font-size: 13px; opacity: 0.75; line-height: 1.6; }
