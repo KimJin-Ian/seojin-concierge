@@ -1165,6 +1165,120 @@ footer {
   footer { padding-bottom: max(30px, env(safe-area-inset-bottom)); }
 }
 
+/* ──────── MOBILE COMPACT — 가로 활용 + 세로 스크롤 단축 ──────── */
+@media (max-width: 980px) {
+  /* 진행 과정 6단계 → 2-col 압축 (3행) */
+  .process-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+  .proc-item {
+    flex-direction: column;
+    padding: 14px 12px;
+    gap: 6px;
+  }
+  .proc-num {
+    font-size: 20px !important;
+    width: auto !important;
+    margin-bottom: 2px;
+  }
+  .proc-item h4 { font-size: 13.5px; margin-bottom: 4px; }
+  .proc-item p { font-size: 11.5px; line-height: 1.55; }
+
+  /* Trust 4개 → 2-col */
+  .trust-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  .trust-card { padding: 16px 14px; }
+  .trust-card .trust-icon { font-size: 26px; margin-bottom: 8px; }
+  .trust-card h4 { font-size: 13.5px; margin-bottom: 6px; }
+  .trust-card p { font-size: 11.5px; line-height: 1.55; }
+
+  /* Voices 9 → 2-col */
+  .voices-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  .voice-card { padding: 14px 12px; }
+  .voice-card .voice-tag { font-size: 10px; padding: 2px 7px; margin-bottom: 8px; }
+  .voice-card h4 { font-size: 12.5px; line-height: 1.4; margin-bottom: 6px; }
+  .voice-card p { font-size: 11px; line-height: 1.55; }
+
+  /* Keyword 8개 → 2-col */
+  .kw-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; margin-bottom: 24px; }
+  .kw-card { padding: 14px 12px; }
+  .kw-card h4 { font-size: 13.5px; margin-bottom: 6px; }
+  .kw-card p { font-size: 11.5px; line-height: 1.55; }
+
+  /* 추가 패키지 6개 → 2-col */
+  .extra-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  .extra-card { padding: 16px 14px; }
+  .extra-tag { font-size: 10px; padding: 3px 8px; margin-bottom: 8px; }
+  .extra-card h4 { font-size: 13.5px; margin-bottom: 6px; }
+  .extra-card p { font-size: 11.5px; line-height: 1.55; }
+
+  /* Overseas 3 → 1-col (이미) — 패딩 축소 */
+  .overseas-card { padding: 20px 18px; }
+  .overseas-flag { font-size: 30px; margin-bottom: 8px; }
+  .overseas-card h4 { font-size: 14.5px; }
+  .overseas-card p { font-size: 12px; line-height: 1.6; }
+
+  /* Compare bad/good 2-col 유지 */
+  .compare { gap: 14px; }
+  .compare-col { padding: 22px 18px; }
+  .compare-col h4 { font-size: 13px; }
+  .compare-col h3 { font-size: 16px; margin-bottom: 16px; }
+  .compare-list li { font-size: 12px; padding: 6px 0; line-height: 1.5; }
+
+  /* Hero 카드 absolute → 그리드 전환 */
+  .hero-visual {
+    position: static;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    height: auto;
+    margin-top: 28px;
+  }
+  .hero-card-1, .hero-card-2, .hero-card-3 {
+    position: static;
+    width: 100%;
+    transform: none;
+    padding: 16px 14px;
+  }
+  .hero-card-3 { grid-column: 1 / -1; }
+  .hero-card .card-title { font-size: 14px; }
+  .hero-card .card-text { font-size: 11.5px; line-height: 1.55; }
+
+  /* Section padding 축소 */
+  section { padding: 60px 0; }
+  .trust, .keywords, .membership, .voices, .partners, .overseas, .process { padding: 60px 0; }
+  .section-title { font-size: 24px; line-height: 1.3; }
+  .section-sub { font-size: 13.5px; line-height: 1.7; }
+  .section-tag { font-size: 11px; }
+
+  /* About points 축약 */
+  .about-points li { font-size: 12.5px; padding: 5px 0; }
+
+  /* Membership 카드 — 모바일 1-col 유지 (큰 카드라 OK) */
+  .mem-card { padding: 24px 20px; }
+  .mem-tier { font-size: 12px; margin-bottom: 10px; }
+  .mem-price { font-size: 22px; margin-bottom: 14px; }
+  .mem-card li { font-size: 12.5px; padding: 5px 0; }
+
+  /* K-pop 패키지 */
+  .kpop { padding: 60px 0; }
+  .kpop-visual { padding: 32px 22px; }
+  .kpop-emoji { font-size: 40px; }
+  .kpop-points li { font-size: 12.5px; padding: 4px 0; }
+}
+
+@media (max-width: 560px) {
+  /* 정말 작은 폰만 일부 1-col */
+  .compare { grid-template-columns: 1fr; }
+  /* trust·voices·kw·extra 등은 2-col 유지 (압축 가독성 OK) */
+}
+
+@media (max-width: 380px) {
+  /* 초소형 폰: 가독성 위해 step만 1-col */
+  .process-grid { grid-template-columns: 1fr; }
+  .trust-grid { grid-template-columns: 1fr; }
+}
+
 /* PRINT */
 @media print {
   header, .menu-toggle, .nav-cta { display: none !important; }
