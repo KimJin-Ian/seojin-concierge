@@ -1,18 +1,19 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { useLang } from "./LangContext";
+import LangSwitcher from "./LangSwitcher";
 
 export default function SiteHeader() {
+  const { t } = useLang();
   const [open, setOpen] = useState(false);
 
-  // Lock body scroll when drawer is open
   useEffect(() => {
     if (open) document.body.classList.add("nav-open");
     else document.body.classList.remove("nav-open");
     return () => document.body.classList.remove("nav-open");
   }, [open]);
 
-  // Close on ESC
   useEffect(() => {
     if (!open) return;
     const onKey = (e: KeyboardEvent) => {
@@ -22,7 +23,6 @@ export default function SiteHeader() {
     return () => window.removeEventListener("keydown", onKey);
   }, [open]);
 
-  // Close on resize to desktop
   useEffect(() => {
     const onResize = () => {
       if (window.innerWidth > 980 && open) setOpen(false);
@@ -37,25 +37,40 @@ export default function SiteHeader() {
     <header>
       <div className="container nav">
         <a href="#" className="logo" onClick={close}>
-          SEOJIN <span>·</span> CONCIERGE
+          THE <span>·</span> WELLNESS N
         </a>
         <ul className={`nav-menu ${open ? "open" : ""}`} aria-hidden={!open}>
-          <li><a href="#about" onClick={close}>About</a></li>
-          <li><a href="#treatments" onClick={close}>Treatments</a></li>
-          <li><a href="#packages" onClick={close}>Packages</a></li>
-          <li><a href="#why" onClick={close}>Why Us</a></li>
-          <li><a href="#process" onClick={close}>Process</a></li>
+          <li><a href="#about" onClick={close}>{t("nav.about")}</a></li>
+          <li><a href="#diff" onClick={close}>{t("nav.diff")}</a></li>
+          <li><a href="#treatments" onClick={close}>{t("nav.treatments")}</a></li>
+          <li><a href="#keywords" onClick={close}>{t("nav.keywords")}</a></li>
+          <li><a href="#packages" onClick={close}>{t("nav.packages")}</a></li>
+          <li><a href="#kpop" onClick={close}>{t("nav.kpop")}</a></li>
+          <li><a href="#membership" onClick={close}>{t("nav.membership")}</a></li>
+          <li><a href="#partners" onClick={close}>{t("nav.partners")}</a></li>
+          <li><a href="#process" onClick={close}>{t("nav.process")}</a></li>
           <li>
             <a
               href="#contact"
               onClick={close}
               style={{ color: "var(--gold-deep)", fontWeight: 500 }}
             >
-              상담 신청 →
+              {t("nav.consult")} →
             </a>
           </li>
         </ul>
-        <a href="#contact" className="nav-cta" onClick={close}>상담 신청</a>
+        <div className="nav-right">
+          <LangSwitcher />
+          <a
+            href="http://pf.kakao.com/_QkZhd"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="nav-cta"
+            onClick={close}
+          >
+            {t("nav.kakao")}
+          </a>
+        </div>
         <button
           className={`menu-toggle ${open ? "open" : ""}`}
           aria-label={open ? "메뉴 닫기" : "메뉴 열기"}
