@@ -1237,6 +1237,44 @@ footer {
   .compare-col h3 { font-size: 16px; margin-bottom: 16px; }
   .compare-list li { font-size: 12px; padding: 6px 0; line-height: 1.5; }
 
+  /* Signature pkg 3개 → 2-col + 마지막 풀폭 */
+  .pkg-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 10px; }
+  .pkg-grid > :nth-child(3) { grid-column: 1 / -1; }
+  .pkg-card { padding: 18px 14px; }
+  .pkg-badge { font-size: 10.5px; padding: 3px 8px; }
+  .pkg-card h3 { font-size: 16px; }
+  .pkg-card > p { font-size: 12px; line-height: 1.5; }
+  .pkg-list { font-size: 11.5px; line-height: 1.6; padding-left: 16px; }
+  .pkg-list li { padding: 3px 0; }
+  .pkg-cta { font-size: 12px; padding: 10px 14px; }
+
+  /* Membership 3개 → 2-col + GOLD 풀폭 */
+  .mem-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 10px; }
+  .mem-grid > .mem-featured { grid-column: 1 / -1; transform: none; }
+  .mem-grid > .mem-featured:hover { transform: translateY(-2px); }
+  .mem-card { padding: 18px 14px; }
+  .mem-tier { font-size: 11px; margin-bottom: 8px; letter-spacing: 0.2em; }
+  .mem-price { font-size: 18px; margin-bottom: 12px; }
+  .mem-card li { font-size: 11.5px; padding: 4px 0; line-height: 1.5; }
+
+  /* Overseas 3 → 2-col + 마지막 풀폭 */
+  .overseas-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 10px; }
+  .overseas-grid > :nth-child(3) { grid-column: 1 / -1; }
+  .overseas-card { padding: 16px 14px; }
+  .overseas-flag { font-size: 26px; margin-bottom: 6px; }
+  .overseas-card h4 { font-size: 13.5px; margin-bottom: 6px; }
+  .overseas-card p { font-size: 11.5px; line-height: 1.55; }
+
+  /* K-pop visual + text 2-col → 모바일 1-col (기존) */
+  .kpop-points li { font-size: 12px; padding: 3px 0; }
+  .kpop p { font-size: 13.5px; line-height: 1.7; margin-bottom: 12px; }
+
+  /* About 우측 stats — 4개 grid 2-col 유지 + 폰트 축소 */
+  .about-stats { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  .stat { padding: 14px 12px; }
+  .stat-num { font-size: 20px; }
+  .stat-label { font-size: 11px; }
+
   /* Hero 카드 absolute → 그리드 전환 */
   .hero-visual {
     position: static;
