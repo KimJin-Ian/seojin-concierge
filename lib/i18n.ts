@@ -35,7 +35,7 @@ const ko: Dict = {
   // Hero
   "hero.tag": "Korea Medical · K-Beauty · Wellness",
   "hero.title1": "한국 의료기술과 웰니스를",
-  "hero.title2": "당신에게 맞게 설계",
+  "hero.title2": "내 몸에 꼭 맞게 설계",
   "hero.title3": "합니다.",
   "hero.sub": "The Wellness N — 강남 프리미엄 병원 30+ 협업, 줄기세포·피코토닝·리프팅·안티에이징·힐링투어까지. 방콕 의료관광의 절반 가격으로, 한국 최고의 K-Beauty를 안전하게. 실시간 통역 + 맞춤 회복 + K-pop Tour 패키지.",
   "hero.cta": "무료 컨시어지 상담 →",
@@ -57,14 +57,14 @@ const ko: Dict = {
   // About
   "about.tag": "About The Wellness N",
   "about.title1": "병원 한 곳을 연결하는 것이 아닙니다.",
-  "about.title2": "당신에게 맞는 곳을 찾아",
+  "about.title2": "고객님께 맞는 곳을 찾아",
   "about.title3": "드립니다.",
-  "about.p1": "병원마다 가진 장비·강점·집도의가 다릅니다. 당신의 고민을 듣고, 정말 필요한 시술과 병원을 객관적으로 매칭합니다.",
-  "about.p2": "가격이 아니라 부작용 없는 안전이 우선입니다. The Wellness N은 광고가 아닌 비교·검증 기반 컨시어지로 한 사람의 여정을 완성합니다.",
+  "about.p1": "병원마다 가진 장비·강점·집도의가 다릅니다. 고객님의 고민을 듣고, 정말 필요한 시술과 병원을 객관적으로 매칭해드립니다.",
+  "about.p2": "가격보다 부작용 없는 안전이 먼저입니다. The Wellness N은 광고가 아닌 비교·검증 기반 컨시어지로 한 분 한 분의 여정을 끝까지 책임집니다.",
   "about.stat1.num": "30+",
   "about.stat1.lbl": "강남 프리미엄 병원",
   "about.stat2.num": "5~10%",
-  "about.stat2.lbl": "우리를 통한 할인율",
+  "about.stat2.lbl": "저희를 통한 할인율",
   "about.stat3.num": "1/2",
   "about.stat3.lbl": "방콕 의료관광 가격",
   "about.stat4.num": "24/7",
@@ -92,7 +92,7 @@ const ko: Dict = {
   "diff.good.title": "The Wellness N의 방향",
   "diff.good.sub": "고객 중심 매칭",
   "diff.reason.title": "왜 한국이 방콕보다 안전하고 더 싸냐?",
-  "diff.reason.text": "방콕은 의료관광 1위지만, 실제 기기·시술 노하우는 한국에서 수입합니다. 한국에서 직접 받으면 그곳의 절반 가격에 동급 또는 더 우수한 케어를 받을 수 있습니다. 우리를 통하면 객관적 비교 + 5~10% 추가 할인까지.",
+  "diff.reason.text": "방콕은 의료관광 1위지만, 실제 기기·시술 노하우는 한국에서 수입합니다. 한국에서 직접 받으시면 그곳의 절반 가격으로 동급 또는 더 우수한 케어를 받으실 수 있습니다. 저희를 통하시면 객관적 비교 + 5~10% 추가 할인까지 가능합니다.",
 
   // Treatments
   "treat.tag": "Treatment Categories",
@@ -103,7 +103,7 @@ const ko: Dict = {
   "kw.tag": "Popular Keywords · 인기 키워드",
   "kw.title1": "가장 많이 찾는",
   "kw.title2": "K-Beauty 키워드",
-  "kw.sub": "구글·네이버에서 가장 많이 검색되는 강남 K-Beauty·안티에이징 키워드. 어떤 시술이 당신에게 맞는지 The Wellness N이 객관적으로 안내합니다.",
+  "kw.sub": "구글·네이버에서 가장 많이 검색되는 강남 K-Beauty·안티에이징 키워드. 어떤 시술이 본인에게 맞을지 The Wellness N이 객관적으로 안내해드립니다.",
   "kw.cta.text": "찾으시는 키워드가 없으신가요? 고민을 카톡으로 보내주시면 객관적으로 매칭해드립니다.",
   "kw.cta.btn": "카톡으로 키워드 상담 →",
 
@@ -159,7 +159,7 @@ const ko: Dict = {
   "proc.sub": "상담부터 회복, 귀국 후 사후관리까지 — 한 명의 컨시어지가 처음부터 끝까지 동행합니다.",
 
   // Contact
-  "contact.title1": "당신에게 맞는",
+  "contact.title1": "고객님께 꼭 맞는",
   "contact.title2": "의료·뷰티 경험",
   "contact.title3": "을 설계합니다.",
   "contact.sub": "카톡 · WhatsApp · 메일 어느 채널이든 편하게 보내주세요. 24시간 이내 컨시어지가 답변 드립니다.",
@@ -173,7 +173,7 @@ const ko: Dict = {
   "footer.copyright": "© 2026 The Wellness N (위드에스마케팅). All rights reserved.",
 
   // About points
-  "about.pt1": "당신의 고민 → 객관적인 병원·시술 매칭",
+  "about.pt1": "고객님의 고민 → 객관적인 병원·시술 매칭",
   "about.pt2": "광고비 X · 비교·검증 기반 추천",
   "about.pt3": "정품·샷수·집도의 직접 확인",
   "about.pt4": "회복 동선까지 포함한 일정 설계",
@@ -379,7 +379,7 @@ const ko: Dict = {
   "proc.s1.title": "1:1 카톡 상담 (무료)",
   "proc.s1.desc": "고민·예산·일정·원하는 결과를 카톡(위드에스마케팅)·WhatsApp·메일로 보내주세요. 책 출판 컨설팅 노하우로 고민을 구체화해드립니다.",
   "proc.s2.title": "객관적 병원·시술 매칭",
-  "proc.s2.desc": "30+ 협업 병원 중 당신의 고민에 가장 적합한 3~4곳 비교 자료를 제공. 정품·샷수·집도의·후기 모두 검증.",
+  "proc.s2.desc": "30+ 협업 병원 중 고객님의 고민에 가장 적합한 3~4곳 비교 자료를 제공해드립니다. 정품·샷수·집도의·후기까지 모두 검증.",
   "proc.s3.title": "일정 + 회복 동선 설계",
   "proc.s3.desc": "시술 + 회복 + 관광 + 호텔 + K-pop Tour까지 한 일정으로 묶어 드립니다. 회복 동선을 고려한 호텔·스파 큐레이션.",
   "proc.s4.title": "도착 · 통역 · 동행",
