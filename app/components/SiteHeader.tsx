@@ -25,7 +25,7 @@ export default function SiteHeader() {
 
   useEffect(() => {
     const onResize = () => {
-      if (window.innerWidth > 980 && open) setOpen(false);
+      if (window.innerWidth > 1180 && open) setOpen(false);
     };
     window.addEventListener("resize", onResize);
     return () => window.removeEventListener("resize", onResize);

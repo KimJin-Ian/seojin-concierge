@@ -62,23 +62,35 @@ header {
 .nav {
   display: flex; align-items: center; justify-content: space-between;
   height: 74px;
+  gap: 16px;
 }
 .logo {
-  font-size: 22px; font-weight: 500; letter-spacing: 0.08em;
+  font-size: 19px; font-weight: 500; letter-spacing: 0.06em;
   color: var(--ink);
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 .logo span { color: var(--gold); }
-.nav-menu { display: flex; gap: 36px; list-style: none; }
+.nav-menu {
+  display: flex;
+  gap: 22px;
+  list-style: none;
+  flex-wrap: nowrap;
+  margin: 0; padding: 0;
+}
+.nav-menu li { white-space: nowrap; }
 .nav-menu a {
-  font-size: 14px; font-weight: 400; letter-spacing: 0.04em;
+  font-size: 13px; font-weight: 400; letter-spacing: 0.02em;
   color: var(--ink-soft); transition: color .2s;
+  white-space: nowrap;
 }
 .nav-menu a:hover { color: var(--gold); }
 .nav-cta {
-  padding: 10px 22px; border: 1px solid var(--gold);
-  color: var(--gold); font-size: 13px; letter-spacing: 0.06em;
+  padding: 9px 16px; border: 1px solid var(--gold);
+  color: var(--gold); font-size: 12.5px; letter-spacing: 0.04em;
   border-radius: 30px; transition: all .25s;
   background: transparent; cursor: pointer; font-family: inherit;
+  white-space: nowrap;
 }
 .nav-cta:hover { background: var(--gold); color: #fff; }
 .menu-toggle {
@@ -455,8 +467,8 @@ footer {
   font-size: 12px; flex-wrap: wrap; gap: 12px;
 }
 
-/* ===== Mobile ===== */
-@media (max-width: 980px) {
+/* ===== Mobile / Tablet ===== */
+@media (max-width: 1180px) {
   .container { padding: 0 22px; }
   .nav { height: 64px; }
   header { padding: 0; }
@@ -678,7 +690,7 @@ footer {
 .lang-item .lang-label { flex: 1; }
 .lang-item .lang-check { color: var(--gold-deep); font-weight: 700; }
 
-@media (max-width: 980px) {
+@media (max-width: 1180px) {
   .nav-right { gap: 8px; }
   .nav-right .nav-cta { display: none; }
   .lang-current { padding: 7px 10px; font-size: 12px; }
