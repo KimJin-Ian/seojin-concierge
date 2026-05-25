@@ -29,7 +29,8 @@ export function LangProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     try {
       const saved = localStorage.getItem(STORAGE_KEY) as Lang | null;
-      if (saved && ["ko", "en", "zh", "ja"].includes(saved)) {
+      const valid: Lang[] = ["ko", "en", "zh", "ja", "th", "vi", "id"];
+      if (saved && valid.includes(saved)) {
         setLangState(saved);
         document.documentElement.lang = saved;
         return;
@@ -39,6 +40,9 @@ export function LangProvider({ children }: { children: ReactNode }) {
       if (nav.startsWith("en")) setLangState("en");
       else if (nav.startsWith("zh")) setLangState("zh");
       else if (nav.startsWith("ja")) setLangState("ja");
+      else if (nav.startsWith("th")) setLangState("th");
+      else if (nav.startsWith("vi")) setLangState("vi");
+      else if (nav.startsWith("id") || nav.startsWith("ms")) setLangState("id"); // 말레이도 인니어 fallback
       else setLangState("ko");
     } catch {
       /* SSR / no localStorage */
