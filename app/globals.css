@@ -174,21 +174,30 @@ header {
   border: 1px solid var(--ink);
 }
 .btn-ghost:hover { background: var(--ink); color: #fff; }
-.hero-visual { position: relative; height: 680px; }
+.hero-visual { position: relative; height: 500px; }
 .hero-card {
-  position: absolute; background: #fff; border-radius: 20px;
-  padding: 24px; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
-  max-height: 260px; overflow: hidden;
+  position: absolute;
+  background: #fff;
+  border-radius: 20px;
+  padding: 22px 24px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+  /* 모든 언어에서 카드 높이 통일 (한국어/영어/일본어/태국어 등 길이 차이 흡수) */
+  height: 220px;
+  display: flex;
+  flex-direction: column;
 }
+/* 본문 텍스트 3줄로 잘라서 카드 높이 일정하게 */
 .hero-card .card-text {
   display: -webkit-box;
-  -webkit-line-clamp: 5;
+  -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
+  flex: 1;
 }
-.hero-card-1 { top: 0; right: 40px; width: 300px; border: 1px solid var(--line); }
-.hero-card-2 { bottom: 20px; left: 0; width: 280px; background: var(--accent); color: #fff; }
-.hero-card-3 { top: 320px; right: 0; width: 240px; background: var(--cream); }
+/* 자연스러운 stack 디자인 — card-1·card-3은 오른쪽 정렬로 살짝 오버랩 */
+.hero-card-1 { top: 30px;   right: 40px; width: 280px; border: 1px solid var(--line); z-index: 2; }
+.hero-card-2 { bottom: 30px; left: 0;    width: 260px; background: var(--accent); color: #fff; z-index: 1; }
+.hero-card-3 { top: 220px;  right: 0;    width: 230px; background: var(--cream); z-index: 3; }
 .card-label { font-size: 11px; letter-spacing: 0.2em; opacity: 0.7; margin-bottom: 8px; text-transform: uppercase; }
 .card-title { font-size: 18px; font-weight: 500; margin-bottom: 6px; }
 .card-text { font-size: 13px; opacity: 0.75; line-height: 1.6; }
