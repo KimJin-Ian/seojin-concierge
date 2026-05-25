@@ -625,6 +625,69 @@ footer {
   .cta-section h2 { font-size: 24px; }
 }
 
+/* ──────── i18n SAFE TYPOGRAPHY (다국어 텍스트 박스 오버플로우 방지) ──────── */
+/* 한국어보다 영어/태국어/베트남어/인니어가 평균 1.3~2배 길어서
+   고정 너비/nowrap 박스에서 튀어나옴. 모든 카드/배지/버튼에 안전 가드. */
+.pkg-card, .pkg-card *,
+.mem-card, .mem-card *,
+.voice-card, .voice-card *,
+.trust-card, .trust-card *,
+.overseas-card, .overseas-card *,
+.kw-card, .kw-card *,
+.extra-card, .extra-card *,
+.hero-card, .hero-card *,
+.diff-card, .diff-card *,
+.compare-col, .compare-col *,
+.proc-item, .proc-item *,
+.section-head, .section-head *,
+.btn, .pkg-cta, .channel-btn,
+.kpop-points li, .kpop-visual,
+.partner-chip, .logo-cell-name {
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+/* 짧은 라벨·배지는 nowrap 해제 (긴 외국어가 wrap되도록) */
+.pkg-badge, .voice-tag, .extra-tag, .mem-tier,
+.section-tag, .hero-tag, .hero-card .card-label {
+  white-space: normal !important;
+  line-height: 1.3;
+}
+
+/* Hero 카드 — 영어/태국어 길어서 height 자동 조정 */
+.hero-card { min-height: auto; height: auto; }
+.hero-card .card-title { line-height: 1.4; }
+
+/* K-pop visual — 두 줄 제목 안전 */
+.kpop-title { word-break: keep-all; line-height: 1.35; }
+.kpop-points li { word-break: keep-all; }
+
+/* Compare list 항목 — 영어가 길어서 위치 어긋남 방지 */
+.compare-list li {
+  align-items: flex-start;
+  gap: 8px;
+}
+.compare-list li .icon-x,
+.compare-list li .icon-v {
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+/* About points */
+.about-points li { align-items: flex-start; }
+.about-points li .check { flex-shrink: 0; margin-top: 2px; }
+
+/* CTA·버튼 텍스트 길어도 안전 */
+.btn, .pkg-cta {
+  white-space: normal;
+  line-height: 1.4;
+  text-align: center;
+}
+
+/* 가로 스크롤 방지 안전망 */
+html, body { overflow-x: hidden; max-width: 100vw; }
+.container { max-width: 100%; }
+
 /* LANG SWITCHER (헤더 우측) */
 .nav-right {
   display: flex;
