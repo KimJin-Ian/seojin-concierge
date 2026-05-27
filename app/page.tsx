@@ -12,8 +12,10 @@ export default function Home() {
   const { t } = useLang();
   return (
     <>
+      <a href="#main-content" className="skip-link">본문 바로가기</a>
       <SiteHeader />
 
+      <main id="main-content">
       {/* HERO */}
       <section className="hero">
         <div className="container hero-inner">
@@ -25,7 +27,15 @@ export default function Home() {
             </h1>
             <p className="hero-sub">{t("hero.sub")}</p>
             <div className="hero-buttons">
-              <a href={KAKAO_URL} target="_blank" rel="noopener noreferrer" className="btn btn-primary">
+              <a
+                href={KAKAO_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn btn-primary"
+                data-track="cta_click"
+                data-category="contact"
+                data-label="hero_kakao"
+              >
                 {t("hero.cta")}
               </a>
               <a href="#packages" className="btn btn-ghost">{t("hero.cta2")}</a>
@@ -505,13 +515,16 @@ export default function Home() {
           </h2>
           <p>{t("contact.sub")}</p>
           <div className="cta-buttons">
-            <a href={KAKAO_URL} target="_blank" rel="noopener noreferrer" className="channel-btn">
+            <a href={KAKAO_URL} target="_blank" rel="noopener noreferrer" className="channel-btn"
+              data-track="cta_click" data-category="contact" data-label="contact_kakao">
               💬 KakaoTalk<br /><small>위드에스마케팅</small>
             </a>
-            <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="channel-btn">
+            <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="channel-btn"
+              data-track="cta_click" data-category="contact" data-label="contact_whatsapp">
               📱 WhatsApp<br /><small>Korea MEDICAL Tour 채널</small>
             </a>
-            <a href={`mailto:${EMAIL}`} className="channel-btn">
+            <a href={`mailto:${EMAIL}`} className="channel-btn"
+              data-track="cta_click" data-category="contact" data-label="contact_email">
               ✉ Email<br /><small>{EMAIL}</small>
             </a>
           </div>
@@ -520,6 +533,7 @@ export default function Home() {
           </p>
         </div>
       </section>
+      </main>
 
       {/* FOOTER */}
       <footer>

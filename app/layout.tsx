@@ -2,6 +2,9 @@ import type { Metadata, Viewport } from "next";
 import Script from "next/script";
 import "./globals.css";
 import { LangProvider } from "./components/LangContext";
+import Analytics from "./components/Analytics";
+import { Analytics as VercelAnalytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const SITE_URL = "https://thewellnessn.com";
 
@@ -98,6 +101,15 @@ export const metadata: Metadata = {
   },
   formatDetection: { telephone: false, email: false, address: false },
   category: "Medical Tourism",
+  verification: {
+    // ⚠️ Vercel 환경변수에 실제 코드 입력 후 재배포
+    // 1. 구글: https://search.google.com/search-console
+    // 2. 네이버: https://searchadvisor.naver.com
+    google: process.env.NEXT_PUBLIC_GOOGLE_VERIFICATION || "",
+    other: {
+      "naver-site-verification": process.env.NEXT_PUBLIC_NAVER_VERIFICATION || "",
+    },
+  },
 };
 
 export const viewport: Viewport = {
@@ -174,6 +186,9 @@ export default function RootLayout({
         />
       </head>
       <body>
+        <Analytics />
+        <VercelAnalytics />
+        <SpeedInsights />
         <LangProvider>{children}</LangProvider>
       </body>
     </html>
