@@ -2,6 +2,7 @@
 
 import SiteHeader from "./components/SiteHeader";
 import Treatments from "./components/Treatments";
+import DynamicSections from "./components/DynamicSections";
 import { useLang } from "./components/LangContext";
 
 const KAKAO_URL = "http://pf.kakao.com/_QkZhd";
@@ -533,6 +534,8 @@ export default function Home() {
           </p>
         </div>
       </section>
+      {/* 동적 섹션 (admin /site/sections에서 추가) */}
+      <DynamicSections />
       </main>
 
       {/* FOOTER */}
