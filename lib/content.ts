@@ -100,6 +100,66 @@ export const getPostBySlug = unstable_cache(
   { revalidate: 60, tags: ["blog"] }
 );
 
+export const getFaqs = unstable_cache(
+  async (lang: string = "ko") => {
+    if (!isSupabaseConfigured) return [];
+    try {
+      const { data, error } = await supabase
+        .from("faqs")
+        .select("id, question, answer, category, sort_order")
+        .eq("site", SITE_KEY)
+        .eq("lang", lang)
+        .eq("is_published", true)
+        .is("deleted_at", null)
+        .order("sort_order", { ascending: true });
+
+      if (error) return [];
+      return (data || []) as Array<{
+        id: string;
+        question: string;
+        answer: string;
+        category: string | null;
+        sort_order: number;
+      }>;
+    } catch {
+      return [];
+    }
+  },
+  ["faqs"],
+  { revalidate: 60, tags: ["faqs"] }
+);
+
+export const getFooterLinks = unstable_cache(
+  async (lang: string = "ko") => {
+    if (!isSupabaseConfigured) return [];
+    try {
+      const { data, error } = await supabase
+        .from("footer_links")
+        .select("*")
+        .eq("site", SITE_KEY)
+        .eq("lang", lang)
+        .eq("is_published", true)
+        .order("column_order", { ascending: true })
+        .order("sort_order", { ascending: true });
+
+      if (error) return [];
+      return (data || []) as Array<{
+        id: string;
+        column_label: string;
+        column_order: number;
+        label: string;
+        url: string;
+        is_external: boolean;
+        sort_order: number;
+      }>;
+    } catch {
+      return [];
+    }
+  },
+  ["footer_links"],
+  { revalidate: 60, tags: ["footer"] }
+);
+
 export function withFallback<T extends ContentMap>(
   fromDb: ContentMap,
   fallback: T
