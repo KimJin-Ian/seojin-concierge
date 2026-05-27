@@ -3,12 +3,13 @@
  */
 
 import { unstable_cache } from "next/cache";
-import { supabase, SITE_KEY } from "./supabase";
+import { supabase, SITE_KEY, isSupabaseConfigured } from "./supabase";
 
 export type ContentMap = Record<string, string>;
 
 export const getContent = unstable_cache(
   async (section: string, lang: string = "ko"): Promise<ContentMap> => {
+    if (!isSupabaseConfigured) return {};
     try {
       const { data, error } = await supabase
         .from("content")
@@ -17,18 +18,13 @@ export const getContent = unstable_cache(
         .eq("section", section)
         .eq("lang", lang);
 
-      if (error) {
-        console.error(`[getContent] ${section}/${lang}:`, error.message);
-        return {};
-      }
-
+      if (error) return {};
       const map: ContentMap = {};
       for (const row of data || []) {
         map[(row as any).content_key] = (row as any).value;
       }
       return map;
-    } catch (e) {
-      console.error("[getContent] fetch error:", e);
+    } catch {
       return {};
     }
   },
@@ -38,6 +34,7 @@ export const getContent = unstable_cache(
 
 export const getSiteSettings = unstable_cache(
   async () => {
+    if (!isSupabaseConfigured) return null;
     try {
       const { data, error } = await supabase
         .from("site_settings")
@@ -45,13 +42,9 @@ export const getSiteSettings = unstable_cache(
         .eq("site", SITE_KEY)
         .maybeSingle();
 
-      if (error) {
-        console.error("[getSiteSettings]:", error.message);
-        return null;
-      }
+      if (error) return null;
       return data as any;
-    } catch (e) {
-      console.error("[getSiteSettings] fetch error:", e);
+    } catch {
       return null;
     }
   },
@@ -61,6 +54,7 @@ export const getSiteSettings = unstable_cache(
 
 export const getPublishedPosts = unstable_cache(
   async (lang: string = "ko", limit: number = 20) => {
+    if (!isSupabaseConfigured) return [];
     try {
       const { data, error } = await supabase
         .from("blog_posts")
@@ -72,13 +66,9 @@ export const getPublishedPosts = unstable_cache(
         .order("published_at", { ascending: false })
         .limit(limit);
 
-      if (error) {
-        console.error("[getPublishedPosts]:", error.message);
-        return [];
-      }
+      if (error) return [];
       return (data || []) as any[];
-    } catch (e) {
-      console.error("[getPublishedPosts] fetch error:", e);
+    } catch {
       return [];
     }
   },
@@ -88,6 +78,7 @@ export const getPublishedPosts = unstable_cache(
 
 export const getPostBySlug = unstable_cache(
   async (slug: string, lang: string = "ko") => {
+    if (!isSupabaseConfigured) return null;
     try {
       const { data, error } = await supabase
         .from("blog_posts")
@@ -99,13 +90,9 @@ export const getPostBySlug = unstable_cache(
         .is("deleted_at", null)
         .maybeSingle();
 
-      if (error) {
-        console.error("[getPostBySlug]:", error.message);
-        return null;
-      }
+      if (error) return null;
       return data as any;
-    } catch (e) {
-      console.error("[getPostBySlug] fetch error:", e);
+    } catch {
       return null;
     }
   },

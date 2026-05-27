@@ -49,6 +49,7 @@ export default function SiteHeader() {
           <li><a href="#membership" onClick={close}>{t("nav.membership")}</a></li>
           <li><a href="#partners" onClick={close}>{t("nav.partners")}</a></li>
           <li><a href="#process" onClick={close}>{t("nav.process")}</a></li>
+          <li><a href="/blog" onClick={close}>Blog</a></li>
           <li>
             <a
               href="#contact"
