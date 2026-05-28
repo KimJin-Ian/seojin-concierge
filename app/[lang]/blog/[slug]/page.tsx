@@ -45,33 +45,22 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   const title = post.meta_title || post.title;
   const description = post.meta_description || post.excerpt || "";
-  const url = `${SITE_URL}/${params.lang}/blog/${post.slug}`;
 
-  // hreflang for this post across all languages
-  const langAlternates: Record<string, string> = {};
-  for (const l of VALID_LANGS) {
-    langAlternates[
-      l === "ko" ? "ko-KR" :
-      l === "en" ? "en-US" :
-      l === "zh" ? "zh-CN" :
-      l === "ja" ? "ja-JP" :
-      l === "th" ? "th-TH" :
-      l === "vi" ? "vi-VN" : "id-ID"
-    ] = `${SITE_URL}/${l}/blog/${post.slug}`;
-  }
-  langAlternates["x-default"] = `${SITE_URL}/ko/blog/${post.slug}`;
+  // 블로그 포스트는 ko로만 존재 (DB에 다른 언어 번역 없음).
+  // canonical을 /ko/blog/slug 로 통일 → 다른 언어 URL은 중복으로 표시되지 않음.
+  // hreflang은 의도적으로 생략 (실제 번역이 없을 때 출력하면 Google이 duplicate로 인식).
+  const canonicalUrl = `${SITE_URL}/ko/blog/${post.slug}`;
 
   return {
     title,
     description,
     alternates: {
-      canonical: url,
-      languages: langAlternates,
+      canonical: canonicalUrl,
     },
     openGraph: {
       title,
       description,
-      url,
+      url: canonicalUrl,
       type: "article",
       publishedTime: post.published_at || undefined,
       modifiedTime: post.updated_at || undefined,
@@ -103,7 +92,8 @@ export default async function BlogPostPage({ params }: Props) {
   const allPosts = await getPublishedPosts("ko", 10);
   const otherPosts = (allPosts as any[]).filter((p) => p.id !== post.id).slice(0, 3);
 
-  const url = `${SITE_URL}/${lang}/blog/${post.slug}`;
+  // 모든 언어 URL이 canonical(ko)을 가리키도록 통일
+  const canonicalUrl = `${SITE_URL}/ko/blog/${post.slug}`;
   const articleJsonLd = {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
@@ -112,7 +102,7 @@ export default async function BlogPostPage({ params }: Props) {
     image: post.cover_image_url || `${SITE_URL}/og-image.png`,
     datePublished: post.published_at,
     dateModified: post.updated_at,
-    inLanguage: lang,
+    inLanguage: "ko",
     author: {
       "@type": "Organization",
       name: post.author_name || "The Wellness N",
@@ -123,7 +113,7 @@ export default async function BlogPostPage({ params }: Props) {
       name: "The Wellness N",
       logo: { "@type": "ImageObject", url: `${SITE_URL}/logo.png` },
     },
-    mainEntityOfPage: { "@type": "WebPage", "@id": url },
+    mainEntityOfPage: { "@type": "WebPage", "@id": canonicalUrl },
     keywords: post.tags?.join(", ") || "",
   };
 

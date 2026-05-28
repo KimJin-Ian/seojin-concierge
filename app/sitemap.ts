@@ -4,7 +4,7 @@ import { getPublishedPosts } from "@/lib/content";
 const SITE_URL = "https://thewellnessn.com";
 const LANGS = ["ko", "en", "zh", "ja", "th", "vi", "id"] as const;
 
-// 모든 언어에 대한 hreflang alternates 객체 생성
+// 모든 언어에 대한 hreflang alternates 객체 생성 (실제 번역이 존재하는 페이지에만 사용)
 function buildAlternates(path: string): Record<string, string> {
   const alts: Record<string, string> = {};
   for (const l of LANGS) {
@@ -17,7 +17,7 @@ function buildAlternates(path: string): Record<string, string> {
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const now = new Date();
 
-  // 홈페이지 — 7개 언어
+  // 홈페이지 — 7개 언어 모두 실제 번역 있음 (i18n.ts dict)
   const homeEntries: MetadataRoute.Sitemap = LANGS.map((lang) => ({
     url: `${SITE_URL}/${lang}`,
     lastModified: now,
@@ -26,7 +26,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     alternates: { languages: buildAlternates("") },
   }));
 
-  // 블로그 목록 — 7개 언어
+  // 블로그 목록 — 7개 언어 (UI 텍스트는 번역, 글 자체는 ko)
   const blogListEntries: MetadataRoute.Sitemap = LANGS.map((lang) => ({
     url: `${SITE_URL}/${lang}/blog`,
     lastModified: now,
@@ -35,36 +35,17 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     alternates: { languages: buildAlternates("/blog") },
   }));
 
-  // 블로그 포스트 (ko 기준 조회 후 모든 언어 URL 생성)
+  // 블로그 포스트 — ko에만 실제 콘텐츠 존재. /ko/blog/slug 만 sitemap에 포함.
+  // 다른 언어 URL (/en/blog/slug 등)은 canonical이 /ko로 되어있어 중복 방지.
   try {
     const posts = await getPublishedPosts("ko", 200);
-    const postEntries: MetadataRoute.Sitemap = [];
-
-    for (const p of posts as any[]) {
-      const postPath = `/blog/${p.slug}`;
-      const lastMod = p.published_at ? new Date(p.published_at) : now;
-
-      // 한국어 포스트 (메인) — priority 높게
-      postEntries.push({
-        url: `${SITE_URL}/ko${postPath}`,
-        lastModified: lastMod,
-        changeFrequency: "weekly",
-        priority: 0.7,
-        alternates: { languages: buildAlternates(postPath) },
-      });
-
-      // 기타 언어 포스트 URL (내용은 ko 폴백이지만 URL은 각 언어로)
-      for (const lang of LANGS.filter((l) => l !== "ko")) {
-        postEntries.push({
-          url: `${SITE_URL}/${lang}${postPath}`,
-          lastModified: lastMod,
-          changeFrequency: "weekly",
-          priority: 0.5,
-          alternates: { languages: buildAlternates(postPath) },
-        });
-      }
-    }
-
+    const postEntries: MetadataRoute.Sitemap = (posts as any[]).map((p) => ({
+      url: `${SITE_URL}/ko/blog/${p.slug}`,
+      lastModified: p.published_at ? new Date(p.published_at) : now,
+      changeFrequency: "weekly",
+      priority: 0.7,
+      // hreflang 생략 — 다른 언어 번역이 실제로는 없으므로
+    }));
     return [...homeEntries, ...blogListEntries, ...postEntries];
   } catch {
     return [...homeEntries, ...blogListEntries];
