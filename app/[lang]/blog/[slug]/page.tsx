@@ -4,6 +4,7 @@ import Script from "next/script";
 import { notFound } from "next/navigation";
 import { getPostBySlug, getPublishedPosts } from "@/lib/content";
 import SiteHeader from "../../../components/SiteHeader";
+import BlogViewTracker from "../../../components/BlogViewTracker";
 import { VALID_LANGS } from "@/lib/langs";
 import type { Lang } from "@/lib/i18n";
 
@@ -128,6 +129,9 @@ export default async function BlogPostPage({ params }: Props) {
 
   return (
     <>
+      {/* 조회수 +1 (클라이언트, 세션당 1회) */}
+      <BlogViewTracker slug={post.slug} />
+
       <Script
         id="article-jsonld"
         type="application/ld+json"

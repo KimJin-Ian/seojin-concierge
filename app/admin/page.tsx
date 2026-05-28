@@ -1,7 +1,40 @@
+"use client";
+
+import { useEffect, useState } from "react";
 import AdminShell from "./components/AdminShell";
 import Link from "next/link";
 
+type Totals = {
+  todayPV: number;
+  yesterdayPV: number;
+  uniqueVisitors7d: number;
+  clicks7d: number;
+};
+
 export default function AdminDashboard() {
+  const [stats, setStats] = useState<Totals | null>(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    let alive = true;
+    fetch("/api/analytics?days=7")
+      .then((r) => r.json())
+      .then((res) => {
+        if (!alive) return;
+        setStats({
+          todayPV: res?.today?.pageViews ?? 0,
+          yesterdayPV: res?.yesterday?.pageViews ?? 0,
+          uniqueVisitors7d: res?.totals?.uniqueVisitors ?? 0,
+          clicks7d: res?.totals?.clicks ?? 0,
+        });
+      })
+      .catch(() => {})
+      .finally(() => alive && setLoading(false));
+    return () => {
+      alive = false;
+    };
+  }, []);
+
   return (
     <AdminShell>
       <div className="admin-header">
@@ -11,24 +44,25 @@ export default function AdminDashboard() {
 
       <div className="stat-grid">
         <div className="stat-card">
-          <div className="label">📅 오늘 방문자</div>
-          <div className="value">—</div>
-          <div className="change">데이터 수집 중</div>
+          <div className="label">📅 오늘 페이지뷰</div>
+          <div className="value">{loading ? "…" : stats?.todayPV ?? 0}</div>
+          <div className="change">어제: {stats?.yesterdayPV ?? 0}</div>
         </div>
         <div className="stat-card">
-          <div className="label">📈 어제 방문자</div>
-          <div className="value">—</div>
-          <div className="change">Vercel Analytics 활성화 필요</div>
+          <div className="label">👥 고유 방문자 (7일)</div>
+          <div className="value">{loading ? "…" : stats?.uniqueVisitors7d ?? 0}</div>
+          <div className="change">UA 기준 추정</div>
         </div>
         <div className="stat-card">
-          <div className="label">💬 카카오/WhatsApp 클릭</div>
-          <div className="value">—</div>
-          <div className="change">전환 추적 준비 중</div>
+          <div className="label">🎯 CTA 클릭 (7일)</div>
+          <div className="value">{loading ? "…" : stats?.clicks7d ?? 0}</div>
+          <div className="change">카톡·WhatsApp·이메일 등</div>
         </div>
         <div className="stat-card">
-          <div className="label">⚡ 페이지 속도</div>
-          <div className="value">—</div>
-          <div className="change">Speed Insights 활성화 필요</div>
+          <div className="label">📈 상세 분석</div>
+          <Link href="/admin/analytics" className="btn btn-primary" style={{ marginTop: 12 }}>
+            보러가기 →
+          </Link>
         </div>
       </div>
 
@@ -87,15 +121,8 @@ export default function AdminDashboard() {
               <td>Vercel <span className="badge badge-success">활성</span></td>
             </tr>
             <tr>
-              <td><strong>Analytics</strong></td>
-              <td>
-                Vercel Analytics + Google Analytics 4
-                <span className="badge badge-neutral" style={{ marginLeft: 8 }}>설정 필요</span>
-              </td>
-            </tr>
-            <tr>
               <td><strong>지원 언어</strong></td>
-              <td>7개 언어 (한국어 외)</td>
+              <td>7개 언어 (ko/en/zh/ja/th/vi/id)</td>
             </tr>
           </tbody>
         </table>
