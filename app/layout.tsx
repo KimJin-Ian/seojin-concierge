@@ -4,10 +4,11 @@ import "./globals.css";
 import Analytics from "./components/Analytics";
 import { Analytics as VercelAnalytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import { getSiteSettings } from "@/lib/content";
 
 const SITE_URL = "https://thewellnessn.com";
 
-export const metadata: Metadata = {
+const baseMetadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
     default: "The Wellness N — Korea Medical & K-Beauty Concierge | Gangnam",
@@ -104,16 +105,35 @@ export const metadata: Metadata = {
   },
   formatDetection: { telephone: false, email: false, address: false },
   category: "Medical Tourism",
-  verification: {
-    // ⚠️ Vercel 환경변수에 실제 코드 입력 후 재배포
-    // 1. 구글: https://search.google.com/search-console
-    // 2. 네이버: https://searchadvisor.naver.com
-    google: process.env.NEXT_PUBLIC_GOOGLE_VERIFICATION || "",
-    other: {
-      "naver-site-verification": process.env.NEXT_PUBLIC_NAVER_VERIFICATION || "",
-    },
-  },
+  // verification은 generateMetadata에서 DB → env 폴백으로 동적 주입
 };
+
+/**
+ * 검색엔진 verification 코드를 DB(site_settings) → env 폴백으로 동적 주입.
+ * admin /site/settings 에서 저장하면 60초 내 반영됨.
+ */
+export async function generateMetadata(): Promise<Metadata> {
+  let googleVerification = process.env.NEXT_PUBLIC_GOOGLE_VERIFICATION || "";
+  let naverVerification = process.env.NEXT_PUBLIC_NAVER_VERIFICATION || "";
+
+  try {
+    const settings = await getSiteSettings();
+    if (settings?.google_verification) googleVerification = settings.google_verification;
+    if (settings?.naver_verification) naverVerification = settings.naver_verification;
+  } catch {
+    /* DB 장애 시 env 폴백 */
+  }
+
+  return {
+    ...baseMetadata,
+    verification: {
+      google: googleVerification,
+      other: {
+        "naver-site-verification": naverVerification,
+      },
+    },
+  };
+}
 
 export const viewport: Viewport = {
   width: "device-width",
