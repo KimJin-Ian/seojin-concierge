@@ -104,23 +104,28 @@ export default function EditMode() {
         .forEach((el) => el.classList.remove("__edit-selected"));
       target.classList.add("__edit-selected");
 
-      if (isInAdmin) {
+      if (window.parent !== window) {
         window.parent.postMessage(
           { type: "visual-editor:click", key, source: "homepage" },
           "*"
         );
-      } else {
-        console.log("[edit-mode] clicked:", key);
       }
+      console.log("[edit-mode] clicked:", key);
     }
 
     document.addEventListener("click", onClick, { capture: true });
 
-    if (isInAdmin && window.parent !== window) {
+    if (window.parent !== window) {
       window.parent.postMessage(
         { type: "visual-editor:ready", source: "homepage" },
         "*"
       );
+      setTimeout(() => {
+        window.parent.postMessage(
+          { type: "visual-editor:ready", source: "homepage" },
+          "*"
+        );
+      }, 1000);
     }
 
     return () => {
