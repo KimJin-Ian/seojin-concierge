@@ -16,8 +16,8 @@ const nextConfig = {
       {
         source: "/:path*",
         headers: [
-          // XSS / 클릭재킹 방어
-          { key: "X-Frame-Options", value: "SAMEORIGIN" },
+          // 클릭재킹 방어 — CSP frame-ancestors가 더 정밀하게 제어
+          // (X-Frame-Options 제거: admin의 비주얼 에디터가 iframe 사용)
           { key: "X-Content-Type-Options", value: "nosniff" },
           { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
           // 권한 정책 — 카메라/마이크/위치 차단 (의료관광 사이트엔 불필요)
@@ -40,7 +40,7 @@ const nextConfig = {
               "font-src 'self' data: https://cdn.jsdelivr.net",
               "img-src 'self' data: blob: https:",
               "connect-src 'self' https://www.google-analytics.com https://vitals.vercel-insights.com https://va.vercel-scripts.com",
-              "frame-ancestors 'self'",
+              "frame-ancestors 'self' https://witheass-admin-real.vercel.app https://*.vercel.app",
               "base-uri 'self'",
               "form-action 'self'",
             ].join("; "),
