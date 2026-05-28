@@ -3,6 +3,7 @@
 import SiteHeader from "./components/SiteHeader";
 import Treatments from "./components/Treatments";
 import DynamicSections from "./components/DynamicSections";
+import SiteFooter from "./components/SiteFooter";
 import { useLang } from "./components/LangContext";
 
 const KAKAO_URL = "http://pf.kakao.com/_QkZhd";
@@ -538,51 +539,8 @@ export default function Home() {
       <DynamicSections />
       </main>
 
-      {/* FOOTER */}
-      <footer>
-        <div className="container">
-          <div className="foot-grid">
-            <div>
-              <div className="foot-logo">THE <span>·</span> WELLNESS N</div>
-              <p className="foot-desc">{t("footer.desc")}</p>
-            </div>
-            <div className="foot-col">
-              <h5>Service</h5>
-              <ul>
-                <li><a href="#treatments">시술 카테고리</a></li>
-                <li><a href="#keywords">인기 키워드</a></li>
-                <li><a href="#packages">패키지</a></li>
-                <li><a href="#kpop">K-pop Tour</a></li>
-                <li><a href="#membership">멤버십</a></li>
-              </ul>
-            </div>
-            <div className="foot-col">
-              <h5>Trust</h5>
-              <ul>
-                <li><a href="#trust">안전 보장</a></li>
-                <li><a href="#diff">왜 우리인가</a></li>
-                <li><a href="#partners">협업 병원</a></li>
-                <li><a href="#voices">유형별 리뷰</a></li>
-                <li><a href="#process">진행 과정</a></li>
-              </ul>
-            </div>
-            <div className="foot-col">
-              <h5>Contact</h5>
-              <ul>
-                <li>Seoul · Gangnam, Korea</li>
-                <li><a href={`mailto:${EMAIL}`}>{EMAIL}</a></li>
-                <li>KakaoTalk · 위드에스마케팅</li>
-                <li>WhatsApp · Korea MEDICAL Tour</li>
-                <li>24/7 Concierge Support</li>
-              </ul>
-            </div>
-          </div>
-          <div className="foot-bottom">
-            <div>{t("footer.copyright")}</div>
-            <div>Privacy · Terms · Cookies</div>
-          </div>
-        </div>
-      </footer>
+      {/* FOOTER (DB 우선 + 폴백) */}
+      <SiteFooter />
     </>
   );
 }
