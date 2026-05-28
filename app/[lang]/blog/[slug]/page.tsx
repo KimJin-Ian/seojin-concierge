@@ -117,11 +117,27 @@ export default async function BlogPostPage({ params }: Props) {
     keywords: post.tags?.join(", ") || "",
   };
 
+  // BreadcrumbList — 검색 결과에 빵부스러기 표시. 모든 언어에서 동일하게 노출.
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: `${SITE_URL}/${lang}` },
+      { "@type": "ListItem", position: 2, name: "Blog", item: `${SITE_URL}/${lang}/blog` },
+      { "@type": "ListItem", position: 3, name: post.title, item: canonicalUrl },
+    ],
+  };
+
   return (
     <>
       {/* 조회수 +1 (클라이언트, 세션당 1회) */}
       <BlogViewTracker slug={post.slug} />
 
+      <Script
+        id="breadcrumb-jsonld"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
       <Script
         id="article-jsonld"
         type="application/ld+json"
