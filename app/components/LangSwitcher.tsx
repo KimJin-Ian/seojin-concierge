@@ -1,9 +1,15 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
+import { useRouter, usePathname } from "next/navigation";
 import { useLang } from "./LangContext";
+import type { Lang } from "@/lib/i18n";
+
+const VALID_LANGS: Lang[] = ["ko", "en", "zh", "ja", "th", "vi", "id"];
 
 export default function LangSwitcher() {
+  const router = useRouter();
+  const pathname = usePathname();
   const { lang, setLang, langs } = useLang();
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
@@ -20,6 +26,22 @@ export default function LangSwitcher() {
   }, [open]);
 
   const current = langs.find((l) => l.code === lang) ?? langs[0];
+
+  function handleLangChange(newLang: Lang) {
+    setLang(newLang);
+    setOpen(false);
+
+    // URL 기반 라우팅: /ko/... → /en/... 로 교체
+    const segments = pathname.split("/");
+    // pathname = "/ko/blog/..." → segments = ["", "ko", "blog", ...]
+    if (segments.length >= 2 && VALID_LANGS.includes(segments[1] as Lang)) {
+      segments[1] = newLang;
+      router.push(segments.join("/") || `/${newLang}`);
+    } else {
+      // 아직 [lang] 경로 밖 (예: 구버전 /blog) → 새 lang 루트로 이동
+      router.push(`/${newLang}`);
+    }
+  }
 
   return (
     <div className="lang-switcher" ref={ref}>
@@ -40,10 +62,7 @@ export default function LangSwitcher() {
               <button
                 type="button"
                 className={`lang-item ${l.code === lang ? "active" : ""}`}
-                onClick={() => {
-                  setLang(l.code);
-                  setOpen(false);
-                }}
+                onClick={() => handleLangChange(l.code)}
                 role="option"
                 aria-selected={l.code === lang}
               >

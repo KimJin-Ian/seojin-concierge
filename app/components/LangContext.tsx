@@ -32,11 +32,25 @@ function toI18nMap(rows: Array<{ section: string; content_key: string; value: st
   return map;
 }
 
-export function LangProvider({ children }: { children: ReactNode }) {
-  const [lang, setLangState] = useState<Lang>("ko");
+export function LangProvider({
+  children,
+  initialLang,
+}: {
+  children: ReactNode;
+  initialLang?: Lang;
+}) {
+  const [lang, setLangState] = useState<Lang>(initialLang ?? "ko");
   const [dbContent, setDbContent] = useState<Record<string, Record<string, string>>>({});
 
   useEffect(() => {
+    // If a language was provided via URL (initialLang), use it and persist it
+    if (initialLang) {
+      setLangState(initialLang);
+      try { localStorage.setItem(STORAGE_KEY, initialLang); } catch { /* ignore */ }
+      if (typeof document !== "undefined") document.documentElement.lang = initialLang;
+      return;
+    }
+    // Otherwise fall back to localStorage / browser detection
     try {
       const saved = localStorage.getItem(STORAGE_KEY) as Lang | null;
       const valid: Lang[] = ["ko", "en", "zh", "ja", "th", "vi", "id"];
@@ -56,7 +70,7 @@ export function LangProvider({ children }: { children: ReactNode }) {
     } catch {
       /* SSR / no localStorage */
     }
-  }, []);
+  }, [initialLang]);
 
   useEffect(() => {
     if (typeof document !== "undefined") {

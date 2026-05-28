@@ -1,7 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import Script from "next/script";
 import "./globals.css";
-import { LangProvider } from "./components/LangContext";
 import Analytics from "./components/Analytics";
 import { Analytics as VercelAnalytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
@@ -51,12 +50,16 @@ export const metadata: Metadata = {
     "TheWellnessN",
   ],
   alternates: {
-    canonical: SITE_URL,
+    canonical: `${SITE_URL}/ko`,
     languages: {
-      "ko-KR": SITE_URL,
+      "ko-KR": `${SITE_URL}/ko`,
       "en-US": `${SITE_URL}/en`,
-      "zh-CN": SITE_URL,
-      "ja-JP": SITE_URL,
+      "zh-CN": `${SITE_URL}/zh`,
+      "ja-JP": `${SITE_URL}/ja`,
+      "th-TH": `${SITE_URL}/th`,
+      "vi-VN": `${SITE_URL}/vi`,
+      "id-ID": `${SITE_URL}/id`,
+      "x-default": `${SITE_URL}/ko`,
     },
   },
   openGraph: {
@@ -189,7 +192,7 @@ export default function RootLayout({
         <Analytics />
         <VercelAnalytics />
         <SpeedInsights />
-        <LangProvider>{children}</LangProvider>
+        {children}
       </body>
     </html>
   );
