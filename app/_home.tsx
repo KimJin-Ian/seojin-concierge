@@ -4,6 +4,7 @@ import SiteHeader from "./components/SiteHeader";
 import Treatments from "./components/Treatments";
 import DynamicSections from "./components/DynamicSections";
 import SiteFooter from "./components/SiteFooter";
+import EditMode from "./components/EditMode";
 import { useLang } from "./components/LangContext";
 
 const KAKAO_URL = "http://pf.kakao.com/_QkZhd";
@@ -14,12 +15,15 @@ export default function Home() {
   const { t } = useLang();
   return (
     <>
+      {/* 비주얼 에디터 모드 (?edit=1 시에만 활성화) */}
+      <EditMode />
+
       <a href="#main-content" className="skip-link">본문 바로가기</a>
       <SiteHeader />
 
       <main id="main-content">
       {/* HERO */}
-      <section className="hero">
+      <section className="hero" data-edit-key="hero">
         <div className="container hero-inner">
           <div className="hero-text">
             <span className="hero-tag">{t("hero.tag")}</span>
@@ -73,7 +77,7 @@ export default function Home() {
       </section>
 
       {/* ABOUT */}
-      <section className="about" id="about">
+      <section className="about" id="about" data-edit-key="about">
         <div className="container about-grid">
           <div className="about-text">
             <span className="section-tag">{t("about.tag")}</span>
@@ -116,7 +120,7 @@ export default function Home() {
       </section>
 
       {/* TRUST / 불안 심리 해소 */}
-      <section className="trust" id="trust">
+      <section className="trust" id="trust" data-edit-key="trust">
         <div className="container">
           <div className="section-head">
             <span className="section-tag">{t("trust.tag")}</span>
@@ -151,7 +155,7 @@ export default function Home() {
       </section>
 
       {/* DIFFERENTIATORS — 왜 우리인가 */}
-      <section className="why" id="diff">
+      <section className="why" id="diff" data-edit-key="diff">
         <div className="container">
           <div className="section-head">
             <span className="section-tag">{t("diff.tag")}</span>
@@ -196,7 +200,7 @@ export default function Home() {
       </section>
 
       {/* TREATMENTS */}
-      <section className="treatments" id="treatments">
+      <section className="treatments" id="treatments" data-edit-key="treat">
         <div className="container">
           <div className="section-head">
             <span className="section-tag">{t("treat.tag")}</span>
@@ -210,7 +214,7 @@ export default function Home() {
       </section>
 
       {/* KEYWORD LANDING — SEO 핵심 */}
-      <section className="keywords" id="keywords">
+      <section className="keywords" id="keywords" data-edit-key="kw">
         <div className="container">
           <div className="section-head">
             <span className="section-tag">{t("kw.tag")}</span>
@@ -239,7 +243,7 @@ export default function Home() {
       </section>
 
       {/* PACKAGES */}
-      <section className="packages" id="packages">
+      <section className="packages" id="packages" data-edit-key="pkg">
         <div className="container">
           <div className="section-head">
             <span className="section-tag" style={{ color: "var(--gold)" }}>{t("pkg.tag")}</span>
@@ -283,7 +287,7 @@ export default function Home() {
       </section>
 
       {/* K-POP TOUR */}
-      <section className="kpop" id="kpop">
+      <section className="kpop" id="kpop" data-edit-key="kpop">
         <div className="container">
           <div className="kpop-grid">
             <div>
@@ -315,7 +319,7 @@ export default function Home() {
       </section>
 
       {/* MEMBERSHIP */}
-      <section className="membership" id="membership">
+      <section className="membership" id="membership" data-edit-key="mem">
         <div className="container">
           <div className="section-head">
             <span className="section-tag">{t("mem.tag")}</span>
@@ -365,7 +369,7 @@ export default function Home() {
       </section>
 
       {/* REAL VOICES — 유형별 리뷰 */}
-      <section className="voices" id="voices">
+      <section className="voices" id="voices" data-edit-key="voices">
         <div className="container">
           <div className="section-head">
             <span className="section-tag">{t("voices.tag")}</span>
@@ -388,7 +392,7 @@ export default function Home() {
       </section>
 
       {/* PARTNERS — 협업 병원 */}
-      <section className="partners" id="partners">
+      <section className="partners" id="partners" data-edit-key="partners">
         <div className="container">
           <div className="section-head">
             <span className="section-tag">{t("partners.tag")}</span>
@@ -457,7 +461,7 @@ export default function Home() {
       </section>
 
       {/* OVERSEAS MOU */}
-      <section className="overseas">
+      <section className="overseas" data-edit-key="overseas">
         <div className="container">
           <div className="section-head">
             <span className="section-tag">{t("overseas.tag")}</span>
@@ -485,7 +489,7 @@ export default function Home() {
       </section>
 
       {/* PROCESS */}
-      <section className="process" id="process">
+      <section className="process" id="process" data-edit-key="proc">
         <div className="container">
           <div className="section-head">
             <span className="section-tag">{t("proc.tag")}</span>
@@ -509,7 +513,7 @@ export default function Home() {
       </section>
 
       {/* CTA / CONTACT */}
-      <section className="cta-section" id="contact">
+      <section className="cta-section" id="contact" data-edit-key="contact">
         <div className="container">
           <h2>
             {t("contact.title1")}<br />
