@@ -113,8 +113,12 @@ const baseMetadata: Metadata = {
  * admin /site/settings 에서 저장하면 60초 내 반영됨.
  */
 export async function generateMetadata(): Promise<Metadata> {
-  let googleVerification = process.env.NEXT_PUBLIC_GOOGLE_VERIFICATION || "";
-  let naverVerification = process.env.NEXT_PUBLIC_NAVER_VERIFICATION || "";
+  // verification 코드 — 우선순위: DB > Vercel env > 하드코딩 폴백
+  // (env 변수가 빈 값/오타로 실패해도 작동 보장)
+  let googleVerification = process.env.NEXT_PUBLIC_GOOGLE_VERIFICATION
+    || "knB_vn4XMDljCoccS_yDyQBvXDievrPiFPj91r82y0Y";
+  let naverVerification = process.env.NEXT_PUBLIC_NAVER_VERIFICATION
+    || "610f0b877f19950fdd0904d64d5c24aacbdb43d3";
 
   try {
     const settings = await getSiteSettings();
