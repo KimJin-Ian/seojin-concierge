@@ -38,7 +38,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // 블로그 포스트 — ko에만 실제 콘텐츠 존재. /ko/blog/slug 만 sitemap에 포함.
   // 다른 언어 URL (/en/blog/slug 등)은 canonical이 /ko로 되어있어 중복 방지.
   try {
-    const posts = await getPublishedPosts("ko", 200);
+    const posts = await getPublishedPosts("ko", 1000);
     const postEntries: MetadataRoute.Sitemap = (posts as any[]).map((p) => ({
       url: `${SITE_URL}/ko/blog/${p.slug}`,
       lastModified: p.published_at ? new Date(p.published_at) : now,
