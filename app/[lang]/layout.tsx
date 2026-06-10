@@ -19,7 +19,7 @@ const HREFLANG: Record<Lang, string> = {
 
 /** Page title per language (홈 기준) */
 const TITLE: Record<Lang, string> = {
-  ko: "The Wellness N — 한국 의료관광·K-뷰티 컨시어지 | 강남",
+  ko: "더웰니스앤(The Wellness N) — 한국 의료관광·K-뷰티 컨시어지 | 강남",
   en: "The Wellness N — Korea Medical Tourism & K-Beauty Concierge",
   zh: "The Wellness N — 韩国医疗旅游·K-Beauty礼宾服务",
   ja: "The Wellness N — 韓国医療観光・Kビューティーコンシェルジュ",
@@ -30,7 +30,7 @@ const TITLE: Record<Lang, string> = {
 
 /** Meta description per language */
 const DESCRIPTION: Record<Lang, string> = {
-  ko: "강남 프리미엄 병원 협업 · 줄기세포·피코토닝·리프팅·안티에이징·K-pop 투어. 방콕보다 저렴한 K-Beauty. 실시간 통역·맞춤 회복 케어.",
+  ko: "더웰니스앤(The Wellness N) — 강남 프리미엄 병원 협업 · 줄기세포·피코토닝·리프팅·안티에이징·K-pop 투어. 방콕보다 저렴한 K-Beauty. 실시간 통역·맞춤 회복 케어.",
   en: "Gangnam premium clinic network · Stem cell, Pico toning, lifting, anti-aging, K-pop tour packages. More affordable than Bangkok. Real-time interpreter & personalized recovery care.",
   zh: "首尔江南高端诊所合作网络 · 干细胞·皮秒·提升·抗衰老·K-pop旅游套餐。比曼谷更实惠的K-Beauty。实时翻译·个性化恢复护理。",
   ja: "江南プレミアムクリニック提携 · 幹細胞・ピコトーニング・リフトアップ・アンチエイジング・K-popツアー。バンコクより安いK-Beauty。リアルタイム通訳・カスタム回復ケア。",

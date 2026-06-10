@@ -37,7 +37,7 @@ const ko: Dict = {
   "hero.title1": "한국 의료기술과 웰니스를",
   "hero.title2": "내 몸에 꼭 맞게 설계",
   "hero.title3": "합니다.",
-  "hero.sub": "The Wellness N — 강남 프리미엄 병원 30+ 협업, 줄기세포·피코토닝·리프팅·안티에이징·힐링투어까지. 방콕 의료관광의 절반 가격으로, 한국 최고의 K-Beauty를 안전하게. 실시간 통역 + 맞춤 회복 + K-pop Tour 패키지.",
+  "hero.sub": "더웰니스앤(The Wellness N) — 강남 프리미엄 병원 30+ 협업, 줄기세포·피코토닝·리프팅·안티에이징·힐링투어까지. 방콕 의료관광의 절반 가격으로, 한국 최고의 K-Beauty를 안전하게. 실시간 통역 + 맞춤 회복 + K-pop Tour 패키지.",
   "hero.cta": "무료 컨시어지 상담 →",
   "hero.cta2": "패키지 둘러보기",
   "hero.trust.1": "✓ 30+ 강남 프리미엄 병원",
@@ -170,7 +170,7 @@ const ko: Dict = {
   "footer.service": "Service",
   "footer.trust": "Trust",
   "footer.contact": "Contact",
-  "footer.copyright": "© 2026 The Wellness N (위드에스마케팅). All rights reserved.",
+  "footer.copyright": "© 2026 더웰니스앤 The Wellness N (위드에스마케팅). All rights reserved.",
 
   // About points
   "about.pt1": "고객님의 고민 → 객관적인 병원·시술 매칭",

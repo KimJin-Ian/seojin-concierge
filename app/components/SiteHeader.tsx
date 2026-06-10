@@ -70,8 +70,20 @@ export default function SiteHeader() {
   return (
     <header>
       <div className="container nav">
-        <a href="#" className="logo" onClick={close}>
+        <a href="#" className="logo" onClick={close} aria-label="더웰니스앤 The Wellness N">
           THE <span>·</span> WELLNESS N
+          <span
+            style={{
+              display: "block",
+              fontSize: "0.46em",
+              letterSpacing: "0.22em",
+              opacity: 0.6,
+              fontWeight: 400,
+              marginTop: 1,
+            }}
+          >
+            더웰니스앤
+          </span>
         </a>
         <ul className={`nav-menu ${open ? "open" : ""}`} aria-hidden={!open}>
           {useDbNav ? (

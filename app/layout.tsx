@@ -11,12 +11,12 @@ const SITE_URL = "https://thewellnessn.com";
 const baseMetadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "The Wellness N — Korea Medical & K-Beauty Concierge | Gangnam",
-    template: "%s | The Wellness N",
+    default: "더웰니스앤(The Wellness N) — Korea Medical & K-Beauty Concierge | 강남",
+    template: "%s | 더웰니스앤 The Wellness N",
   },
   description:
-    "The Wellness N — 한국 의료관광·K-뷰티·안티에이징·힐링투어 전문 컨시어지. 강남 프리미엄 병원 다수 협업, 줄기세포·피코토닝·쥬베룩·티타늄·레이저·팔자주름·탈모 등 맞춤 케어. 실시간 통역·맞춤 회복·K-pop 투어 패키지. 방콕보다 저렴한 K-Beauty 가격.",
-  applicationName: "The Wellness N",
+    "더웰니스앤(The Wellness N) — 한국 의료관광·K-뷰티·안티에이징·힐링투어 전문 컨시어지. 강남 프리미엄 병원 다수 협업, 줄기세포·피코토닝·쥬베룩·티타늄·레이저·팔자주름·탈모 등 맞춤 케어. 실시간 통역·맞춤 회복·K-pop 투어 패키지. 방콕보다 저렴한 K-Beauty 가격.",
+  applicationName: "더웰니스앤 (The Wellness N)",
   authors: [{ name: "The Wellness N · 위드에스마케팅" }],
   keywords: [
     "의료관광",
@@ -49,6 +49,11 @@ const baseMetadata: Metadata = {
     "Vincent Clinic",
     "The Wellness N",
     "TheWellnessN",
+    "더웰니스앤",
+    "더웰니스앤 강남",
+    "더웰니스앤 의료관광",
+    "더웰니스앤 K-뷰티",
+    "더웰니스앤 컨시어지",
   ],
   alternates: {
     canonical: `${SITE_URL}/ko`,
@@ -64,11 +69,11 @@ const baseMetadata: Metadata = {
     },
   },
   openGraph: {
-    title: "The Wellness N — Korea Medical & K-Beauty Concierge",
+    title: "더웰니스앤(The Wellness N) — Korea Medical & K-Beauty Concierge",
     description:
-      "강남 프리미엄 병원 협업 + 줄기세포·피코토닝·리프팅·안티에이징·K-pop 투어. 방콕보다 저렴한 K-Beauty.",
+      "더웰니스앤 — 강남 프리미엄 병원 협업 + 줄기세포·피코토닝·리프팅·안티에이징·K-pop 투어. 방콕보다 저렴한 K-Beauty.",
     url: SITE_URL,
-    siteName: "The Wellness N",
+    siteName: "더웰니스앤 (The Wellness N)",
     type: "website",
     locale: "ko_KR",
     alternateLocale: ["en_US", "zh_CN", "ja_JP"],
@@ -84,8 +89,8 @@ const baseMetadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "The Wellness N — Korea Medical & K-Beauty Concierge",
-    description: "강남 의료관광·K-뷰티 컨시어지. 줄기세포·피코토닝·안티에이징·K-pop 투어.",
+    title: "더웰니스앤(The Wellness N) — Korea Medical & K-Beauty Concierge",
+    description: "더웰니스앤 — 강남 의료관광·K-뷰티 컨시어지. 줄기세포·피코토닝·안티에이징·K-pop 투어.",
     images: [`${SITE_URL}/og-image.png?v=2`],
   },
   icons: {
@@ -156,7 +161,7 @@ const organizationJsonLd = {
   "@context": "https://schema.org",
   "@type": "MedicalBusiness",
   name: "The Wellness N",
-  alternateName: ["TheWellnessN", "위드에스 웰니스 컨시어지"],
+  alternateName: ["더웰니스앤", "TheWellnessN", "더웰니스앤 강남", "위드에스 웰니스 컨시어지"],
   url: SITE_URL,
   image: `${SITE_URL}/og-image.png?v=2`,
   "@id": SITE_URL,
@@ -227,6 +232,7 @@ const websiteJsonLd = {
   "@context": "https://schema.org",
   "@type": "WebSite",
   name: "The Wellness N",
+  alternateName: ["더웰니스앤", "TheWellnessN"],
   url: SITE_URL,
   inLanguage: ["ko-KR", "en-US", "zh-CN", "ja-JP", "th-TH", "vi-VN", "id-ID"],
 };
@@ -238,10 +244,10 @@ const faqJsonLd = {
   mainEntity: [
     {
       "@type": "Question",
-      name: "The Wellness N은 어떤 서비스를 제공하나요?",
+      name: "더웰니스앤(The Wellness N)은 어떤 서비스를 제공하나요?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "강남 프리미엄 병원과 협업하여 의료관광·K-뷰티·안티에이징 컨시어지 서비스를 제공합니다. 상담부터 시술·회복·관광까지 원스톱.",
+        text: "더웰니스앤(The Wellness N)은 강남 프리미엄 병원과 협업하여 의료관광·K-뷰티·안티에이징 컨시어지 서비스를 제공합니다. 상담부터 시술·회복·관광까지 원스톱.",
       },
     },
     {

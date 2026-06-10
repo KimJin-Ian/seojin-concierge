@@ -64,6 +64,17 @@ export default function SiteFooter() {
         <div className="foot-grid">
           <div>
             <div className="foot-logo">THE <span>·</span> WELLNESS N</div>
+            <div
+              style={{
+                fontSize: "0.85rem",
+                letterSpacing: "0.18em",
+                opacity: 0.7,
+                marginTop: 4,
+                marginBottom: 10,
+              }}
+            >
+              더웰니스앤 · 한국 의료관광 컨시어지
+            </div>
             <p className="foot-desc">{t("footer.desc")}</p>
           </div>
 
