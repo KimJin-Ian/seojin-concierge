@@ -391,7 +391,50 @@ export default function Home() {
         </div>
       </section>
 
-      {/* PARTNERS — 협업 병원 */}
+      {/* AI 동시통역 — 병원이 필요한 서비스 (협력 기업: 언더밀리/말로하) */}
+      <section className="ai-sec" id="ai" data-edit-key="ai">
+        <div className="container">
+          <div className="section-head">
+            <span className="section-tag">For Partner Hospitals · 병원이 필요한 서비스</span>
+            <h2 className="section-title">외국인 환자, 언어장벽 없이 — <strong>AI 동시통역</strong></h2>
+            <p className="section-sub">더웰니스앤은 협력 기업 <b>언더밀리</b>의 실시간 의료 통역 AI <b>말로하(Maloha)</b>를 협업 병원에 연결해, 외국인 환자가 모국어로 안심하고 상담·진료받을 수 있도록 합니다.</p>
+          </div>
+          <div className="ai-hero">
+            <div className="ai-card brand">
+              <img
+                src="/logos/maloha-logo.png"
+                alt="Maloha — 실시간 의료 통역 AI"
+                style={{ height: 58, width: "auto", alignSelf: "flex-start", flex: "0 0 auto" }}
+              />
+              <p className="tagline">통역사 없는 <b>실시간 의료 통역 AI</b><br />외국인 환자와 각자 모국어로 말해도 0.5초 이내 양방향 통역.</p>
+              <div className="ai-chips">
+                <span className="chip"><b>0.5초</b> 이내 실시간</span>
+                <span className="chip"><b>23개+</b> 언어</span>
+                <span className="chip">온프레미스 보안</span>
+              </div>
+            </div>
+            <div className="ai-card light">
+              <ul className="ai-benefits">
+                <li><span className="check">✓</span><div><b>모국어로 편안한 상담</b><div className="d">통역 코디네이터 없이 환자와 직접 소통 — 세부 질문·우려까지 빠짐없이.</div></div></li>
+                <li><span className="check">✓</span><div><b>시술·주의사항 정확 전달</b><div className="d">오역 없이 안전하게 안내해 컴플레인·분쟁 위험을 낮춥니다.</div></div></li>
+                <li><span className="check">✓</span><div><b>내원 전 화상 상담</b><div className="d">Zoom·Google Meet·Teams 연동 — 상대방은 별도 설치가 필요 없습니다.</div></div></li>
+                <li><span className="check">✓</span><div><b>환자 정보 보안</b><div className="d">병원 내부 설치(온프레미스)로 상담 내용이 외부로 나가지 않습니다.</div></div></li>
+              </ul>
+            </div>
+          </div>
+          <div className="partner-attr">
+            <div className="meta">
+              <span className="attr-tag">협력 기업 · 기술 파트너</span>
+              외국인 환자의 <b>언어·디지털 문제</b>를 더웰니스앤과 함께 해결하는 음성 AI 원천기술 파트너, <b>언더밀리(Undermilli)</b>입니다.
+            </div>
+            <span className="um-tile">
+              <img src="/logos/undermilli-logo.png" alt="Undermilli Inc." style={{ height: 24, width: "auto" }} />
+            </span>
+          </div>
+        </div>
+      </section>
+
+      {/* PARTNERS — 협력사 (분야별: 한의원·병원·K뷰티·문화·요식) */}
       <section className="partners" id="partners" data-edit-key="partners">
         <div className="container">
           <div className="section-head">
@@ -403,48 +446,97 @@ export default function Home() {
           </div>
 
           {(() => {
-            const LOGOS = [
-              // 🌿 한의원 · 한방
-              { img: "baron-han.jpg", name: "바론한의원", cat: "hanbang" },
-              { img: "hoebokjae-han.png", name: "회복재한의원", cat: "hanbang" },
-              // 🦷 치과
-              { img: "seoul-haengsin.png", name: "서울행신치과", cat: "dental" },
-              { img: "yangyundol.jpg", name: "양윤돌치과의원", cat: "dental" },
-              { img: "teokdumi.jpg", name: "턱투미구강내과치과", cat: "dental" },
-              // 🏥 의원 · 클리닉
-              { img: "saebom-women.png", name: "새봄여성의원", cat: "clinic" },
-              { img: "dove-clinic.png", name: "도브의원", cat: "clinic" },
-              { img: "primi-clinic.jpg", name: "프리미클리닉", cat: "clinic" },
-              { img: "medi-one.png", name: "메디원", cat: "clinic" },
-              // 💆 케어 · 뷰티
-              { img: "haeol.jpg", name: "해올 (Haeol)", cat: "beauty" },
-              { img: "hijack.png", name: "HIJACK", cat: "beauty" },
-              { img: "brilliant.png", name: "브릴리언트", cat: "beauty" },
-              { img: "mooha.png", name: "무하 (Mooha)", cat: "beauty" },
-              { img: "vividson.jpg", name: "비비슨 (Vividson)", cat: "beauty" },
-              { img: "someday.png", name: "썸데이", cat: "beauty" },
+            type P = { name: string; img?: string };
+            const SECTORS: { key: string; label: string; en: string; items: P[] }[] = [
+              {
+                key: "clinic", label: "병원", en: "Clinics & Hospitals",
+                items: [
+                  { name: "강남 픽셀랩 성형외과·피부과", img: "pixelab.jpg" },
+                  { name: "성수 프리미클리닉", img: "primi-clinic.jpg" },
+                  { name: "반포 스탠다 정형외과", img: "banpo-standar.jpg" },
+                  { name: "압구정 도브의원", img: "dove-clinic.png" },
+                  { name: "잠실 새봄여성의원", img: "saebom-women.png" },
+                  { name: "일산 서울행신치과", img: "seoul-haengsin.png" },
+                  { name: "목동 턱투미 구강내과치과", img: "teokdumi.jpg" },
+                  { name: "양윤돌치과의원", img: "yangyundol.jpg" },
+                  { name: "미랩클리닉", img: "mirab-clinic.jpg" },
+                  { name: "메디원", img: "medi-one.png" },
+                  { name: "마곡 리라이브치과", img: "relive-dentistry.png" },
+                  { name: "신사 신상성형외과" },
+                  { name: "피어봄 피부과 (청담)" },
+                ],
+              },
+              {
+                key: "hanbang", label: "한의원", en: "Oriental Medicine",
+                items: [
+                  { name: "서대문구 다풍한의원", img: "dapung-han.jpg" },
+                  { name: "성수 회복재한의원", img: "hoebokjae-han.png" },
+                  { name: "바론한의원", img: "baron-han.jpg" },
+                  { name: "북가좌 경희한의원 본점" },
+                  { name: "동탄 함께걷는한의원" },
+                  { name: "상왕십리 경희한의원" },
+                ],
+              },
+              {
+                key: "beauty", label: "K뷰티 · 이너뷰티", en: "K-Beauty & Inner Beauty",
+                items: [
+                  { name: "해올 (Haeol)", img: "haeol.jpg" },
+                  { name: "HIJACK", img: "hijack.png" },
+                  { name: "무하 (Mooha)", img: "mooha.png" },
+                  { name: "비비슨 (Vividson)", img: "vividson.jpg" },
+                  { name: "브릴리언트", img: "brilliant.png" },
+                  { name: "썸데이", img: "someday.png" },
+                  { name: "주당의 비결 (숙취해소제)" },
+                  { name: "클레로엔 유산균필" },
+                  { name: "R828" },
+                  { name: "수소 마스크팩" },
+                  { name: "암 전문 화장품" },
+                  { name: "오픈피아" },
+                ],
+              },
+              {
+                key: "culture", label: "공연 · 문화 · 호텔", en: "Culture & Hospitality",
+                items: [
+                  { name: "뮤지컬 써니텐", img: "musical-sunnyten.jpg" },
+                  { name: "뮤지컬펍 스폿라이트", img: "musical-spotlight.jpg" },
+                  { name: "글로호텔", img: "glue-hotel.jpg" },
+                  { name: "대학로 무한 아트센터" },
+                  { name: "누리라운지" },
+                  { name: "월미도 블루마린호텔" },
+                ],
+              },
+              {
+                key: "dining", label: "요식업", en: "Dining",
+                items: [
+                  { name: "무큐르 곱창밴드", img: "mooqure.png" },
+                  { name: "와인솔로", img: "wine-solo.png" },
+                  { name: "와인포차", img: "wine-pocha.png" },
+                  { name: "무드서울 레스토랑 (반포한강)" },
+                  { name: "여의도 신도세기 고기집" },
+                  { name: "가야한우 갈비살 (서강대 직영)" },
+                ],
+              },
             ];
-            const groups: Record<string, { label: string; items: typeof LOGOS }> = {
-              hanbang: { label: t("partners.g1"), items: [] },
-              dental: { label: t("partners.g2"), items: [] },
-              clinic: { label: t("partners.g3"), items: [] },
-              beauty: { label: t("partners.g4"), items: [] },
-            };
-            LOGOS.forEach((l) => groups[l.cat].items.push(l));
             return (
               <div className="partner-tabs">
-                {Object.entries(groups).map(([cat, g]) => (
-                  <div key={cat} className="partner-group">
-                    <h4>{g.label} <span style={{ fontSize: 12, color: "var(--ink-soft)", fontWeight: 400 }}>· {g.items.length}{t("partners.suffix")}</span></h4>
+                {SECTORS.map((s) => (
+                  <div key={s.key} className="partner-group">
+                    <h4>{s.label} <span style={{ fontSize: 12, color: "var(--ink-soft)", fontWeight: 400 }}>· {s.en} · {s.items.length}{t("partners.suffix")}</span></h4>
                     <div className="logo-grid">
-                      {g.items.map((l) => (
-                        <div key={l.img} className="logo-cell" title={l.name}>
-                          <img
-                            src={`/logos/${l.img}`}
-                            alt={`${l.name} 로고 · The Wellness N 협업 병원`}
-                            loading="lazy"
-                          />
-                          <div className="logo-cell-name">{l.name}</div>
+                      {s.items.map((p) => (
+                        <div key={p.name} className={p.img ? "logo-cell" : "logo-cell text-only"} title={p.name}>
+                          {p.img ? (
+                            <>
+                              <img
+                                src={`/logos/${p.img}`}
+                                alt={`${p.name} 로고 · The Wellness N 협력사`}
+                                loading="lazy"
+                              />
+                              <div className="logo-cell-name">{p.name}</div>
+                            </>
+                          ) : (
+                            <div className="logo-cell-text">{p.name}</div>
+                          )}
                         </div>
                       ))}
                     </div>

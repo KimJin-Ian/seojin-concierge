@@ -136,10 +136,10 @@ const ko: Dict = {
   "voices.sub": "The Wellness N을 거쳐간 고객들의 분야별 리얼 리뷰. 같은 고민이라도 사람마다 솔루션이 다릅니다.",
 
   // Partners
-  "partners.tag": "Hospital Partners · 협업 병원",
-  "partners.title1": "30+ 강남 프리미엄 병원",
-  "partners.title2": "과 협업",
-  "partners.sub": "병원 한 곳에 종속된 것이 아니라, 각 병원의 강점을 비교해 객관적으로 매칭합니다.",
+  "partners.tag": "Trusted Partners · 더웰니스앤 협력사",
+  "partners.title1": "40곳+ 협력사",
+  "partners.title2": "와 함께합니다",
+  "partners.sub": "병원·한의원부터 K뷰티·문화·호텔·요식까지 — 더웰니스앤이 직접 검증한 협력사와 함께합니다. 한 곳에 종속되지 않고 각 분야의 강점을 비교해 객관적으로 매칭합니다.",
 
   // Overseas
   "overseas.tag": "Global MOU · 해외 협업",
