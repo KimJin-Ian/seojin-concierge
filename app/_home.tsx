@@ -79,14 +79,14 @@ export default function Home() {
       {/* 협력 네트워크 스트립 — 초창기 신뢰 (히어로 직후) */}
       <section className="partner-strip" data-edit-key="partnerstrip">
         <div className="container">
-          <h3 className="strip-title">이미 <strong>30+ 병원</strong>과 <strong>40곳+ 협력사</strong>가 함께합니다</h3>
-          <p className="strip-sub">강남 프리미엄 병원·한의원·K뷰티·문화·호텔·요식 — 더웰니스앤이 직접 검증한 협력 네트워크</p>
+          <h3 className="strip-title">{t("strip.title")}</h3>
+          <p className="strip-sub">{t("strip.sub")}</p>
           <div className="strip-logos">
             {["pixelab.jpg", "primi-clinic.jpg", "banpo-standar.jpg", "dove-clinic.png", "saebom-women.png", "seoul-haengsin.png", "dapung-han.jpg", "haeol.jpg", "hijack.png", "vividson.jpg"].map((f) => (
               <img key={f} src={`/logos/${f}`} alt="The Wellness N 협력사 로고" loading="lazy" />
             ))}
           </div>
-          <a href="#partners" className="strip-more">전체 협력사 보기 ↓</a>
+          <a href="#partners" className="strip-more">{t("strip.more")}</a>
         </div>
       </section>
 
@@ -94,37 +94,37 @@ export default function Home() {
       <section className="ai-sec" id="ai" data-edit-key="ai">
         <div className="container">
           <div className="section-head">
-            <span className="section-tag">For Partner Hospitals · 병원이 필요한 서비스</span>
-            <h2 className="section-title">외국인 환자, 언어장벽 없이 — <strong>AI 동시통역</strong></h2>
-            <p className="section-sub">더웰니스앤은 협력 기업 <b>언더밀리</b>의 실시간 의료 통역 AI <b>말로하(Maloha)</b>를 협업 병원에 연결해, 외국인 환자가 모국어로 안심하고 상담·진료받을 수 있도록 합니다.</p>
+            <span className="section-tag">{t("ai.tag")}</span>
+            <h2 className="section-title">{t("ai.title1")} <strong>{t("ai.title2")}</strong></h2>
+            <p className="section-sub">{t("ai.sub")}</p>
           </div>
           <div className="ai-hero">
             <div className="ai-card brand">
               <img
                 src="/logos/maloha-logo.png"
-                alt="Maloha — 실시간 의료 통역 AI"
+                alt="Maloha"
                 style={{ height: 58, width: "auto", alignSelf: "flex-start", flex: "0 0 auto" }}
               />
-              <p className="tagline">통역사 없는 <b>실시간 의료 통역 AI</b><br />외국인 환자와 각자 모국어로 말해도 0.5초 이내 양방향 통역.</p>
+              <p className="tagline"><b>{t("ai.tagline1")}</b><br />{t("ai.tagline2")}</p>
               <div className="ai-chips">
-                <span className="chip"><b>0.5초</b> 이내 실시간</span>
-                <span className="chip"><b>23개+</b> 언어</span>
-                <span className="chip">온프레미스 보안</span>
+                <span className="chip">{t("ai.chip1")}</span>
+                <span className="chip">{t("ai.chip2")}</span>
+                <span className="chip">{t("ai.chip3")}</span>
               </div>
             </div>
             <div className="ai-card light">
               <ul className="ai-benefits">
-                <li><span className="check">✓</span><div><b>모국어로 편안한 상담</b><div className="d">통역 코디네이터 없이 환자와 직접 소통 — 세부 질문·우려까지 빠짐없이.</div></div></li>
-                <li><span className="check">✓</span><div><b>시술·주의사항 정확 전달</b><div className="d">오역 없이 안전하게 안내해 컴플레인·분쟁 위험을 낮춥니다.</div></div></li>
-                <li><span className="check">✓</span><div><b>내원 전 화상 상담</b><div className="d">Zoom·Google Meet·Teams 연동 — 상대방은 별도 설치가 필요 없습니다.</div></div></li>
-                <li><span className="check">✓</span><div><b>환자 정보 보안</b><div className="d">병원 내부 설치(온프레미스)로 상담 내용이 외부로 나가지 않습니다.</div></div></li>
+                <li><span className="check">✓</span><div><b>{t("ai.b1t")}</b><div className="d">{t("ai.b1d")}</div></div></li>
+                <li><span className="check">✓</span><div><b>{t("ai.b2t")}</b><div className="d">{t("ai.b2d")}</div></div></li>
+                <li><span className="check">✓</span><div><b>{t("ai.b3t")}</b><div className="d">{t("ai.b3d")}</div></div></li>
+                <li><span className="check">✓</span><div><b>{t("ai.b4t")}</b><div className="d">{t("ai.b4d")}</div></div></li>
               </ul>
             </div>
           </div>
           <div className="partner-attr">
             <div className="meta">
-              <span className="attr-tag">협력 기업 · 기술 파트너</span>
-              외국인 환자의 <b>언어·디지털 문제</b>를 더웰니스앤과 함께 해결하는 음성 AI 원천기술 파트너, <b>언더밀리(Undermilli)</b>입니다.
+              <span className="attr-tag">{t("ai.ptag")}</span>
+              {t("ai.pdesc")}
             </div>
             <span className="um-tile">
               <img src="/logos/undermilli-logo.png" alt="Undermilli Inc." style={{ height: 24, width: "auto" }} />
@@ -283,7 +283,7 @@ export default function Home() {
               <div className="partner-tabs">
                 {SECTORS.map((s) => (
                   <div key={s.key} className="partner-group">
-                    <h4>{s.label} <span style={{ fontSize: 12, color: "var(--ink-soft)", fontWeight: 400 }}>· {s.en} · {s.items.length}{t("partners.suffix")}</span></h4>
+                    <h4>{t(`partners.g.${s.key}`)} <span style={{ fontSize: 12, color: "var(--ink-soft)", fontWeight: 400 }}>· {s.items.length}{t("partners.suffix")}</span></h4>
                     <div className="logo-grid">
                       {s.items.map((p) => (
                         <div key={p.name} className={p.img ? "logo-cell" : "logo-cell text-only"} title={p.name}>

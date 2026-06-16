@@ -1301,8 +1301,21 @@ footer {
 @media (max-width: 560px) {
   .partner-strip { padding: 40px 0; }
   .strip-title { font-size: 18px; }
+  .strip-sub { font-size: 12.5px; }
   .strip-logos { gap: 14px 22px; }
   .strip-logos img { height: 28px; }
+  /* AI 동시통역 — 모바일 여백·폰트 축소 */
+  .ai-hero { gap: 16px; }
+  .ai-card { padding: 24px 20px; border-radius: 16px; }
+  .ai-card .tagline { font-size: 14px; margin: 16px 0 18px; }
+  .ai-chips { gap: 7px; }
+  .ai-chips .chip { font-size: 12px; padding: 6px 12px; }
+  .ai-benefits li { padding: 13px 0; gap: 11px; }
+  .ai-benefits b { font-size: 14.5px; }
+  .ai-benefits .d { font-size: 12.5px; }
+  .partner-attr { padding: 18px 18px; gap: 12px; }
+  .partner-attr .meta { font-size: 13px; }
+  .um-tile { padding: 12px 18px; }
 }
 @media (max-width: 560px) {
   .logo-cell .plate-nm { font-size: 12.5px; }
