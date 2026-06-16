@@ -1242,17 +1242,26 @@ footer {
   text-align: center;
   line-height: 1.4;
 }
-/* 로고 없는 협력사 — 이름(문구)만 표기하는 셀 */
+/* 로고 없는 협력사 — 타이포 네임플레이트 (안 B) */
 .logo-cell.text-only {
-  background: var(--cream);
+  background: var(--white);
+  border-top: 3px solid var(--gold);
+  gap: 4px;
 }
-.logo-cell-text {
-  font-size: 13px;
+.logo-cell .plate-tag {
+  font-size: 9px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold-deep);
+  font-weight: 600;
+}
+.logo-cell .plate-nm {
+  font-size: 14px;
   font-weight: 600;
   color: var(--ink);
+  letter-spacing: -0.01em;
   text-align: center;
-  line-height: 1.45;
-  padding: 4px 6px;
+  line-height: 1.35;
 }
 
 /* ===== AI 동시통역 섹션 (협력 기업: 언더밀리/말로하) ===== */
@@ -1280,7 +1289,7 @@ footer {
   .ai-hero { grid-template-columns: 1fr; }
 }
 @media (max-width: 560px) {
-  .logo-cell-text { font-size: 11.5px; }
+  .logo-cell .plate-nm { font-size: 12.5px; }
   .logo-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
   .logo-cell { min-height: 100px; padding: 10px 8px; }
   .logo-cell img { max-height: 50px; }

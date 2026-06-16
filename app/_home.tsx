@@ -535,7 +535,10 @@ export default function Home() {
                               <div className="logo-cell-name">{p.name}</div>
                             </>
                           ) : (
-                            <div className="logo-cell-text">{p.name}</div>
+                            <>
+                              <span className="plate-tag">Partner</span>
+                              <span className="plate-nm">{p.name}</span>
+                            </>
                           )}
                         </div>
                       ))}
