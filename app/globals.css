@@ -1288,6 +1288,22 @@ footer {
 @media (max-width: 900px) {
   .ai-hero { grid-template-columns: 1fr; }
 }
+
+/* ===== 협력 네트워크 스트립 (히어로 직후, 초창기 신뢰) ===== */
+.partner-strip { background: var(--white); padding: 54px 0; border-bottom: 1px solid var(--line); text-align: center; }
+.strip-title { font-size: 22px; font-weight: 600; color: var(--ink); letter-spacing: -0.01em; }
+.strip-title strong { color: var(--gold-deep); font-weight: 700; }
+.strip-sub { font-size: 13.5px; color: var(--ink-soft); margin-top: 8px; }
+.strip-logos { margin-top: 26px; display: flex; flex-wrap: wrap; gap: 18px 32px; align-items: center; justify-content: center; }
+.strip-logos img { height: 36px; width: auto; object-fit: contain; opacity: 0.9; transition: opacity .2s; }
+.strip-logos img:hover { opacity: 1; }
+.strip-more { margin-top: 24px; display: inline-block; font-size: 13px; font-weight: 600; color: var(--gold-deep); border-bottom: 1px solid var(--gold); padding-bottom: 2px; }
+@media (max-width: 560px) {
+  .partner-strip { padding: 40px 0; }
+  .strip-title { font-size: 18px; }
+  .strip-logos { gap: 14px 22px; }
+  .strip-logos img { height: 28px; }
+}
 @media (max-width: 560px) {
   .logo-cell .plate-nm { font-size: 12.5px; }
   .logo-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }

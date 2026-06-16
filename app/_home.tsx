@@ -76,45 +76,59 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ABOUT */}
-      <section className="about" id="about" data-edit-key="about">
-        <div className="container about-grid">
-          <div className="about-text">
-            <span className="section-tag">{t("about.tag")}</span>
-            <h2 className="section-title">
-              {t("about.title1")}<br />
-              <strong>{t("about.title2")}</strong> {t("about.title3")}
-            </h2>
-            <p>{t("about.p1")}</p>
-            <p>{t("about.p2")}</p>
-            <ul className="about-points">
-              <li><span className="check">✓</span>{t("about.pt1")}</li>
-              <li><span className="check">✓</span>{t("about.pt2")}</li>
-              <li><span className="check">✓</span>{t("about.pt3")}</li>
-              <li><span className="check">✓</span>{t("about.pt4")}</li>
-              <li><span className="check">✓</span>{t("about.pt5")}</li>
-              <li><span className="check">✓</span>{t("about.pt6")}</li>
-            </ul>
+      {/* 협력 네트워크 스트립 — 초창기 신뢰 (히어로 직후) */}
+      <section className="partner-strip" data-edit-key="partnerstrip">
+        <div className="container">
+          <h3 className="strip-title">이미 <strong>30+ 병원</strong>과 <strong>40곳+ 협력사</strong>가 함께합니다</h3>
+          <p className="strip-sub">강남 프리미엄 병원·한의원·K뷰티·문화·호텔·요식 — 더웰니스앤이 직접 검증한 협력 네트워크</p>
+          <div className="strip-logos">
+            {["pixelab.jpg", "primi-clinic.jpg", "banpo-standar.jpg", "dove-clinic.png", "saebom-women.png", "seoul-haengsin.png", "dapung-han.jpg", "haeol.jpg", "hijack.png", "vividson.jpg"].map((f) => (
+              <img key={f} src={`/logos/${f}`} alt="The Wellness N 협력사 로고" loading="lazy" />
+            ))}
           </div>
-          <div className="about-visual">
-            <div className="about-stats">
-              <div className="stat">
-                <div className="stat-num">{t("about.stat1.num")}</div>
-                <div className="stat-label">{t("about.stat1.lbl")}</div>
-              </div>
-              <div className="stat">
-                <div className="stat-num">{t("about.stat2.num")}</div>
-                <div className="stat-label">{t("about.stat2.lbl")}</div>
-              </div>
-              <div className="stat">
-                <div className="stat-num">{t("about.stat3.num")}</div>
-                <div className="stat-label">{t("about.stat3.lbl")}</div>
-              </div>
-              <div className="stat">
-                <div className="stat-num">{t("about.stat4.num")}</div>
-                <div className="stat-label">{t("about.stat4.lbl")}</div>
+          <a href="#partners" className="strip-more">전체 협력사 보기 ↓</a>
+        </div>
+      </section>
+
+      {/* AI 동시통역 — 병원이 필요한 서비스 (협력 기업: 언더밀리/말로하) */}
+      <section className="ai-sec" id="ai" data-edit-key="ai">
+        <div className="container">
+          <div className="section-head">
+            <span className="section-tag">For Partner Hospitals · 병원이 필요한 서비스</span>
+            <h2 className="section-title">외국인 환자, 언어장벽 없이 — <strong>AI 동시통역</strong></h2>
+            <p className="section-sub">더웰니스앤은 협력 기업 <b>언더밀리</b>의 실시간 의료 통역 AI <b>말로하(Maloha)</b>를 협업 병원에 연결해, 외국인 환자가 모국어로 안심하고 상담·진료받을 수 있도록 합니다.</p>
+          </div>
+          <div className="ai-hero">
+            <div className="ai-card brand">
+              <img
+                src="/logos/maloha-logo.png"
+                alt="Maloha — 실시간 의료 통역 AI"
+                style={{ height: 58, width: "auto", alignSelf: "flex-start", flex: "0 0 auto" }}
+              />
+              <p className="tagline">통역사 없는 <b>실시간 의료 통역 AI</b><br />외국인 환자와 각자 모국어로 말해도 0.5초 이내 양방향 통역.</p>
+              <div className="ai-chips">
+                <span className="chip"><b>0.5초</b> 이내 실시간</span>
+                <span className="chip"><b>23개+</b> 언어</span>
+                <span className="chip">온프레미스 보안</span>
               </div>
             </div>
+            <div className="ai-card light">
+              <ul className="ai-benefits">
+                <li><span className="check">✓</span><div><b>모국어로 편안한 상담</b><div className="d">통역 코디네이터 없이 환자와 직접 소통 — 세부 질문·우려까지 빠짐없이.</div></div></li>
+                <li><span className="check">✓</span><div><b>시술·주의사항 정확 전달</b><div className="d">오역 없이 안전하게 안내해 컴플레인·분쟁 위험을 낮춥니다.</div></div></li>
+                <li><span className="check">✓</span><div><b>내원 전 화상 상담</b><div className="d">Zoom·Google Meet·Teams 연동 — 상대방은 별도 설치가 필요 없습니다.</div></div></li>
+                <li><span className="check">✓</span><div><b>환자 정보 보안</b><div className="d">병원 내부 설치(온프레미스)로 상담 내용이 외부로 나가지 않습니다.</div></div></li>
+              </ul>
+            </div>
+          </div>
+          <div className="partner-attr">
+            <div className="meta">
+              <span className="attr-tag">협력 기업 · 기술 파트너</span>
+              외국인 환자의 <b>언어·디지털 문제</b>를 더웰니스앤과 함께 해결하는 음성 AI 원천기술 파트너, <b>언더밀리(Undermilli)</b>입니다.
+            </div>
+            <span className="um-tile">
+              <img src="/logos/undermilli-logo.png" alt="Undermilli Inc." style={{ height: 24, width: "auto" }} />
+            </span>
           </div>
         </div>
       </section>
@@ -150,6 +164,155 @@ export default function Home() {
               <h4>{t("trust.c4.title")}</h4>
               <p>{t("trust.c4.desc")}</p>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* OVERSEAS MOU */}
+      <section className="overseas" data-edit-key="overseas">
+        <div className="container">
+          <div className="section-head">
+            <span className="section-tag">{t("overseas.tag")}</span>
+            <h2 className="section-title">{t("overseas.title")}</h2>
+            <p className="section-sub">{t("overseas.sub")}</p>
+          </div>
+          <div className="overseas-grid">
+            <div className="overseas-card">
+              <div className="overseas-flag">🇺🇸</div>
+              <h4>{t("overseas.us")}</h4>
+              <p>{t("overseas.us.desc")}</p>
+            </div>
+            <div className="overseas-card">
+              <div className="overseas-flag">🇹🇭</div>
+              <h4>{t("overseas.th")}</h4>
+              <p>{t("overseas.th.desc")}</p>
+            </div>
+            <div className="overseas-card">
+              <div className="overseas-flag">🇰🇷</div>
+              <h4>{t("overseas.kpop")}</h4>
+              <p>{t("overseas.kpop.desc")}</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* PARTNERS — 협력사 (분야별: 병원·한의원·K뷰티·문화·요식) */}
+      <section className="partners" id="partners" data-edit-key="partners">
+        <div className="container">
+          <div className="section-head">
+            <span className="section-tag">{t("partners.tag")}</span>
+            <h2 className="section-title">
+              <strong>{t("partners.title1")}</strong>{t("partners.title2")}
+            </h2>
+            <p className="section-sub">{t("partners.sub")}</p>
+          </div>
+
+          {(() => {
+            type P = { name: string; img?: string };
+            const SECTORS: { key: string; label: string; en: string; items: P[] }[] = [
+              {
+                key: "clinic", label: "병원", en: "Clinics & Hospitals",
+                items: [
+                  { name: "강남 픽셀랩 성형외과·피부과", img: "pixelab.jpg" },
+                  { name: "성수 프리미클리닉", img: "primi-clinic.jpg" },
+                  { name: "반포 스탠다 정형외과", img: "banpo-standar.jpg" },
+                  { name: "압구정 도브의원", img: "dove-clinic.png" },
+                  { name: "잠실 새봄여성의원", img: "saebom-women.png" },
+                  { name: "일산 서울행신치과", img: "seoul-haengsin.png" },
+                  { name: "목동 턱투미 구강내과치과", img: "teokdumi.jpg" },
+                  { name: "양윤돌치과의원", img: "yangyundol.jpg" },
+                  { name: "미랩클리닉", img: "mirab-clinic.jpg" },
+                  { name: "메디원", img: "medi-one.png" },
+                  { name: "마곡 리라이브치과", img: "relive-dentistry.png" },
+                  { name: "신사 신상성형외과" },
+                  { name: "피어봄 피부과 (청담)" },
+                ],
+              },
+              {
+                key: "hanbang", label: "한의원", en: "Oriental Medicine",
+                items: [
+                  { name: "서대문구 다풍한의원", img: "dapung-han.jpg" },
+                  { name: "성수 회복재한의원", img: "hoebokjae-han.png" },
+                  { name: "바론한의원", img: "baron-han.jpg" },
+                  { name: "북가좌 경희한의원 본점" },
+                  { name: "동탄 함께걷는한의원" },
+                  { name: "상왕십리 경희한의원" },
+                ],
+              },
+              {
+                key: "beauty", label: "K뷰티 · 이너뷰티", en: "K-Beauty & Inner Beauty",
+                items: [
+                  { name: "해올 (Haeol)", img: "haeol.jpg" },
+                  { name: "HIJACK", img: "hijack.png" },
+                  { name: "무하 (Mooha)", img: "mooha.png" },
+                  { name: "비비슨 (Vividson)", img: "vividson.jpg" },
+                  { name: "브릴리언트", img: "brilliant.png" },
+                  { name: "썸데이", img: "someday.png" },
+                  { name: "주당의 비결 (숙취해소제)" },
+                  { name: "클레로엔 유산균필" },
+                  { name: "R828" },
+                  { name: "수소 마스크팩" },
+                  { name: "암 전문 화장품" },
+                  { name: "오픈피아" },
+                ],
+              },
+              {
+                key: "culture", label: "공연 · 문화 · 호텔", en: "Culture & Hospitality",
+                items: [
+                  { name: "뮤지컬 써니텐", img: "musical-sunnyten.jpg" },
+                  { name: "뮤지컬펍 스폿라이트", img: "musical-spotlight.jpg" },
+                  { name: "글로호텔", img: "glue-hotel.jpg" },
+                  { name: "대학로 무한 아트센터" },
+                  { name: "누리라운지" },
+                  { name: "월미도 블루마린호텔" },
+                ],
+              },
+              {
+                key: "dining", label: "요식업", en: "Dining",
+                items: [
+                  { name: "무큐르 곱창밴드", img: "mooqure.png" },
+                  { name: "와인솔로", img: "wine-solo.png" },
+                  { name: "와인포차", img: "wine-pocha.png" },
+                  { name: "무드서울 레스토랑 (반포한강)" },
+                  { name: "여의도 신도세기 고기집" },
+                  { name: "가야한우 갈비살 (서강대 직영)" },
+                ],
+              },
+            ];
+            return (
+              <div className="partner-tabs">
+                {SECTORS.map((s) => (
+                  <div key={s.key} className="partner-group">
+                    <h4>{s.label} <span style={{ fontSize: 12, color: "var(--ink-soft)", fontWeight: 400 }}>· {s.en} · {s.items.length}{t("partners.suffix")}</span></h4>
+                    <div className="logo-grid">
+                      {s.items.map((p) => (
+                        <div key={p.name} className={p.img ? "logo-cell" : "logo-cell text-only"} title={p.name}>
+                          {p.img ? (
+                            <>
+                              <img
+                                src={`/logos/${p.img}`}
+                                alt={`${p.name} 로고 · The Wellness N 협력사`}
+                                loading="lazy"
+                              />
+                              <div className="logo-cell-name">{p.name}</div>
+                            </>
+                          ) : (
+                            <>
+                              <span className="plate-tag">Partner</span>
+                              <span className="plate-nm">{p.name}</span>
+                            </>
+                          )}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            );
+          })()}
+
+          <div className="logo-placeholder">
+            <p>{t("partners.note")}</p>
           </div>
         </div>
       </section>
@@ -210,35 +373,6 @@ export default function Home() {
             <p className="section-sub">{t("treat.sub")}</p>
           </div>
           <Treatments />
-        </div>
-      </section>
-
-      {/* KEYWORD LANDING — SEO 핵심 */}
-      <section className="keywords" id="keywords" data-edit-key="kw">
-        <div className="container">
-          <div className="section-head">
-            <span className="section-tag">{t("kw.tag")}</span>
-            <h2 className="section-title">
-              {t("kw.title1")} <strong>{t("kw.title2")}</strong>
-            </h2>
-            <p className="section-sub">{t("kw.sub")}</p>
-          </div>
-
-          <div className="kw-grid">
-            {[1, 2, 3, 4, 5, 6, 7, 8].map((n) => (
-              <div key={n} className="kw-card">
-                <h4>{t(`kw.c${n}.title`)}</h4>
-                <p>{t(`kw.c${n}.desc`)}</p>
-              </div>
-            ))}
-          </div>
-
-          <div className="kw-cta">
-            <p>{t("kw.cta.text")}</p>
-            <a href={KAKAO_URL} target="_blank" rel="noopener noreferrer" className="btn btn-primary">
-              {t("kw.cta.btn")}
-            </a>
-          </div>
         </div>
       </section>
 
@@ -391,198 +525,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* AI 동시통역 — 병원이 필요한 서비스 (협력 기업: 언더밀리/말로하) */}
-      <section className="ai-sec" id="ai" data-edit-key="ai">
-        <div className="container">
-          <div className="section-head">
-            <span className="section-tag">For Partner Hospitals · 병원이 필요한 서비스</span>
-            <h2 className="section-title">외국인 환자, 언어장벽 없이 — <strong>AI 동시통역</strong></h2>
-            <p className="section-sub">더웰니스앤은 협력 기업 <b>언더밀리</b>의 실시간 의료 통역 AI <b>말로하(Maloha)</b>를 협업 병원에 연결해, 외국인 환자가 모국어로 안심하고 상담·진료받을 수 있도록 합니다.</p>
-          </div>
-          <div className="ai-hero">
-            <div className="ai-card brand">
-              <img
-                src="/logos/maloha-logo.png"
-                alt="Maloha — 실시간 의료 통역 AI"
-                style={{ height: 58, width: "auto", alignSelf: "flex-start", flex: "0 0 auto" }}
-              />
-              <p className="tagline">통역사 없는 <b>실시간 의료 통역 AI</b><br />외국인 환자와 각자 모국어로 말해도 0.5초 이내 양방향 통역.</p>
-              <div className="ai-chips">
-                <span className="chip"><b>0.5초</b> 이내 실시간</span>
-                <span className="chip"><b>23개+</b> 언어</span>
-                <span className="chip">온프레미스 보안</span>
-              </div>
-            </div>
-            <div className="ai-card light">
-              <ul className="ai-benefits">
-                <li><span className="check">✓</span><div><b>모국어로 편안한 상담</b><div className="d">통역 코디네이터 없이 환자와 직접 소통 — 세부 질문·우려까지 빠짐없이.</div></div></li>
-                <li><span className="check">✓</span><div><b>시술·주의사항 정확 전달</b><div className="d">오역 없이 안전하게 안내해 컴플레인·분쟁 위험을 낮춥니다.</div></div></li>
-                <li><span className="check">✓</span><div><b>내원 전 화상 상담</b><div className="d">Zoom·Google Meet·Teams 연동 — 상대방은 별도 설치가 필요 없습니다.</div></div></li>
-                <li><span className="check">✓</span><div><b>환자 정보 보안</b><div className="d">병원 내부 설치(온프레미스)로 상담 내용이 외부로 나가지 않습니다.</div></div></li>
-              </ul>
-            </div>
-          </div>
-          <div className="partner-attr">
-            <div className="meta">
-              <span className="attr-tag">협력 기업 · 기술 파트너</span>
-              외국인 환자의 <b>언어·디지털 문제</b>를 더웰니스앤과 함께 해결하는 음성 AI 원천기술 파트너, <b>언더밀리(Undermilli)</b>입니다.
-            </div>
-            <span className="um-tile">
-              <img src="/logos/undermilli-logo.png" alt="Undermilli Inc." style={{ height: 24, width: "auto" }} />
-            </span>
-          </div>
-        </div>
-      </section>
-
-      {/* PARTNERS — 협력사 (분야별: 한의원·병원·K뷰티·문화·요식) */}
-      <section className="partners" id="partners" data-edit-key="partners">
-        <div className="container">
-          <div className="section-head">
-            <span className="section-tag">{t("partners.tag")}</span>
-            <h2 className="section-title">
-              <strong>{t("partners.title1")}</strong>{t("partners.title2")}
-            </h2>
-            <p className="section-sub">{t("partners.sub")}</p>
-          </div>
-
-          {(() => {
-            type P = { name: string; img?: string };
-            const SECTORS: { key: string; label: string; en: string; items: P[] }[] = [
-              {
-                key: "clinic", label: "병원", en: "Clinics & Hospitals",
-                items: [
-                  { name: "강남 픽셀랩 성형외과·피부과", img: "pixelab.jpg" },
-                  { name: "성수 프리미클리닉", img: "primi-clinic.jpg" },
-                  { name: "반포 스탠다 정형외과", img: "banpo-standar.jpg" },
-                  { name: "압구정 도브의원", img: "dove-clinic.png" },
-                  { name: "잠실 새봄여성의원", img: "saebom-women.png" },
-                  { name: "일산 서울행신치과", img: "seoul-haengsin.png" },
-                  { name: "목동 턱투미 구강내과치과", img: "teokdumi.jpg" },
-                  { name: "양윤돌치과의원", img: "yangyundol.jpg" },
-                  { name: "미랩클리닉", img: "mirab-clinic.jpg" },
-                  { name: "메디원", img: "medi-one.png" },
-                  { name: "마곡 리라이브치과", img: "relive-dentistry.png" },
-                  { name: "신사 신상성형외과" },
-                  { name: "피어봄 피부과 (청담)" },
-                ],
-              },
-              {
-                key: "hanbang", label: "한의원", en: "Oriental Medicine",
-                items: [
-                  { name: "서대문구 다풍한의원", img: "dapung-han.jpg" },
-                  { name: "성수 회복재한의원", img: "hoebokjae-han.png" },
-                  { name: "바론한의원", img: "baron-han.jpg" },
-                  { name: "북가좌 경희한의원 본점" },
-                  { name: "동탄 함께걷는한의원" },
-                  { name: "상왕십리 경희한의원" },
-                ],
-              },
-              {
-                key: "beauty", label: "K뷰티 · 이너뷰티", en: "K-Beauty & Inner Beauty",
-                items: [
-                  { name: "해올 (Haeol)", img: "haeol.jpg" },
-                  { name: "HIJACK", img: "hijack.png" },
-                  { name: "무하 (Mooha)", img: "mooha.png" },
-                  { name: "비비슨 (Vividson)", img: "vividson.jpg" },
-                  { name: "브릴리언트", img: "brilliant.png" },
-                  { name: "썸데이", img: "someday.png" },
-                  { name: "주당의 비결 (숙취해소제)" },
-                  { name: "클레로엔 유산균필" },
-                  { name: "R828" },
-                  { name: "수소 마스크팩" },
-                  { name: "암 전문 화장품" },
-                  { name: "오픈피아" },
-                ],
-              },
-              {
-                key: "culture", label: "공연 · 문화 · 호텔", en: "Culture & Hospitality",
-                items: [
-                  { name: "뮤지컬 써니텐", img: "musical-sunnyten.jpg" },
-                  { name: "뮤지컬펍 스폿라이트", img: "musical-spotlight.jpg" },
-                  { name: "글로호텔", img: "glue-hotel.jpg" },
-                  { name: "대학로 무한 아트센터" },
-                  { name: "누리라운지" },
-                  { name: "월미도 블루마린호텔" },
-                ],
-              },
-              {
-                key: "dining", label: "요식업", en: "Dining",
-                items: [
-                  { name: "무큐르 곱창밴드", img: "mooqure.png" },
-                  { name: "와인솔로", img: "wine-solo.png" },
-                  { name: "와인포차", img: "wine-pocha.png" },
-                  { name: "무드서울 레스토랑 (반포한강)" },
-                  { name: "여의도 신도세기 고기집" },
-                  { name: "가야한우 갈비살 (서강대 직영)" },
-                ],
-              },
-            ];
-            return (
-              <div className="partner-tabs">
-                {SECTORS.map((s) => (
-                  <div key={s.key} className="partner-group">
-                    <h4>{s.label} <span style={{ fontSize: 12, color: "var(--ink-soft)", fontWeight: 400 }}>· {s.en} · {s.items.length}{t("partners.suffix")}</span></h4>
-                    <div className="logo-grid">
-                      {s.items.map((p) => (
-                        <div key={p.name} className={p.img ? "logo-cell" : "logo-cell text-only"} title={p.name}>
-                          {p.img ? (
-                            <>
-                              <img
-                                src={`/logos/${p.img}`}
-                                alt={`${p.name} 로고 · The Wellness N 협력사`}
-                                loading="lazy"
-                              />
-                              <div className="logo-cell-name">{p.name}</div>
-                            </>
-                          ) : (
-                            <>
-                              <span className="plate-tag">Partner</span>
-                              <span className="plate-nm">{p.name}</span>
-                            </>
-                          )}
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                ))}
-              </div>
-            );
-          })()}
-
-          <div className="logo-placeholder">
-            <p>{t("partners.note")}</p>
-          </div>
-        </div>
-      </section>
-
-      {/* OVERSEAS MOU */}
-      <section className="overseas" data-edit-key="overseas">
-        <div className="container">
-          <div className="section-head">
-            <span className="section-tag">{t("overseas.tag")}</span>
-            <h2 className="section-title">{t("overseas.title")}</h2>
-            <p className="section-sub">{t("overseas.sub")}</p>
-          </div>
-          <div className="overseas-grid">
-            <div className="overseas-card">
-              <div className="overseas-flag">🇺🇸</div>
-              <h4>{t("overseas.us")}</h4>
-              <p>{t("overseas.us.desc")}</p>
-            </div>
-            <div className="overseas-card">
-              <div className="overseas-flag">🇹🇭</div>
-              <h4>{t("overseas.th")}</h4>
-              <p>{t("overseas.th.desc")}</p>
-            </div>
-            <div className="overseas-card">
-              <div className="overseas-flag">🇰🇷</div>
-              <h4>{t("overseas.kpop")}</h4>
-              <p>{t("overseas.kpop.desc")}</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* PROCESS */}
       <section className="process" id="process" data-edit-key="proc">
         <div className="container">
@@ -603,6 +545,78 @@ export default function Home() {
                 </div>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ABOUT — 회사 소개 (초창기: 증거 먼저, 스토리는 뒤로) */}
+      <section className="about" id="about" data-edit-key="about">
+        <div className="container about-grid">
+          <div className="about-text">
+            <span className="section-tag">{t("about.tag")}</span>
+            <h2 className="section-title">
+              {t("about.title1")}<br />
+              <strong>{t("about.title2")}</strong> {t("about.title3")}
+            </h2>
+            <p>{t("about.p1")}</p>
+            <p>{t("about.p2")}</p>
+            <ul className="about-points">
+              <li><span className="check">✓</span>{t("about.pt1")}</li>
+              <li><span className="check">✓</span>{t("about.pt2")}</li>
+              <li><span className="check">✓</span>{t("about.pt3")}</li>
+              <li><span className="check">✓</span>{t("about.pt4")}</li>
+              <li><span className="check">✓</span>{t("about.pt5")}</li>
+              <li><span className="check">✓</span>{t("about.pt6")}</li>
+            </ul>
+          </div>
+          <div className="about-visual">
+            <div className="about-stats">
+              <div className="stat">
+                <div className="stat-num">{t("about.stat1.num")}</div>
+                <div className="stat-label">{t("about.stat1.lbl")}</div>
+              </div>
+              <div className="stat">
+                <div className="stat-num">{t("about.stat2.num")}</div>
+                <div className="stat-label">{t("about.stat2.lbl")}</div>
+              </div>
+              <div className="stat">
+                <div className="stat-num">{t("about.stat3.num")}</div>
+                <div className="stat-label">{t("about.stat3.lbl")}</div>
+              </div>
+              <div className="stat">
+                <div className="stat-num">{t("about.stat4.num")}</div>
+                <div className="stat-label">{t("about.stat4.lbl")}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* KEYWORD LANDING — SEO 핵심 */}
+      <section className="keywords" id="keywords" data-edit-key="kw">
+        <div className="container">
+          <div className="section-head">
+            <span className="section-tag">{t("kw.tag")}</span>
+            <h2 className="section-title">
+              {t("kw.title1")} <strong>{t("kw.title2")}</strong>
+            </h2>
+            <p className="section-sub">{t("kw.sub")}</p>
+          </div>
+
+          <div className="kw-grid">
+            {[1, 2, 3, 4, 5, 6, 7, 8].map((n) => (
+              <div key={n} className="kw-card">
+                <h4>{t(`kw.c${n}.title`)}</h4>
+                <p>{t(`kw.c${n}.desc`)}</p>
+              </div>
+            ))}
+          </div>
+
+          <div className="kw-cta">
+            <p>{t("kw.cta.text")}</p>
+            <a href={KAKAO_URL} target="_blank" rel="noopener noreferrer" className="btn btn-primary">
+              {t("kw.cta.btn")}
+            </a>
           </div>
         </div>
       </section>
