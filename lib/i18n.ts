@@ -19,6 +19,23 @@ type Dict = Record<string, string>;
 // KOREAN (base)
 // ─────────────────────────────────────────────────────────────
 const ko: Dict = {
+  // ── MOU 협약 기관 (웰니스라운지 본점) ──
+  "mou.tag": "MOU PARTNER · 협약 기관",
+  "mou.title1": "더웰니스앤과 함께하는",
+  "mou.title2": "프리미엄 웰니스 파트너",
+  "mou.sub": "외국인 환자의 진료를 넘어, 머무는 동안의 회복과 휴식까지. 더웰니스앤은 신뢰할 수 있는 기관과의 업무협약(MOU)으로 토탈 웰니스 여정을 설계합니다.",
+  "mou.eyebrow": "Premium Aesthetic & Spa",
+  "mou.name": "웰니스라운지 본점",
+  "mou.namesub": "200평 규모의 프리미엄 웰니스 스파 · 서래마을",
+  "mou.loc": "서울 서초구 서래마을 · 약 200평 규모",
+  "mou.d1": "서초구 서래마을에 위치한 약 200평 규모의 프리미엄 웰니스 스파로, 도심 속에서 진정한 휴식과 회복을 경험할 수 있는 공간입니다. 단순한 피부관리를 넘어 몸과 마음의 균형 있는 회복을 추구하며, 고객 한 분 한 분의 컨디션과 라이프스타일에 맞춘 맞춤형 케어를 제공합니다.",
+  "mou.d2": "넓고 쾌적한 공간에서 프라이빗하게 진행되는 전문 테라피를 통해 일상의 스트레스와 피로를 덜어내고, 얼굴·두피·바디를 아우르는 통합 웰니스 프로그램과 프리미엄 스파 서비스로 건강한 순환과 깊은 휴식을 추구합니다.",
+  "mou.c1": "200평 프리미엄 공간",
+  "mou.c2": "통합 웰니스 프로그램",
+  "mou.c3": "얼굴·두피·바디 통합 케어",
+  "mou.c4": "전문 테라피스트 맞춤 관리",
+  "mou.c5": "프라이빗 프리미엄 스파",
+  "mou.quote": "아름다움을 위한 관리가 아닌, 삶의 균형과 회복을 위한 프리미엄 웰니스 공간.",
   // ── AI 동시통역 · 협력 스트립 · 협력사 분야 (추가) ──
   "ai.tag": "For Partner Hospitals · 병원이 필요한 서비스",
   "ai.title1": "외국인 환자, 언어장벽 없이 —",
@@ -422,6 +439,23 @@ const ko: Dict = {
 // ENGLISH
 // ─────────────────────────────────────────────────────────────
 const en: Dict = {
+  // ── MOU Affiliated Institution (Wellness Lounge) ──
+  "mou.tag": "MOU PARTNER · Affiliated Institution",
+  "mou.title1": "A premium wellness partner",
+  "mou.title2": "alongside The Wellness N",
+  "mou.sub": "Beyond treatment — recovery and rest throughout the stay. The Wellness N designs a total wellness journey through MOUs with trusted institutions.",
+  "mou.eyebrow": "Premium Aesthetic & Spa",
+  "mou.name": "Wellness Lounge — Main Branch",
+  "mou.namesub": "Premium wellness spa of approx. 660㎡ · Seorae Village",
+  "mou.loc": "Seorae Village, Seocho-gu, Seoul · approx. 660㎡ (200 pyeong)",
+  "mou.d1": "Located in Seorae Village, Seocho-gu, Wellness Lounge is a premium wellness spa of about 660㎡ (200 pyeong) — a place to experience true rest and recovery within the city. Beyond simple skincare, it pursues a balanced recovery of body and mind, offering tailored care matched to each guest's condition and lifestyle.",
+  "mou.d2": "Through private, professional therapy in a spacious, comfortable setting, it relieves everyday stress and fatigue — pursuing healthy circulation and deep rest with integrated wellness programs spanning face, scalp and body, and premium spa services.",
+  "mou.c1": "Premium 660㎡ space",
+  "mou.c2": "Integrated wellness program",
+  "mou.c3": "Face · scalp · body care",
+  "mou.c4": "Expert therapist, tailored care",
+  "mou.c5": "Private premium spa",
+  "mou.quote": "Not care for the sake of beauty, but a premium wellness space for balance and recovery in life.",
   // ── AI Live Interpretation · Partner strip · Sectors ──
   "ai.tag": "For Partner Hospitals · Hospital Solutions",
   "ai.title1": "No language barrier for foreign patients —",
@@ -800,6 +834,23 @@ const en: Dict = {
 // CHINESE (Simplified)
 // ─────────────────────────────────────────────────────────────
 const zh: Dict = {
+  // ── MOU 合作机构（Wellness Lounge）──
+  "mou.tag": "MOU PARTNER · 合作机构",
+  "mou.title1": "与 The Wellness N 携手的",
+  "mou.title2": "高端健康养护伙伴",
+  "mou.sub": "不止于诊疗，更关注停留期间的恢复与休息。The Wellness N 通过与可信机构签订业务协议（MOU），打造完整的健康养护旅程。",
+  "mou.eyebrow": "Premium Aesthetic & Spa",
+  "mou.name": "Wellness Lounge 本店",
+  "mou.namesub": "约 660㎡ 的高端养生水疗 · 瑞来村",
+  "mou.loc": "首尔瑞草区瑞来村 · 约 660㎡（200坪）",
+  "mou.d1": "Wellness Lounge 本店位于首尔瑞草区瑞来村，是一处约 660㎡（200坪）的高端养生水疗空间，让人在都市中体验真正的休息与恢复。它超越单纯的皮肤护理，追求身心平衡的恢复，并根据每位顾客的状态与生活方式提供量身定制的护理。",
+  "mou.d2": "在宽敞舒适的空间内，以私密的专业理疗缓解日常压力与疲劳；通过涵盖面部、头皮与身体的综合养生项目和高端水疗服务，追求健康循环与深度休息。",
+  "mou.c1": "约 660㎡ 高端空间",
+  "mou.c2": "综合养生项目",
+  "mou.c3": "面部·头皮·身体护理",
+  "mou.c4": "专业理疗师定制护理",
+  "mou.c5": "私密高端水疗",
+  "mou.quote": "不是为了美丽的护理，而是为生活平衡与恢复打造的高端养生空间。",
   // ── AI 同声传译 · 合作伙伴条 · 分类 ──
   "ai.tag": "面向合作医院 · 医院所需服务",
   "ai.title1": "外国患者，告别语言障碍 —",
@@ -1176,6 +1227,23 @@ const zh: Dict = {
 // JAPANESE
 // ─────────────────────────────────────────────────────────────
 const ja: Dict = {
+  // ── MOU 提携機関（Wellness Lounge）──
+  "mou.tag": "MOU PARTNER · 提携機関",
+  "mou.title1": "The Wellness N とともに歩む",
+  "mou.title2": "プレミアム・ウェルネスパートナー",
+  "mou.sub": "診療にとどまらず、滞在中の回復と休息まで。The Wellness N は信頼できる機関との業務協約（MOU）でトータルなウェルネスジャーニーを設計します。",
+  "mou.eyebrow": "Premium Aesthetic & Spa",
+  "mou.name": "Wellness Lounge 本店",
+  "mou.namesub": "約660㎡のプレミアム・ウェルネススパ · ソレ村",
+  "mou.loc": "ソウル瑞草区ソレ村 · 約660㎡（200坪）",
+  "mou.d1": "瑞草区ソレ村に位置する約660㎡（200坪）のプレミアム・ウェルネススパで、都心の中で本当の休息と回復を体験できる空間です。単なるスキンケアを超え、心と体のバランスのとれた回復を追求し、お客様一人ひとりのコンディションとライフスタイルに合わせたオーダーメイドのケアを提供します。",
+  "mou.d2": "広く快適な空間でプライベートに行われる専門セラピーを通じて日常のストレスと疲れを和らげ、顔・頭皮・ボディを網羅する統合ウェルネスプログラムとプレミアムスパサービスで健やかな循環と深い休息を追求します。",
+  "mou.c1": "約660㎡のプレミアム空間",
+  "mou.c2": "統合ウェルネスプログラム",
+  "mou.c3": "顔・頭皮・ボディ統合ケア",
+  "mou.c4": "専門セラピストの個別ケア",
+  "mou.c5": "プライベート・プレミアムスパ",
+  "mou.quote": "美のためのケアではなく、人生のバランスと回復のためのプレミアム・ウェルネス空間。",
   // ── AI 同時通訳 · 提携バー · 分類 ──
   "ai.tag": "提携病院向け · 病院に必要なサービス",
   "ai.title1": "外国人患者も、言葉の壁なく —",
@@ -1552,6 +1620,23 @@ const ja: Dict = {
 // THAI (ภาษาไทย) — Bangkok medical tourism market
 // ─────────────────────────────────────────────────────────────
 const th: Dict = {
+  // ── MOU สถาบันพันธมิตร (Wellness Lounge) ──
+  "mou.tag": "MOU PARTNER · สถาบันพันธมิตร",
+  "mou.title1": "พันธมิตรเวลเนสระดับพรีเมียม",
+  "mou.title2": "ที่เคียงข้าง The Wellness N",
+  "mou.sub": "มากกว่าการรักษา คือการฟื้นฟูและพักผ่อนตลอดการเข้าพัก The Wellness N ออกแบบเส้นทางเวลเนสแบบครบวงจรผ่านบันทึกข้อตกลง (MOU) กับสถาบันที่ไว้วางใจได้",
+  "mou.eyebrow": "Premium Aesthetic & Spa",
+  "mou.name": "Wellness Lounge (สาขาหลัก)",
+  "mou.namesub": "สปาเวลเนสระดับพรีเมียมราว 660 ตร.ม. · หมู่บ้านซอแร",
+  "mou.loc": "หมู่บ้านซอแร เขตซอโช กรุงโซล · ประมาณ 660 ตร.ม. (200 พยอง)",
+  "mou.d1": "Wellness Lounge ตั้งอยู่ที่หมู่บ้านซอแร เขตซอโช เป็นสปาเวลเนสระดับพรีเมียมขนาดราว 660 ตร.ม. (200 พยอง) พื้นที่ที่ให้คุณสัมผัสการพักผ่อนและฟื้นฟูอย่างแท้จริงกลางเมือง ไม่เพียงดูแลผิว แต่มุ่งฟื้นฟูสมดุลของกายและใจ พร้อมการดูแลเฉพาะบุคคลที่เหมาะกับสภาพและไลฟ์สไตล์ของแต่ละท่าน",
+  "mou.d2": "ด้วยทรีตเมนต์โดยผู้เชี่ยวชาญแบบส่วนตัวในพื้นที่กว้างขวางและผ่อนคลาย ช่วยคลายความเครียดและความเหนื่อยล้าในแต่ละวัน พร้อมโปรแกรมเวลเนสครบวงจรครอบคลุมใบหน้า หนังศีรษะ และร่างกาย และบริการสปาระดับพรีเมียม เพื่อการไหลเวียนที่ดีและการพักผ่อนอย่างลึกซึ้ง",
+  "mou.c1": "พื้นที่พรีเมียม 660 ตร.ม.",
+  "mou.c2": "โปรแกรมเวลเนสครบวงจร",
+  "mou.c3": "ดูแลใบหน้า·หนังศีรษะ·ร่างกาย",
+  "mou.c4": "ดูแลเฉพาะบุคคลโดยผู้เชี่ยวชาญ",
+  "mou.c5": "สปาพรีเมียมแบบส่วนตัว",
+  "mou.quote": "ไม่ใช่การดูแลเพื่อความงาม แต่คือพื้นที่เวลเนสระดับพรีเมียมเพื่อสมดุลและการฟื้นฟูของชีวิต",
   // ── ล่ามแปลสด AI · แถบพันธมิตร · หมวดหมู่ ──
   "ai.tag": "สำหรับโรงพยาบาลพันธมิตร · บริการที่โรงพยาบาลต้องการ",
   "ai.title1": "ผู้ป่วยต่างชาติ ไร้กำแพงภาษา —",
@@ -1938,6 +2023,23 @@ const th: Dict = {
 // VIETNAMESE (Tiếng Việt) — K-Beauty 폭발 시장
 // ─────────────────────────────────────────────────────────────
 const vi: Dict = {
+  // ── MOU Đối tác hợp tác (Wellness Lounge) ──
+  "mou.tag": "MOU PARTNER · Đối tác hợp tác",
+  "mou.title1": "Đối tác chăm sóc sức khỏe cao cấp",
+  "mou.title2": "đồng hành cùng The Wellness N",
+  "mou.sub": "Không chỉ là điều trị, mà còn là sự phục hồi và nghỉ ngơi trong suốt thời gian lưu trú. The Wellness N thiết kế hành trình chăm sóc sức khỏe toàn diện thông qua biên bản hợp tác (MOU) với các cơ sở uy tín.",
+  "mou.eyebrow": "Premium Aesthetic & Spa",
+  "mou.name": "Wellness Lounge (Cơ sở chính)",
+  "mou.namesub": "Spa chăm sóc sức khỏe cao cấp khoảng 660㎡ · Làng Seorae",
+  "mou.loc": "Làng Seorae, Seocho-gu, Seoul · khoảng 660㎡ (200 pyeong)",
+  "mou.d1": "Tọa lạc tại làng Seorae, quận Seocho, Wellness Lounge là spa chăm sóc sức khỏe cao cấp rộng khoảng 660㎡ (200 pyeong) — nơi bạn trải nghiệm sự nghỉ ngơi và phục hồi đích thực giữa lòng thành phố. Vượt trên việc chăm sóc da đơn thuần, nơi đây hướng đến sự phục hồi cân bằng của cơ thể và tâm trí, mang đến liệu trình riêng phù hợp với thể trạng và lối sống của từng khách.",
+  "mou.d2": "Với các liệu pháp chuyên nghiệp riêng tư trong không gian rộng rãi, thoải mái, nơi đây giúp xua tan căng thẳng và mệt mỏi thường ngày; cùng chương trình chăm sóc sức khỏe toàn diện cho khuôn mặt, da đầu và cơ thể, và dịch vụ spa cao cấp hướng đến tuần hoàn khỏe mạnh và sự nghỉ ngơi sâu.",
+  "mou.c1": "Không gian cao cấp 660㎡",
+  "mou.c2": "Chương trình wellness toàn diện",
+  "mou.c3": "Chăm sóc mặt·da đầu·cơ thể",
+  "mou.c4": "Chuyên viên trị liệu riêng",
+  "mou.c5": "Spa cao cấp riêng tư",
+  "mou.quote": "Không phải chăm sóc vì vẻ đẹp, mà là không gian wellness cao cấp cho sự cân bằng và phục hồi của cuộc sống.",
   // ── Phiên dịch AI trực tiếp · Dải đối tác · Phân loại ──
   "ai.tag": "Dành cho bệnh viện đối tác · Dịch vụ bệnh viện cần",
   "ai.title1": "Bệnh nhân nước ngoài, không rào cản ngôn ngữ —",
@@ -2314,6 +2416,23 @@ const vi: Dict = {
 // INDONESIAN (Bahasa Indonesia)
 // ─────────────────────────────────────────────────────────────
 const id: Dict = {
+  // ── MOU Institusi Mitra (Wellness Lounge) ──
+  "mou.tag": "MOU PARTNER · Institusi Mitra",
+  "mou.title1": "Mitra wellness premium",
+  "mou.title2": "bersama The Wellness N",
+  "mou.sub": "Lebih dari sekadar perawatan — pemulihan dan istirahat selama masa tinggal. The Wellness N merancang perjalanan wellness menyeluruh melalui nota kesepahaman (MOU) dengan institusi tepercaya.",
+  "mou.eyebrow": "Premium Aesthetic & Spa",
+  "mou.name": "Wellness Lounge (Cabang Utama)",
+  "mou.namesub": "Spa wellness premium sekitar 660㎡ · Desa Seorae",
+  "mou.loc": "Desa Seorae, Seocho-gu, Seoul · sekitar 660㎡ (200 pyeong)",
+  "mou.d1": "Berlokasi di Desa Seorae, Seocho-gu, Wellness Lounge adalah spa wellness premium seluas sekitar 660㎡ (200 pyeong) — tempat untuk merasakan istirahat dan pemulihan sejati di tengah kota. Melampaui perawatan kulit biasa, tempat ini mengejar pemulihan tubuh dan pikiran yang seimbang, dengan perawatan khusus sesuai kondisi dan gaya hidup setiap tamu.",
+  "mou.d2": "Melalui terapi profesional yang privat di ruang yang luas dan nyaman, tempat ini meredakan stres dan kelelahan sehari-hari; dengan program wellness terpadu yang mencakup wajah, kulit kepala, dan tubuh, serta layanan spa premium untuk sirkulasi yang sehat dan istirahat yang mendalam.",
+  "mou.c1": "Ruang premium 660㎡",
+  "mou.c2": "Program wellness terpadu",
+  "mou.c3": "Perawatan wajah·kulit kepala·tubuh",
+  "mou.c4": "Terapis ahli, perawatan khusus",
+  "mou.c5": "Spa premium privat",
+  "mou.quote": "Bukan perawatan demi kecantikan, melainkan ruang wellness premium untuk keseimbangan dan pemulihan hidup.",
   // ── Interpretasi Langsung AI · Strip mitra · Kategori ──
   "ai.tag": "Untuk Rumah Sakit Mitra · Layanan yang Dibutuhkan RS",
   "ai.title1": "Pasien asing, tanpa hambatan bahasa —",
