@@ -196,42 +196,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* MOU 협약 기관 — 웰니스라운지 본점 (매거진형) */}
-      <section className="mou-partner" id="mou" data-edit-key="mou">
-        <div className="container">
-          <div className="section-head">
-            <span className="section-tag">{t("mou.tag")}</span>
-            <h2 className="section-title">{t("mou.title1")} <strong>{t("mou.title2")}</strong></h2>
-            <p className="section-sub">{t("mou.sub")}</p>
-          </div>
-          <div className="mou-featured">
-            <div className="mou-logo-panel">
-              <img
-                src="/logos/wellness-lounge-logo.jpg"
-                alt="웰니스라운지 본점 · The Wellness N 협약 기관"
-                loading="lazy"
-              />
-              <span className="mou-loc"><b>{t("mou.name")}</b><br />{t("mou.loc")}</span>
-            </div>
-            <div className="mou-body">
-              <span className="mou-eyebrow">{t("mou.eyebrow")}</span>
-              <h3 className="mou-name">{t("mou.name")}<span className="mou-namesub">{t("mou.namesub")}</span></h3>
-              <p className="mou-desc">{t("mou.d1")}</p>
-              <p className="mou-desc">{t("mou.d2")}</p>
-              <div className="mou-chips">
-                <span>{t("mou.c1")}</span>
-                <span>{t("mou.c2")}</span>
-                <span>{t("mou.c3")}</span>
-                <span>{t("mou.c4")}</span>
-                <span>{t("mou.c5")}</span>
-              </div>
-              <div className="mou-divider"></div>
-              <p className="mou-quote">{t("mou.quote")}</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* PARTNERS — 협력사 (분야별: 병원·한의원·K뷰티·문화·요식) */}
       <section className="partners" id="partners" data-edit-key="partners">
         <div className="container">
@@ -353,6 +317,42 @@ export default function Home() {
         </div>
       </section>
 
+      {/* MOU 협약 기관 — 웰니스라운지 본점 (매거진형, 협력사 대표 하이라이트) */}
+      <section className="mou-partner" id="mou" data-edit-key="mou">
+        <div className="container">
+          <div className="section-head">
+            <span className="section-tag">{t("mou.tag")}</span>
+            <h2 className="section-title">{t("mou.title1")} <strong>{t("mou.title2")}</strong></h2>
+            <p className="section-sub">{t("mou.sub")}</p>
+          </div>
+          <div className="mou-featured">
+            <div className="mou-logo-panel">
+              <img
+                src="/logos/wellness-lounge-logo.jpg"
+                alt="웰니스라운지 본점 · The Wellness N 협약 기관"
+                loading="lazy"
+              />
+              <span className="mou-loc"><b>{t("mou.name")}</b><br />{t("mou.loc")}</span>
+            </div>
+            <div className="mou-body">
+              <span className="mou-eyebrow">{t("mou.eyebrow")}</span>
+              <h3 className="mou-name">{t("mou.name")}<span className="mou-namesub">{t("mou.namesub")}</span></h3>
+              <p className="mou-desc">{t("mou.d1")}</p>
+              <p className="mou-desc">{t("mou.d2")}</p>
+              <div className="mou-chips">
+                <span>{t("mou.c1")}</span>
+                <span>{t("mou.c2")}</span>
+                <span>{t("mou.c3")}</span>
+                <span>{t("mou.c4")}</span>
+                <span>{t("mou.c5")}</span>
+              </div>
+              <div className="mou-divider"></div>
+              <p className="mou-quote">{t("mou.quote")}</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* DIFFERENTIATORS — 왜 우리인가 */}
       <section className="why" id="diff" data-edit-key="diff">
         <div className="container">
@@ -450,6 +450,30 @@ export default function Home() {
                 <div className="extra-tag">{t(`pkg.e${n}.tag`)}</div>
                 <h4>{t(`pkg.e${n}.title`)}</h4>
                 <p>{t(`pkg.e${n}.desc`)}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* PROCESS — 이용 절차 (패키지 직후, 구매 고려 시점) */}
+      <section className="process" id="process" data-edit-key="proc">
+        <div className="container">
+          <div className="section-head">
+            <span className="section-tag">{t("proc.tag")}</span>
+            <h2 className="section-title">
+              {t("proc.title1")} <strong>{t("proc.title2")}</strong>
+            </h2>
+            <p className="section-sub">{t("proc.sub")}</p>
+          </div>
+          <div className="process-grid">
+            {[1, 2, 3, 4, 5, 6].map((n) => (
+              <div key={n} className="proc-item">
+                <div className="proc-num">{String(n).padStart(2, "0")}</div>
+                <div>
+                  <h4>{t(`proc.s${n}.title`)}</h4>
+                  <p>{t(`proc.s${n}.desc`)}</p>
+                </div>
               </div>
             ))}
           </div>
@@ -555,30 +579,6 @@ export default function Home() {
                 <div className="voice-tag">{t(`voices.v${n}.tag`)}</div>
                 <h4>{t(`voices.v${n}.title`)}</h4>
                 <p>{t(`voices.v${n}.desc`)}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* PROCESS */}
-      <section className="process" id="process" data-edit-key="proc">
-        <div className="container">
-          <div className="section-head">
-            <span className="section-tag">{t("proc.tag")}</span>
-            <h2 className="section-title">
-              {t("proc.title1")} <strong>{t("proc.title2")}</strong>
-            </h2>
-            <p className="section-sub">{t("proc.sub")}</p>
-          </div>
-          <div className="process-grid">
-            {[1, 2, 3, 4, 5, 6].map((n) => (
-              <div key={n} className="proc-item">
-                <div className="proc-num">{String(n).padStart(2, "0")}</div>
-                <div>
-                  <h4>{t(`proc.s${n}.title`)}</h4>
-                  <p>{t(`proc.s${n}.desc`)}</p>
-                </div>
               </div>
             ))}
           </div>
