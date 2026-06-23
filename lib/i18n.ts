@@ -409,7 +409,7 @@ const ko: Dict = {
   "voices.v8.title": "\"매년 끊고 정기 케어 받아요.\"",
   "voices.v8.desc": "\"골드 멤버십으로 분기마다 케어. 가격도 할인되고 일정 짤 필요 없어서 시간 절약 엄청 큽니다.\"",
   "voices.v9.tag": "웰니스 (스파)",
-  "voices.v9.title": "\"순수라운지 방배 추천 받았어요.\"",
+  "voices.v9.title": "\"웰니스라운지 방배본점 추천 받았어요.\"",
   "voices.v9.desc": "\"시술 후 회복 동선에 마사지·힐링 스파까지 짜주셔서 완전 다른 차원의 회복. 다음에 또 올 거예요.\"",
 
   // Partners group labels
@@ -806,7 +806,7 @@ const en: Dict = {
   "voices.v8.title": "\"I renew yearly for regular care.\"",
   "voices.v8.desc": "\"Gold membership means quarterly care. Saves time and money — no need to plan each trip.\"",
   "voices.v9.tag": "Wellness (Spa)",
-  "voices.v9.title": "\"Sunsoo Lounge Bangbae was a great pick.\"",
+  "voices.v9.title": "\"Wellness Lounge Bangbae Main Branch was a great pick.\"",
   "voices.v9.desc": "\"They added massage and healing spa into the recovery flow. A whole different level of recovery — definitely coming back.\"",
 
   "partners.g1": "🌿 Korean Medicine",
@@ -1199,7 +1199,7 @@ const zh: Dict = {
   "voices.v8.title": "「每年续约定期护理。」",
   "voices.v8.desc": "「黄金会员每季度护理。价格也优惠,不用安排日程,节省时间。」",
   "voices.v9.tag": "健康(水疗)",
-  "voices.v9.title": "「推荐了纯粹休闲方背店。」",
+  "voices.v9.title": "「推荐了 Wellness Lounge 方背本店。」",
   "voices.v9.desc": "「在恢复动线中加入按摩·疗愈水疗,完全不同层次的恢复。下次还会再来。」",
 
   "partners.g1": "🌿 韩医院 · 韩方",
@@ -1592,7 +1592,7 @@ const ja: Dict = {
   "voices.v8.title": "「毎年契約して定期ケア。」",
   "voices.v8.desc": "「ゴールド会員で四半期ごとにケア。割引もきき、日程を組む必要もなく時間の節約大。」",
   "voices.v9.tag": "ウェルネス(スパ)",
-  "voices.v9.title": "「純粋ラウンジ方背を勧められました。」",
+  "voices.v9.title": "「Wellness Lounge バンベ本店を勧められました。」",
   "voices.v9.desc": "「施術後の回復動線にマッサージ·ヒーリングスパまで組んでもらい、全く別次元の回復。また来ます。」",
 
   "partners.g1": "🌿 韓医院·韓方",
@@ -1993,7 +1993,7 @@ const th: Dict = {
   "voices.v8.title": "\"ต่อสมาชิกทุกปี\"",
   "voices.v8.desc": "\"Gold ทำให้ดูแลรายไตรมาส ราคาลด ไม่ต้องวางแผน ประหยัดเวลามาก\"",
   "voices.v9.tag": "Wellness (สปา)",
-  "voices.v9.title": "\"แนะนำ Sunsoo Lounge Bangbae\"",
+  "voices.v9.title": "\"แนะนำ Wellness Lounge บังแบ (สาขาหลัก)\"",
   "voices.v9.desc": "\"เพิ่มนวด·สปาในเส้นทางการฟื้นตัว ระดับการฟื้นตัวต่างกันเลย จะกลับมาอีก\"",
 
   // Partners
@@ -2388,7 +2388,7 @@ const vi: Dict = {
   "voices.v8.title": "\"Đăng ký hàng năm chăm sóc định kỳ\"",
   "voices.v8.desc": "\"Gold mỗi quý chăm sóc. Giá giảm, không cần lên lịch, tiết kiệm thời gian lớn.\"",
   "voices.v9.tag": "Wellness (Spa)",
-  "voices.v9.title": "\"Giới thiệu Sunsoo Lounge Bangbae\"",
+  "voices.v9.title": "\"Giới thiệu Wellness Lounge Bangbae (Cơ sở chính)\"",
   "voices.v9.desc": "\"Massage·spa trong lộ trình phục hồi. Cấp độ phục hồi khác hẳn. Sẽ quay lại.\"",
 
   "partners.g1": "🌿 Y học Hàn",
@@ -2781,7 +2781,7 @@ const id: Dict = {
   "voices.v8.title": "\"Perpanjang tiap tahun untuk perawatan rutin\"",
   "voices.v8.desc": "\"Gold tiap kuartal dirawat. Harga diskon, tidak perlu atur jadwal, hemat waktu besar.\"",
   "voices.v9.tag": "Wellness (Spa)",
-  "voices.v9.title": "\"Direkomendasi Sunsoo Lounge Bangbae\"",
+  "voices.v9.title": "\"Direkomendasi Wellness Lounge Bangbae (Cabang Utama)\"",
   "voices.v9.desc": "\"Pijat·healing spa ditambahkan ke alur pemulihan. Level pemulihan beda. Akan kembali lagi.\"",
 
   "partners.g1": "🌿 Pengobatan Korea",
