@@ -317,7 +317,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* MOU 협약 기관 — 웰니스라운지 본점 (매거진형, 협력사 대표 하이라이트) */}
+      {/* MOU 협약 기관 — 웰니스라운지 방배본점 (매거진형, 협력사 대표 하이라이트) */}
       <section className="mou-partner" id="mou" data-edit-key="mou">
         <div className="container">
           <div className="section-head">
@@ -329,7 +329,7 @@ export default function Home() {
             <div className="mou-logo-panel">
               <img
                 src="/logos/wellness-lounge-logo.jpg"
-                alt="웰니스라운지 본점 · The Wellness N 협약 기관"
+                alt="웰니스라운지 방배본점 · The Wellness N 협약 기관"
                 loading="lazy"
               />
               <span className="mou-loc"><b>{t("mou.name")}</b><br />{t("mou.loc")}</span>
