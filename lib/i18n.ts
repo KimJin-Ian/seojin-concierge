@@ -350,7 +350,7 @@ const ko: Dict = {
   "pkg.e5.desc": "줄기세포·쥬베룩·티타늄·피코토닝 — 잘나가는 키워드의 최신 시술.",
   "pkg.e6.tag": "웰니스",
   "pkg.e6.title": "스파 · 헤어 · 라운지",
-  "pkg.e6.desc": "순수라운지 방배(마사지·힐링 스파 종합) · 헤어 스파 · 명상 등 종합 케어.",
+  "pkg.e6.desc": "웰니스라운지 방배본점(마사지·힐링 스파 종합) · 헤어 스파 · 명상 등 종합 케어.",
 
   // K-pop Tour points
   "kpop.pt1": "✦ 유명 뮤직비디오 촬영지 큐레이션 투어",
@@ -750,7 +750,7 @@ const en: Dict = {
   "pkg.e5.desc": "Stem cell · Juvelook · titanium · picotoning — the most-searched latest procedures.",
   "pkg.e6.tag": "Wellness",
   "pkg.e6.title": "Spa · Hair · Lounge",
-  "pkg.e6.desc": "Sunsoo Lounge Bangbae (massage · healing spa) · hair spa · meditation comprehensive care.",
+  "pkg.e6.desc": "Wellness Lounge Bangbae Main Branch (massage · healing spa) · hair spa · meditation comprehensive care.",
 
   "kpop.pt1": "✦ Curated music video filming-location tours",
   "kpop.pt2": "✦ Live concert / fan meeting seat booking support",
@@ -1143,7 +1143,7 @@ const zh: Dict = {
   "pkg.e5.desc": "干细胞·Juvelook·钛金·皮秒 — 热门关键词的最新项目。",
   "pkg.e6.tag": "健康",
   "pkg.e6.title": "水疗·美发·休闲",
-  "pkg.e6.desc": "纯粹休闲方背店(按摩·疗愈水疗) · 美发SPA · 冥想综合护理。",
+  "pkg.e6.desc": "Wellness Lounge 方背本店(按摩·疗愈水疗) · 美发SPA · 冥想综合护理。",
 
   "kpop.pt1": "✦ 著名MV拍摄地策划之旅",
   "kpop.pt2": "✦ 现场演出或粉丝见面会座位预定",
@@ -1536,7 +1536,7 @@ const ja: Dict = {
   "pkg.e5.desc": "幹細胞·ジュベルック·チタニウム·ピコトーニング — 人気キーワードの最新施術。",
   "pkg.e6.tag": "ウェルネス",
   "pkg.e6.title": "スパ·ヘア·ラウンジ",
-  "pkg.e6.desc": "純粋ラウンジ方背(マッサージ·ヒーリングスパ総合)·ヘアスパ·瞑想など総合ケア。",
+  "pkg.e6.desc": "Wellness Lounge バンベ本店(マッサージ·ヒーリングスパ総合)·ヘアスパ·瞑想など総合ケア。",
 
   "kpop.pt1": "✦ 有名ミュージックビデオ撮影地のキュレーションツアー",
   "kpop.pt2": "✦ ライブ公演やファンミーティングの座席予約サポート",
@@ -1934,7 +1934,7 @@ const th: Dict = {
   "pkg.e5.desc": "สเต็มเซลล์·Juvelook·Titanium·Picotoning",
   "pkg.e6.tag": "Wellness",
   "pkg.e6.title": "สปา · เฮา · เลาจน์",
-  "pkg.e6.desc": "Sunsoo Lounge Bangbae · เฮดสปา · สมาธิ",
+  "pkg.e6.desc": "Wellness Lounge บังแบ (สาขาหลัก) · เฮดสปา · สมาธิ",
 
   // K-pop points
   "kpop.pt1": "✦ ทัวร์สถานที่ถ่าย MV ที่มีชื่อเสียง",
@@ -2332,7 +2332,7 @@ const vi: Dict = {
   "pkg.e5.desc": "Tế bào gốc·Juvelook·Titanium·Picotoning",
   "pkg.e6.tag": "Wellness",
   "pkg.e6.title": "Spa · Tóc · Lounge",
-  "pkg.e6.desc": "Sunsoo Lounge Bangbae · hair spa · thiền",
+  "pkg.e6.desc": "Wellness Lounge Bangbae (Cơ sở chính) · hair spa · thiền",
 
   "kpop.pt1": "✦ Tour địa điểm quay MV nổi tiếng",
   "kpop.pt2": "✦ Đặt vé concert/fan meeting",
@@ -2725,7 +2725,7 @@ const id: Dict = {
   "pkg.e5.desc": "Stem cell·Juvelook·Titanium·Picotoning",
   "pkg.e6.tag": "Wellness",
   "pkg.e6.title": "Spa · Hair · Lounge",
-  "pkg.e6.desc": "Sunsoo Lounge Bangbae · hair spa · meditasi",
+  "pkg.e6.desc": "Wellness Lounge Bangbae (Cabang Utama) · hair spa · meditasi",
 
   "kpop.pt1": "✦ Tour lokasi syuting MV terkenal",
   "kpop.pt2": "✦ Booking kursi konser/fan meet",
