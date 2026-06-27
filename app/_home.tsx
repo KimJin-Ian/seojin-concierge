@@ -562,6 +562,99 @@ export default function Home() {
         </div>
       </section>
 
+      {/* EXECUTIVE PROGRAM — VIP Professional Healthcare Visit (B2B 프리미엄) */}
+      <section className="exec-program" id="executive" data-edit-key="exec">
+        <div className="container">
+          <div className="section-head">
+            <span className="section-tag">{t("exec.tag")}</span>
+            <h2 className="section-title">{t("exec.title1")} <strong>{t("exec.title2")}</strong></h2>
+            <p className="section-sub">{t("exec.sub")}</p>
+          </div>
+
+          <div className="exec-banner">
+            <div className="exec-kicker">VIP Professional Healthcare Visit</div>
+            <div className="exec-name">Executive <span>Benchmarking</span> Program</div>
+            <p className="exec-ko">{t("exec.banner")}</p>
+            <div className="exec-tags">
+              <span>{t("exec.t1")}</span>
+              <span>{t("exec.t2")}</span>
+              <span>{t("exec.t3")}</span>
+              <span>{t("exec.t4")}</span>
+            </div>
+          </div>
+
+          <div className="exec-grid">
+            <div className="exec-card">
+              <div className="exec-num">01</div>
+              <h3>{t("exec.c1.title")}</h3>
+              <ul>
+                <li>{t("exec.c1.l1")}</li>
+                <li>{t("exec.c1.l2")}</li>
+                <li>{t("exec.c1.l3")}</li>
+                <li>{t("exec.c1.l4")}</li>
+              </ul>
+            </div>
+            <div className="exec-card">
+              <div className="exec-num">02</div>
+              <h3>{t("exec.c2.title")}</h3>
+              <ul>
+                <li>{t("exec.c2.l1")}</li>
+                <li>{t("exec.c2.l2")}</li>
+                <li>{t("exec.c2.l3")}</li>
+              </ul>
+            </div>
+            <div className="exec-card">
+              <div className="exec-num">03</div>
+              <h3>{t("exec.c3.title")}</h3>
+              <ul>
+                <li>{t("exec.c3.l1")}</li>
+                <li>{t("exec.c3.l2")}</li>
+                <li>{t("exec.c3.l3")}</li>
+                <li>{t("exec.c3.l4")}</li>
+              </ul>
+            </div>
+          </div>
+
+          <div className="exec-bottom">
+            <div className="exec-price-card">
+              <span className="exec-price-eyebrow">Program Fee</span>
+              <div className="exec-price-amt">KRW 5,000,000<small> {t("exec.price.from")}</small></div>
+              <div className="exec-price-unit">{t("exec.price.unit")}</div>
+              <div className="exec-price-inc">
+                <div className="lbl">{t("exec.price.inclabel")}</div>
+                <div className="chips">
+                  <span>{t("exec.inc1")}</span>
+                  <span>{t("exec.inc2")}</span>
+                  <span>{t("exec.inc3")}</span>
+                  <span>{t("exec.inc4")}</span>
+                  <span>{t("exec.inc5")}</span>
+                </div>
+              </div>
+              <p className="exec-price-note">{t("exec.price.note")}</p>
+            </div>
+            <div className="exec-opt-card">
+              <span className="exec-opt-label">Optional Add-ons</span>
+              <h4>{t("exec.opt.title")}</h4>
+              <ul className="exec-opt-list">
+                <li>{t("exec.opt1")}</li>
+                <li>{t("exec.opt2")}</li>
+                <li>{t("exec.opt3")}</li>
+                <li>{t("exec.opt4")}</li>
+                <li>{t("exec.opt5")}</li>
+              </ul>
+            </div>
+          </div>
+
+          <div className="exec-cta">
+            <div className="t">
+              <b>{t("exec.cta.title")}</b>
+              <p>{t("exec.cta.desc")}</p>
+            </div>
+            <a href="#contact">{t("exec.cta.btn")}</a>
+          </div>
+        </div>
+      </section>
+
       {/* REAL VOICES — 유형별 리뷰 */}
       <section className="voices" id="voices" data-edit-key="voices">
         <div className="container">
