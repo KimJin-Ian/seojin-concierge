@@ -353,6 +353,74 @@ export default function Home() {
         </div>
       </section>
 
+      {/* MOU PARTNER NETWORK — 전략 파트너 생태계 */}
+      <section className="partners-net" id="network" data-edit-key="network">
+        <div className="container">
+          <div className="section-head">
+            <span className="section-tag">{t("net.tag")}</span>
+            <h2 className="section-title">{t("net.title1")} <strong>{t("net.title2")}</strong></h2>
+            <p className="section-sub">{t("net.sub")}</p>
+          </div>
+          {(() => {
+            const PARTNERS = [
+              { key: "p1", logo: null, txt: "MONEV" },
+              { key: "p2", logo: null, txt: "VitalDoc" },
+              { key: "p3", logo: "/logos/lifemedi.svg" },
+              { key: "p4", logo: "/logos/jinny-pharmacy.png", logoH: 44 },
+              { key: "p5", logo: null, txt: t("net.p5.name") },
+              { key: "p6", logo: null, txt: t("net.p6.name") },
+            ];
+            return (
+              <div className="net-grid">
+                {PARTNERS.map((p) => (
+                  <div key={p.key} className="net-card">
+                    <div className="net-cat">{t(`net.${p.key}.cat`)}</div>
+                    <div className="net-logo">
+                      {p.logo ? (
+                        <img
+                          src={p.logo}
+                          alt={`${t(`net.${p.key}.name`)} 로고 · The Wellness N 파트너`}
+                          style={p.logoH ? { maxHeight: p.logoH } : undefined}
+                          loading="lazy"
+                        />
+                      ) : (
+                        <span className="txt-logo">{p.txt}</span>
+                      )}
+                    </div>
+                    <h4>{t(`net.${p.key}.name`)}</h4>
+                    <div className="net-en">{t(`net.${p.key}.en`)}</div>
+                    <p className="net-role">{t(`net.${p.key}.role`)}</p>
+                    <div className="net-give">{t(`net.${p.key}.give`)}</div>
+                  </div>
+                ))}
+              </div>
+            );
+          })()}
+        </div>
+      </section>
+
+      {/* CARE SYSTEM — 안심 케어 3단계 여정 */}
+      <section className="care-band" id="care" data-edit-key="care">
+        <div className="container">
+          <div className="section-head">
+            <span className="section-tag">{t("care.tag")}</span>
+            <h2 className="section-title">{t("care.title1")} <strong>{t("care.title2")}</strong></h2>
+            <p className="section-sub">{t("care.sub")}</p>
+          </div>
+          <div className="care-steps">
+            {["s1", "s2", "s3"].map((s, i) => (
+              <div key={s} className="care-step">
+                <div className="care-num">{i + 1}</div>
+                <div className="care-phase">{t(`care.${s}.phase`)}</div>
+                <h4>{t(`care.${s}.title`)}</h4>
+                <p>{t(`care.${s}.desc`)}</p>
+                <div className="care-by">{t(`care.${s}.by`)}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* DIFFERENTIATORS — 왜 우리인가 */}
       <section className="why" id="diff" data-edit-key="diff">
         <div className="container">
@@ -499,6 +567,14 @@ export default function Home() {
                 <li>{t("kpop.pt4")}</li>
                 <li>{t("kpop.pt5")}</li>
               </ul>
+              <div className="kpop-progs">
+                {["pr1", "pr2", "pr3", "pr4", "pr5", "pr6", "pr7", "pr8"].map((p) => (
+                  <div key={p} className="kpop-prog">
+                    <b>{t(`kpop.${p}.l`)}</b>
+                    <span>{t(`kpop.${p}.d`)}</span>
+                  </div>
+                ))}
+              </div>
               <a href={KAKAO_URL} target="_blank" rel="noopener noreferrer" className="btn btn-primary">
                 {t("kpop.cta")}
               </a>

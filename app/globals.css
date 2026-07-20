@@ -1416,6 +1416,66 @@ footer {
   .mou-partner { padding: 64px 0; }
 }
 
+/* ===== MOU Partner Network (전략 파트너 생태계) ===== */
+.partners-net { background: var(--white); }
+.net-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.net-card {
+  background: var(--cream); border: 1px solid var(--line); border-radius: 16px;
+  padding: 30px 28px; transition: all 0.2s; display: flex; flex-direction: column;
+}
+.net-card:hover { transform: translateY(-4px); border-color: var(--gold); }
+.net-cat {
+  font-size: 11px; letter-spacing: 0.2em; font-weight: 700; text-transform: uppercase;
+  color: var(--gold-deep); margin-bottom: 16px;
+}
+.net-logo { height: 46px; display: flex; align-items: center; margin-bottom: 16px; }
+.net-logo img { max-height: 46px; max-width: 170px; object-fit: contain; }
+.net-logo .txt-logo { font-size: 22px; font-weight: 600; letter-spacing: -0.01em; color: var(--accent); }
+.net-card h4 { font-size: 19px; font-weight: 500; margin-bottom: 4px; color: var(--ink); }
+.net-en { font-size: 12px; letter-spacing: 0.04em; color: var(--gold); margin-bottom: 14px; word-break: keep-all; }
+.net-role { font-size: 14px; color: var(--ink-soft); line-height: 1.75; margin-bottom: 16px; flex: 1; word-break: keep-all; }
+.net-give {
+  font-size: 12.5px; color: var(--accent); background: rgba(45, 74, 62, 0.06);
+  border-radius: 8px; padding: 10px 13px; line-height: 1.6; word-break: keep-all;
+}
+
+/* ===== Care System (안심 케어 3단계 여정) ===== */
+.care-band { background: linear-gradient(160deg, var(--accent) 0%, #1c3027 100%); color: #fff; }
+.care-band .section-tag { color: var(--gold); }
+.care-band .section-title { color: #fff; }
+.care-band .section-title strong { color: var(--gold); }
+.care-band .section-sub { color: rgba(255, 255, 255, 0.72); }
+.care-steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.care-step {
+  background: rgba(255, 255, 255, 0.045); border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 16px; padding: 30px 26px;
+}
+.care-num {
+  width: 34px; height: 34px; border-radius: 50%; border: 1px solid var(--gold);
+  color: var(--gold); font-size: 14px; display: flex; align-items: center; justify-content: center;
+  margin-bottom: 18px; font-weight: 500;
+}
+.care-phase { font-size: 11px; letter-spacing: 0.2em; color: var(--gold); text-transform: uppercase; margin-bottom: 8px; font-weight: 600; }
+.care-step h4 { font-size: 18px; font-weight: 500; margin-bottom: 10px; color: #fff; }
+.care-step p { font-size: 13.5px; color: rgba(255, 255, 255, 0.75); line-height: 1.7; margin-bottom: 14px; word-break: keep-all; }
+.care-by { font-size: 12px; color: rgba(255, 255, 255, 0.6); border-top: 1px solid rgba(255, 255, 255, 0.12); padding-top: 12px; word-break: keep-all; }
+.care-by b { color: #fff; font-weight: 500; }
+
+/* ===== K-pop 특화 프로그램 칩 ===== */
+.kpop-progs { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 22px 0 28px; }
+.kpop-prog {
+  background: rgba(255, 255, 255, 0.06); border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 10px; padding: 12px 14px;
+}
+.kpop-prog b { display: block; font-size: 10.5px; letter-spacing: 0.1em; color: var(--gold); font-weight: 700; margin-bottom: 4px; }
+.kpop-prog span { font-size: 12.5px; color: rgba(255, 255, 255, 0.82); line-height: 1.5; word-break: keep-all; }
+
+@media (max-width: 900px) {
+  .net-grid, .care-steps { grid-template-columns: 1fr; }
+  .partners-net, .care-band { padding: 64px 0; }
+  .kpop-progs { grid-template-columns: 1fr; }
+}
+
 /* ===== Executive Benchmarking Program (VIP 의료 벤치마킹 · B2B 프리미엄) ===== */
 .exec-program { padding: 96px 0; background: var(--bg); }
 .exec-program .section-head { margin-bottom: 48px; }
