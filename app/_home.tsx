@@ -76,6 +76,38 @@ export default function Home() {
         </div>
       </section>
 
+      {/* 고민별 진입 — "먼저, 당신의 고민은 무엇인가요?" (히어로 직후 첫 진입점) */}
+      <section className="concern" id="concern" data-edit-key="concern">
+        <div className="container">
+          <div className="section-head">
+            <span className="section-tag">{t("concern.tag")}</span>
+            <h2 className="section-title">{t("concern.title1")} <strong>{t("concern.title2")}</strong></h2>
+            <p className="section-sub">{t("concern.sub")}</p>
+          </div>
+
+          <div className="concern-grid">
+            {["a", "b", "c", "d", "e"].map((k, i) => (
+              <a key={k} href={KAKAO_URL} target="_blank" rel="noopener noreferrer"
+                className={`concern-card${k === "e" ? " concern-wide" : ""}`}
+                data-track="cta_click" data-category="concern" data-label={`concern_${k}`}>
+                <span className="concern-letter">{String.fromCharCode(65 + i)}</span>
+                <h3>{t(`concern.${k}.q`)}</h3>
+                <div className="concern-price">{t(`concern.${k}.price`)}</div>
+                <div className="concern-items">
+                  {t(`concern.${k}.items`).split(" · ").map((s) => (
+                    <span key={s}>{s.trim()}</span>
+                  ))}
+                </div>
+                <p className="concern-for">{t(`concern.${k}.for`)}</p>
+              </a>
+            ))}
+          </div>
+
+          <p className="concern-note">{t("concern.note")}</p>
+          <p className="price-disclaimer">{t("price.disclaimer")}</p>
+        </div>
+      </section>
+
       {/* 협력 네트워크 스트립 — 초창기 신뢰 (히어로 직후) */}
       <section className="partner-strip" data-edit-key="partnerstrip">
         <div className="container">
@@ -480,6 +512,59 @@ export default function Home() {
         </div>
       </section>
 
+      {/* 예산별 선택 — 5구간 */}
+      <section className="budget" id="budget" data-edit-key="budget">
+        <div className="container">
+          <div className="section-head">
+            <span className="section-tag">{t("budget.tag")}</span>
+            <h2 className="section-title">{t("budget.title1")} <strong>{t("budget.title2")}</strong></h2>
+            <p className="section-sub">{t("budget.sub")}</p>
+          </div>
+
+          <div className="budget-grid">
+            {["b1", "b2", "b3", "b4", "b5"].map((k) => (
+              <div key={k} className={`budget-card${k === "b5" ? " budget-vip" : ""}`}>
+                <div className="budget-range">{t(`budget.${k}.range`)}</div>
+                <h3>{t(`budget.${k}.name`)}</h3>
+                <ul>
+                  {t(`budget.${k}.items`).split(" · ").map((s) => (
+                    <li key={s}>{s.trim()}</li>
+                  ))}
+                </ul>
+                <p className="budget-for">{t(`budget.${k}.for`)}</p>
+              </div>
+            ))}
+          </div>
+          <p className="price-disclaimer">{t("price.disclaimer")}</p>
+        </div>
+      </section>
+
+      {/* 체류기간별 일정 */}
+      <section className="stay" id="stay" data-edit-key="stay">
+        <div className="container">
+          <div className="section-head">
+            <span className="section-tag">{t("stay.tag")}</span>
+            <h2 className="section-title">{t("stay.title1")} <strong>{t("stay.title2")}</strong></h2>
+            <p className="section-sub">{t("stay.sub")}</p>
+          </div>
+
+          <div className="stay-grid">
+            {["s1", "s2", "s3"].map((k) => (
+              <div key={k} className="stay-card">
+                <div className="stay-dur">{t(`stay.${k}.dur`)}</div>
+                <h3>{t(`stay.${k}.name`)}</h3>
+                <ol>
+                  {t(`stay.${k}.plan`).split(" · ").map((s) => (
+                    <li key={s}>{s.trim()}</li>
+                  ))}
+                </ol>
+                <p className="stay-for">{t(`stay.${k}.for`)}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* PACKAGES */}
       <section className="packages" id="packages" data-edit-key="pkg">
         <div className="container">
@@ -859,6 +944,22 @@ export default function Home() {
 
       {/* FOOTER (DB 우선 + 폴백) */}
       <SiteFooter />
+
+      {/* 플로팅 문의 버튼 — 카카오톡 · WhatsApp */}
+      <div className="float-contact" aria-label={t("float.aria")}>
+        <a href={KAKAO_URL} target="_blank" rel="noopener noreferrer"
+          className="float-btn float-kakao"
+          data-track="cta_click" data-category="contact" data-label="float_kakao">
+          <span className="float-ico" aria-hidden="true">💬</span>
+          <span className="float-label">{t("float.kakao")}</span>
+        </a>
+        <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer"
+          className="float-btn float-whatsapp"
+          data-track="cta_click" data-category="contact" data-label="float_whatsapp">
+          <span className="float-ico" aria-hidden="true">📱</span>
+          <span className="float-label">{t("float.whatsapp")}</span>
+        </a>
+      </div>
     </>
   );
 }

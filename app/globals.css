@@ -2042,3 +2042,177 @@ footer {
   .ds-banner { padding: 60px 0; }
   .ds-cta-box { padding: 32px 20px; }
 }
+
+/* ═══════════════════════════════════════════════════════════
+   고민별 진입 · 예산별 · 체류기간별 · 플로팅 문의
+   (26/08 수정 — 의료관광 문서1 기준)
+   ═══════════════════════════════════════════════════════════ */
+
+/* ── 고민별 진입 ── */
+.concern { background: var(--white); }
+.concern-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px;
+}
+.concern-card {
+  background: var(--cream); border: 1px solid var(--line); border-radius: 16px;
+  padding: 28px 24px; display: flex; flex-direction: column;
+  transition: all .2s; color: inherit; text-decoration: none; position: relative;
+}
+.concern-card:hover { transform: translateY(-4px); border-color: var(--gold); }
+.concern-card.concern-wide { grid-column: 1 / -1; flex-direction: row; align-items: center; gap: 28px; flex-wrap: wrap; }
+.concern-letter {
+  position: absolute; top: 20px; right: 22px;
+  font-size: 13px; font-weight: 700; letter-spacing: .1em; color: var(--gold);
+}
+.concern-card.concern-wide .concern-letter { position: static; }
+.concern-card h3 {
+  font-size: 17px; font-weight: 500; line-height: 1.5; color: var(--ink);
+  margin-bottom: 12px; padding-right: 28px; word-break: keep-all;
+}
+.concern-card.concern-wide h3 { flex: 1 1 260px; margin-bottom: 0; padding-right: 0; }
+.concern-price {
+  font-size: 19px; font-weight: 600; color: var(--gold-deep);
+  margin-bottom: 14px; letter-spacing: -.01em; font-variant-numeric: tabular-nums;
+}
+.concern-card.concern-wide .concern-price { margin-bottom: 0; }
+.concern-items { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 14px; }
+.concern-card.concern-wide .concern-items { flex: 2 1 320px; margin-bottom: 0; }
+.concern-items span {
+  font-size: 12.5px; color: var(--ink-soft);
+  background: var(--white); border: 1px solid var(--line);
+  border-radius: 99px; padding: 5px 11px; white-space: nowrap;
+}
+.concern-for {
+  font-size: 13px; color: var(--ink-soft); line-height: 1.6;
+  margin-top: auto; padding-top: 12px; border-top: 1px solid var(--line);
+  word-break: keep-all;
+}
+.concern-card.concern-wide .concern-for { flex: 1 1 100%; margin-top: 0; }
+.concern-note {
+  margin-top: 26px; font-size: 15px; color: var(--ink); text-align: center;
+  background: var(--cream); border-left: 3px solid var(--gold);
+  padding: 16px 22px; border-radius: 0 10px 10px 0; line-height: 1.7;
+  word-break: keep-all;
+}
+
+/* 가격 면책 문구 — 의료광고 규정상 필수 */
+.price-disclaimer {
+  margin-top: 18px; font-size: 12.5px; color: var(--ink-soft);
+  line-height: 1.7; text-align: center; word-break: keep-all;
+}
+
+/* ── 예산별 ── */
+.budget { background: var(--bg); }
+.budget-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; }
+.budget-card {
+  background: var(--white); border: 1px solid var(--line); border-radius: 14px;
+  padding: 26px 20px; display: flex; flex-direction: column; transition: all .2s;
+}
+.budget-card:hover { transform: translateY(-3px); border-color: var(--gold); }
+.budget-card.budget-vip {
+  background: linear-gradient(160deg, var(--accent) 0%, #1c3027 100%);
+  border-color: var(--gold); color: #fff;
+}
+.budget-range {
+  font-size: 13px; font-weight: 700; color: var(--gold-deep);
+  margin-bottom: 10px; font-variant-numeric: tabular-nums; letter-spacing: -.01em;
+}
+.budget-vip .budget-range { color: var(--gold); }
+.budget-card h3 {
+  font-size: 15px; font-weight: 600; letter-spacing: .04em;
+  color: var(--ink); margin-bottom: 16px; text-transform: uppercase;
+}
+.budget-vip h3 { color: #fff; }
+.budget-card ul { list-style: none; flex: 1; }
+.budget-card li {
+  font-size: 13px; color: var(--ink-soft); padding: 5px 0 5px 13px;
+  position: relative; line-height: 1.55; word-break: keep-all;
+}
+.budget-card li::before {
+  content: ""; position: absolute; left: 0; top: 12px;
+  width: 4px; height: 4px; border-radius: 50%; background: var(--gold);
+}
+.budget-vip li { color: rgba(255,255,255,.8); }
+.budget-for {
+  font-size: 12.5px; color: var(--ink-soft); margin-top: 14px;
+  padding-top: 12px; border-top: 1px solid var(--line); line-height: 1.6;
+  word-break: keep-all;
+}
+.budget-vip .budget-for { color: rgba(255,255,255,.65); border-top-color: rgba(255,255,255,.18); }
+
+/* ── 체류기간별 ── */
+.stay { background: var(--white); }
+.stay-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.stay-card {
+  background: var(--cream); border: 1px solid var(--line);
+  border-radius: 16px; padding: 30px 28px; transition: all .2s;
+}
+.stay-card:hover { transform: translateY(-4px); border-color: var(--gold); }
+.stay-dur {
+  font-size: 12px; letter-spacing: .22em; font-weight: 700;
+  color: var(--gold-deep); text-transform: uppercase; margin-bottom: 10px;
+}
+.stay-card h3 { font-size: 19px; font-weight: 500; color: var(--ink); margin-bottom: 18px; }
+.stay-card ol { list-style: none; counter-reset: stay; }
+.stay-card li {
+  counter-increment: stay; font-size: 13.5px; color: var(--ink-soft);
+  padding: 8px 0 8px 30px; position: relative; line-height: 1.6;
+  border-bottom: 1px solid var(--line); word-break: keep-all;
+}
+.stay-card li:last-child { border-bottom: none; }
+.stay-card li::before {
+  content: counter(stay); position: absolute; left: 0; top: 8px;
+  width: 20px; height: 20px; border-radius: 50%;
+  background: var(--accent); color: var(--gold);
+  font-size: 11px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center;
+}
+.stay-for {
+  margin-top: 16px; font-size: 12.5px; color: var(--gold-deep);
+  line-height: 1.6; word-break: keep-all;
+}
+
+/* ── 플로팅 문의 버튼 ── */
+.float-contact {
+  position: fixed; right: 20px; z-index: 90;
+  bottom: calc(20px + env(safe-area-inset-bottom));
+  display: flex; flex-direction: column; gap: 10px;
+}
+.float-btn {
+  display: flex; align-items: center; gap: 9px;
+  padding: 12px 18px; border-radius: 99px;
+  font-size: 14px; font-weight: 600; text-decoration: none;
+  box-shadow: 0 6px 20px rgba(0,0,0,.18);
+  transition: transform .15s, box-shadow .15s;
+  white-space: nowrap;
+}
+.float-btn:hover { transform: translateY(-2px); box-shadow: 0 9px 26px rgba(0,0,0,.24); }
+.float-kakao { background: #FEE500; color: #191600; }
+.float-whatsapp { background: #25D366; color: #fff; }
+.float-ico { font-size: 17px; line-height: 1; }
+
+@media (prefers-reduced-motion: reduce) {
+  .float-btn, .concern-card, .budget-card, .stay-card { transition: none; }
+  .float-btn:hover, .concern-card:hover, .budget-card:hover, .stay-card:hover { transform: none; }
+}
+
+/* ── 반응형 ── */
+@media (max-width: 1100px) {
+  .concern-grid { grid-template-columns: repeat(2, 1fr); }
+  .budget-grid { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 900px) {
+  .stay-grid { grid-template-columns: 1fr; }
+  .concern, .budget, .stay { padding: 64px 0; }
+}
+@media (max-width: 640px) {
+  .concern-grid { grid-template-columns: 1fr; }
+  .budget-grid { grid-template-columns: 1fr; }
+  .concern-card.concern-wide { flex-direction: column; align-items: flex-start; gap: 12px; }
+  .concern-card.concern-wide .concern-letter { align-self: flex-end; margin-top: -8px; }
+  /* 모바일에서는 라벨 숨기고 아이콘만 — 화면 가림 최소화 */
+  .float-label { display: none; }
+  .float-btn { padding: 14px; }
+  .float-ico { font-size: 20px; }
+  .float-contact { right: 14px; bottom: calc(14px + env(safe-area-inset-bottom)); }
+}
