@@ -940,7 +940,7 @@ export default function Home() {
       </section>
       {/* 그룹 사업 소개 — 세 회사가 한 그룹임을 밝혀 협업 문의를 받는다 */}
       <section id="group" className="sec-group">
-        <div className="wrap">
+        <div className="container">
           <div className="section-head">
             <span className="section-tag">{t("group.tag")}</span>
             <h2 className="section-title">
