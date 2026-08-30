@@ -938,6 +938,45 @@ export default function Home() {
           </p>
         </div>
       </section>
+      {/* 그룹 사업 소개 — 세 회사가 한 그룹임을 밝혀 협업 문의를 받는다 */}
+      <section id="group" className="sec-group">
+        <div className="wrap">
+          <div className="section-head">
+            <span className="section-tag">{t("group.tag")}</span>
+            <h2 className="section-title">
+              {t("group.title1")} <strong>{t("group.title2")}</strong>
+            </h2>
+            <p className="section-sub">{t("group.sub")}</p>
+          </div>
+
+          <div className="group-grid">
+            {([
+              ["wellness", "https://www.thewellnessn.com", "🏥"],
+              ["publish", "https://www.bookpublishingwithess.com", "📚"],
+              ["culture", "https://www.theculturen.com", "🎭"],
+            ] as const).map(([key, href, ico]) => (
+              <a
+                key={key}
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group-card"
+                data-track="cta_click"
+                data-category="group"
+                data-label={`group_${key}`}
+              >
+                <span className="group-ico" aria-hidden="true">{ico}</span>
+                <span className="group-name">{t(`group.${key}.name`)}</span>
+                <span className="group-desc">{t(`group.${key}.desc`)}</span>
+                <span className="group-link">{t("group.visit")} →</span>
+              </a>
+            ))}
+          </div>
+
+          <p className="group-note">{t("group.note")}</p>
+        </div>
+      </section>
+
       {/* 동적 섹션 (admin /site/sections에서 추가) */}
       <DynamicSections />
       </main>
@@ -958,6 +997,12 @@ export default function Home() {
           data-track="cta_click" data-category="contact" data-label="float_whatsapp">
           <span className="float-ico" aria-hidden="true">📱</span>
           <span className="float-label">{t("float.whatsapp")}</span>
+        </a>
+        <a href="https://www.bookpublishingwithess.com" target="_blank" rel="noopener noreferrer"
+          className="float-btn float-publish"
+          data-track="cta_click" data-category="contact" data-label="float_publish">
+          <span className="float-ico" aria-hidden="true">📚</span>
+          <span className="float-label">{t("float.publish")}</span>
         </a>
       </div>
     </>

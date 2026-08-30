@@ -19,6 +19,20 @@ type Dict = Record<string, string>;
 // KOREAN (base)
 // ─────────────────────────────────────────────────────────────
 const ko: Dict = {
+  // 그룹 사업 소개 — 세 회사가 한 그룹임을 밝혀 협업 문의를 받는다
+  "group.tag": "그룹 사업",
+  "group.title1": "더컬쳐앤이 만드는",
+  "group.title2": "세 가지 사업",
+  "group.sub": "의료관광, 책 출판, 문화 콘텐츠. 세 사업이 서로 연결되어 있습니다. 협업 문의 환영합니다.",
+  "group.wellness.name": "더웰니스앤 · 의료관광",
+  "group.wellness.desc": "외국인 환자 유치부터 회복까지 — 병원·웰니스 연결",
+  "group.publish.name": "드림위드에스 · 책 출판",
+  "group.publish.desc": "인터뷰만 하면 3개월 안에 책 출판",
+  "group.culture.name": "더컬쳐앤 · 문화·컬쳐",
+  "group.culture.desc": "CEO·전문직 비즈니스 커뮤니티와 문화 콘텐츠",
+  "group.visit": "바로가기",
+  "group.note": "협업·제휴 문의는 아래 채널로 편하게 연락 주세요 🙏",
+  "float.publish": "책 출판 문의",
   // ===== 고민별 진입 (문서1 기준) =====
   "concern.tag": "START HERE",
   "concern.title1": "먼저, 고객님의",
@@ -625,6 +639,20 @@ const ko: Dict = {
 // ENGLISH
 // ─────────────────────────────────────────────────────────────
 const en: Dict = {
+  // 그룹 사업 소개 — 세 회사가 한 그룹임을 밝혀 협업 문의를 받는다
+  "group.tag": "Our Group",
+  "group.title1": "Three businesses by",
+  "group.title2": "THE CULTURE N",
+  "group.sub": "Medical tourism, book publishing, and cultural content — three connected businesses. Partnership inquiries are welcome.",
+  "group.wellness.name": "The Wellness N · Medical Tourism",
+  "group.wellness.desc": "From patient acquisition to recovery — connecting hospitals and wellness",
+  "group.publish.name": "Dream With Ess · Book Publishing",
+  "group.publish.desc": "Just two interviews — your book published in 3 months",
+  "group.culture.name": "The Culture N · Culture & Content",
+  "group.culture.desc": "A business community for CEOs and professionals, plus cultural content",
+  "group.visit": "Visit",
+  "group.note": "For partnership inquiries, reach us through the channels below 🙏",
+  "float.publish": "Book Publishing",
   // ===== Concern-based entry =====
   "concern.tag": "START HERE",
   "concern.title1": "First — what",
@@ -1206,6 +1234,20 @@ const en: Dict = {
 // CHINESE (Simplified)
 // ─────────────────────────────────────────────────────────────
 const zh: Dict = {
+  // 그룹 사업 소개 — 세 회사가 한 그룹임을 밝혀 협업 문의를 받는다
+  "group.tag": "集团业务",
+  "group.title1": "THE CULTURE N 的",
+  "group.title2": "三大事业",
+  "group.sub": "医疗观光、图书出版、文化内容——三项事业彼此相连。欢迎洽谈合作。",
+  "group.wellness.name": "The Wellness N · 医疗观光",
+  "group.wellness.desc": "从招揽外国患者到康复——连接医院与健康服务",
+  "group.publish.name": "Dream With Ess · 图书出版",
+  "group.publish.desc": "只需接受访谈，3个月内出版您的书",
+  "group.culture.name": "The Culture N · 文化内容",
+  "group.culture.desc": "面向CEO与专业人士的商务社群及文化内容",
+  "group.visit": "前往",
+  "group.note": "合作洽谈请通过以下渠道联系我们 🙏",
+  "float.publish": "图书出版咨询",
   // ===== 按困扰选择 =====
   "concern.tag": "START HERE",
   "concern.title1": "首先，您最在意的",
@@ -1785,6 +1827,20 @@ const zh: Dict = {
 // JAPANESE
 // ─────────────────────────────────────────────────────────────
 const ja: Dict = {
+  // 그룹 사업 소개 — 세 회사가 한 그룹임을 밝혀 협업 문의를 받는다
+  "group.tag": "グループ事業",
+  "group.title1": "THE CULTURE N が手がける",
+  "group.title2": "3つの事業",
+  "group.sub": "医療観光、書籍出版、文化コンテンツ。3つの事業がつながっています。協業のお問い合わせを歓迎します。",
+  "group.wellness.name": "The Wellness N · 医療観光",
+  "group.wellness.desc": "外国人患者の誘致から回復まで — 病院とウェルネスをつなぐ",
+  "group.publish.name": "Dream With Ess · 書籍出版",
+  "group.publish.desc": "インタビューだけで3ヶ月以内に出版",
+  "group.culture.name": "The Culture N · 文化・コンテンツ",
+  "group.culture.desc": "CEO・専門職のビジネスコミュニティと文化コンテンツ",
+  "group.visit": "サイトへ",
+  "group.note": "協業・提携のお問い合わせは下のチャネルからお気軽にどうぞ 🙏",
+  "float.publish": "出版のお問い合わせ",
   // ===== お悩み別 =====
   "concern.tag": "START HERE",
   "concern.title1": "まず、何が",
@@ -2364,6 +2420,20 @@ const ja: Dict = {
 // THAI (ภาษาไทย) — Bangkok medical tourism market
 // ─────────────────────────────────────────────────────────────
 const th: Dict = {
+  // 그룹 사업 소개 — 세 회사가 한 그룹임을 밝혀 협업 문의를 받는다
+  "group.tag": "ธุรกิจในเครือ",
+  "group.title1": "สามธุรกิจโดย",
+  "group.title2": "THE CULTURE N",
+  "group.sub": "การท่องเที่ยวเชิงการแพทย์ การจัดพิมพ์หนังสือ และคอนเทนต์วัฒนธรรม — สามธุรกิจที่เชื่อมโยงกัน ยินดีรับข้อเสนอความร่วมมือ",
+  "group.wellness.name": "The Wellness N · ท่องเที่ยวเชิงการแพทย์",
+  "group.wellness.desc": "ตั้งแต่การรับผู้ป่วยต่างชาติจนถึงการพักฟื้น — เชื่อมโรงพยาบาลกับเวลเนส",
+  "group.publish.name": "Dream With Ess · จัดพิมพ์หนังสือ",
+  "group.publish.desc": "แค่สัมภาษณ์ ก็ได้หนังสือภายใน 3 เดือน",
+  "group.culture.name": "The Culture N · วัฒนธรรมและคอนเทนต์",
+  "group.culture.desc": "คอมมูนิตี้ธุรกิจสำหรับ CEO และผู้เชี่ยวชาญ พร้อมคอนเทนต์วัฒนธรรม",
+  "group.visit": "เยี่ยมชม",
+  "group.note": "สอบถามความร่วมมือได้ทางช่องทางด้านล่าง 🙏",
+  "float.publish": "สอบถามการจัดพิมพ์",
   "concern.tag": "START HERE",
   "concern.title1": "ก่อนอื่น อะไรคือ",
   "concern.title2": "สิ่งที่คุณกังวลที่สุด?",
@@ -2949,6 +3019,20 @@ const th: Dict = {
 // VIETNAMESE (Tiếng Việt) — K-Beauty 폭발 시장
 // ─────────────────────────────────────────────────────────────
 const vi: Dict = {
+  // 그룹 사업 소개 — 세 회사가 한 그룹임을 밝혀 협업 문의를 받는다
+  "group.tag": "Các mảng kinh doanh",
+  "group.title1": "Ba mảng kinh doanh của",
+  "group.title2": "THE CULTURE N",
+  "group.sub": "Du lịch y tế, xuất bản sách và nội dung văn hóa — ba mảng kinh doanh kết nối với nhau. Hoan nghênh hợp tác.",
+  "group.wellness.name": "The Wellness N · Du lịch y tế",
+  "group.wellness.desc": "Từ thu hút bệnh nhân nước ngoài đến phục hồi — kết nối bệnh viện và wellness",
+  "group.publish.name": "Dream With Ess · Xuất bản sách",
+  "group.publish.desc": "Chỉ cần phỏng vấn — sách của bạn xuất bản trong 3 tháng",
+  "group.culture.name": "The Culture N · Văn hóa & Nội dung",
+  "group.culture.desc": "Cộng đồng kinh doanh cho CEO và chuyên gia, cùng nội dung văn hóa",
+  "group.visit": "Truy cập",
+  "group.note": "Mọi đề nghị hợp tác xin liên hệ qua các kênh bên dưới 🙏",
+  "float.publish": "Tư vấn xuất bản",
   "concern.tag": "START HERE",
   "concern.title1": "Trước tiên, điều gì",
   "concern.title2": "khiến bạn lo lắng nhất?",
@@ -3524,6 +3608,20 @@ const vi: Dict = {
 // INDONESIAN (Bahasa Indonesia)
 // ─────────────────────────────────────────────────────────────
 const id: Dict = {
+  // 그룹 사업 소개 — 세 회사가 한 그룹임을 밝혀 협업 문의를 받는다
+  "group.tag": "Bisnis Grup",
+  "group.title1": "Tiga bisnis dari",
+  "group.title2": "THE CULTURE N",
+  "group.sub": "Wisata medis, penerbitan buku, dan konten budaya — tiga bisnis yang saling terhubung. Kami terbuka untuk kerja sama.",
+  "group.wellness.name": "The Wellness N · Wisata Medis",
+  "group.wellness.desc": "Dari menarik pasien asing hingga pemulihan — menghubungkan rumah sakit dan wellness",
+  "group.publish.name": "Dream With Ess · Penerbitan Buku",
+  "group.publish.desc": "Cukup wawancara — buku Anda terbit dalam 3 bulan",
+  "group.culture.name": "The Culture N · Budaya & Konten",
+  "group.culture.desc": "Komunitas bisnis untuk CEO dan profesional, serta konten budaya",
+  "group.visit": "Kunjungi",
+  "group.note": "Untuk kerja sama, hubungi kami melalui kanal di bawah 🙏",
+  "float.publish": "Konsultasi Penerbitan",
   "concern.tag": "START HERE",
   "concern.title1": "Pertama, apa yang",
   "concern.title2": "paling Anda khawatirkan?",
