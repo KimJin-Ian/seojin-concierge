@@ -76,6 +76,45 @@ export default function Home() {
         </div>
       </section>
 
+      {/* 그룹 사업 소개 — 세 회사가 한 그룹임을 밝혀 협업 문의를 받는다 */}
+      <section id="group" className="sec-group">
+        <div className="container">
+          <div className="section-head">
+            <span className="section-tag">{t("group.tag")}</span>
+            <h2 className="section-title">
+              {t("group.title1")} <strong>{t("group.title2")}</strong>
+            </h2>
+            <p className="section-sub">{t("group.sub")}</p>
+          </div>
+
+          <div className="group-grid">
+            {([
+              ["wellness", "https://www.thewellnessn.com", "🏥"],
+              ["publish", "https://www.bookpublishingwithess.com", "📚"],
+              ["culture", "https://www.theculturen.com", "🎭"],
+            ] as const).map(([key, href, ico]) => (
+              <a
+                key={key}
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group-card"
+                data-track="cta_click"
+                data-category="group"
+                data-label={`group_${key}`}
+              >
+                <span className="group-ico" aria-hidden="true">{ico}</span>
+                <span className="group-name">{t(`group.${key}.name`)}</span>
+                <span className="group-desc">{t(`group.${key}.desc`)}</span>
+                <span className="group-link">{t("group.visit")} →</span>
+              </a>
+            ))}
+          </div>
+
+          <p className="group-note">{t("group.note")}</p>
+        </div>
+      </section>
+
       {/* 고민별 진입 — "먼저, 당신의 고민은 무엇인가요?" (히어로 직후 첫 진입점) */}
       <section className="concern" id="concern" data-edit-key="concern">
         <div className="container">
@@ -936,44 +975,6 @@ export default function Home() {
           <p style={{ marginTop: 28, fontSize: 13, color: "rgba(255,255,255,0.7)" }}>
             {t("contact.note")}
           </p>
-        </div>
-      </section>
-      {/* 그룹 사업 소개 — 세 회사가 한 그룹임을 밝혀 협업 문의를 받는다 */}
-      <section id="group" className="sec-group">
-        <div className="container">
-          <div className="section-head">
-            <span className="section-tag">{t("group.tag")}</span>
-            <h2 className="section-title">
-              {t("group.title1")} <strong>{t("group.title2")}</strong>
-            </h2>
-            <p className="section-sub">{t("group.sub")}</p>
-          </div>
-
-          <div className="group-grid">
-            {([
-              ["wellness", "https://www.thewellnessn.com", "🏥"],
-              ["publish", "https://www.bookpublishingwithess.com", "📚"],
-              ["culture", "https://www.theculturen.com", "🎭"],
-            ] as const).map(([key, href, ico]) => (
-              <a
-                key={key}
-                href={href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group-card"
-                data-track="cta_click"
-                data-category="group"
-                data-label={`group_${key}`}
-              >
-                <span className="group-ico" aria-hidden="true">{ico}</span>
-                <span className="group-name">{t(`group.${key}.name`)}</span>
-                <span className="group-desc">{t(`group.${key}.desc`)}</span>
-                <span className="group-link">{t("group.visit")} →</span>
-              </a>
-            ))}
-          </div>
-
-          <p className="group-note">{t("group.note")}</p>
         </div>
       </section>
 
