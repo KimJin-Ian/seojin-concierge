@@ -295,14 +295,15 @@ export default function Home() {
                   { name: "미랩클리닉", img: "mirab-clinic.jpg" },
                   { name: "메디원", img: "medi-one.png" },
                   { name: "마곡 리라이브치과", img: "relive-dentistry.png" },
-                  { name: "신사 신상성형외과", img: "sinsang-ps.svg" },
-                  { name: "피어봄 피부과 (청담)" },
+                  { name: "신사 신상성형외과", img: "sinsang-ps.svg" },
+                  { name: "뉴욕NYU치과", img: "nyu-dental.jpg" },
+                  { name: "피어봄 피부과 (청담)", img: "pieobom-cheongdam.png" },
                 ],
               },
               {
                 key: "hanbang", label: "한의원", en: "Oriental Medicine",
                 items: [
-                  { name: "서대문구 다풍한의원", img: "dapung-han.jpg" },
+                  { name: "서대문구 다품한의원", img: "dapung-han.jpg" },
                   { name: "성수 회복재한의원", img: "hoebokjae-han.png" },
                   { name: "바론한의원", img: "baron-han.jpg" },
                   { name: "북가좌 경희한의원 본점", img: "bukgajwa-kyunghee.png" },
@@ -384,6 +385,49 @@ export default function Home() {
 
           <div className="logo-placeholder">
             <p>{t("partners.note")}</p>
+          </div>
+        </div>
+      </section>
+
+      {/* 사업 제휴 · 기술 협력 — 로고를 받은 곳이 없어 이름과 설명으로만 소개한다 */}
+      <section className="biz-partner" id="biz" data-edit-key="biz">
+        <div className="container">
+          <div className="section-head">
+            <span className="section-tag">{t("biz.tag")}</span>
+            <h2 className="section-title">{t("biz.title1")} <strong>{t("biz.title2")}</strong></h2>
+            <p className="section-sub">{t("biz.sub")}</p>
+          </div>
+
+          {([
+            ["g1", ["eduwill", "metadx", "medibible", "soldoc"]],
+            ["g2", ["atoz", "aim"]],
+          ] as const).map(([g, keys]) => (
+            <div key={g} className="biz-group">
+              <h4 className="biz-group-title">{t(`biz.${g}`)}</h4>
+              <div className="biz-grid">
+                {keys.map((k) => (
+                  <article key={k} className="biz-card">
+                    <h5 className="biz-name">{t(`biz.${k}.name`)}</h5>
+                    <p className="biz-desc">{t(`biz.${k}.desc`)}</p>
+                  </article>
+                ))}
+              </div>
+            </div>
+          ))}
+
+          {/* 번호를 붙인 이유 — 이건 나열이 아니라 환자가 실제로 거치는 순서다.
+              각 기업이 어느 단계를 맡는지가 이 순서에 그대로 담겨 있다. */}
+          <div className="biz-flow">
+            <h4 className="biz-flow-title">{t("biz.flow.title")}</h4>
+            <ol className="biz-flow-steps">
+              {["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8"].map((s, i) => (
+                <li key={s}>
+                  <span className="biz-flow-n">{i + 1}</span>
+                  {t(`biz.flow.${s}`)}
+                </li>
+              ))}
+            </ol>
+            <p className="biz-flow-desc">{t("biz.flow.desc")}</p>
           </div>
         </div>
       </section>

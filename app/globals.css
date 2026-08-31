@@ -1371,6 +1371,57 @@ footer {
 }
 
 /* ===== MOU 협약 기관 — 웰니스라운지 본점 (매거진형, 샴페인 크림 패널) ===== */
+/* ===== 사업 제휴 · 기술 협력 =====
+   앞뒤가 .partners(흰색) / .mou-partner(--bg) 라 여기는 --cream 으로 띄운다 */
+.biz-partner { padding: 90px 0; background: var(--cream); }
+.biz-group + .biz-group { margin-top: 44px; }
+.biz-group-title {
+  font-size: 13px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--gold-deep); padding-bottom: 12px; margin-bottom: 20px;
+  border-bottom: 1px solid var(--line);
+}
+.biz-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(258px, 1fr)); gap: 16px; }
+.biz-card {
+  background: var(--white); border: 1px solid var(--line); border-radius: 14px;
+  padding: 26px 24px; display: flex; flex-direction: column; gap: 10px;
+  transition: border-color .18s ease, transform .18s ease, box-shadow .18s ease;
+}
+.biz-card:hover {
+  border-color: var(--gold); transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(138, 109, 71, .10);
+}
+.biz-name { font-size: 17px; font-weight: 600; color: var(--ink); letter-spacing: -0.01em; }
+.biz-desc { font-size: 14px; line-height: 1.8; color: var(--ink-soft); }
+
+.biz-flow {
+  margin-top: 52px; background: var(--white); border: 1px solid var(--line);
+  border-radius: 16px; padding: 34px 32px;
+}
+.biz-flow-title { font-size: 17px; font-weight: 600; color: var(--ink); margin-bottom: 20px; }
+.biz-flow-steps {
+  display: flex; flex-wrap: wrap; gap: 10px;
+  list-style: none; padding: 0; margin: 0;
+}
+.biz-flow-steps li {
+  display: flex; align-items: center; gap: 9px;
+  background: var(--cream); border-radius: 999px;
+  padding: 7px 16px 7px 7px; font-size: 13.5px; color: var(--ink);
+}
+.biz-flow-n {
+  width: 22px; height: 22px; border-radius: 50%; flex: 0 0 auto;
+  background: var(--gold-deep); color: #fff;
+  font-size: 11px; font-weight: 700;
+  display: grid; place-items: center;
+  font-variant-numeric: tabular-nums;
+}
+.biz-flow-desc { margin-top: 22px; font-size: 14.5px; line-height: 1.85; color: var(--ink-soft); }
+@media (max-width: 640px) {
+  .biz-partner { padding: 60px 0; }
+  .biz-card { padding: 22px 20px; }
+  .biz-flow { padding: 26px 20px; }
+  .biz-flow-steps li { font-size: 13px; }
+}
+
 .mou-partner { padding: 90px 0; background: var(--bg); }
 .mou-partner .section-head { margin-bottom: 48px; }
 .mou-featured {
