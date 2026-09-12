@@ -512,6 +512,8 @@ export default function Home() {
               { key: "p4", logo: "/logos/jinny-pharmacy.png", logoH: 44 },
               { key: "p5", logo: null, txt: t("net.p5.name") },
               { key: "p6", logo: null, txt: t("net.p6.name") },
+              { key: "p7", logo: "/logos/daybeau.png", logoH: 56 },
+              { key: "p8", logo: "/logos/hle-medical.png", logoH: 40 },
             ];
             return (
               <div className="net-grid">

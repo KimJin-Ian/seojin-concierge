@@ -57,6 +57,12 @@ export const PARTNER_URL: Record<string, string> = {
   "maloha-logo.png": "https://maloha.ai/landing",
   "undermilli-logo.png": "https://undermilli.com/ko",
   "lifemedi.svg": "https://bukseoul.com/",
+
+  // ── MOU 파트너 (2026-09-12 추가) ──
+  // 데이뷰의원은 지점마다 홈페이지가 따로 있다 (daybeauclinic01·07·08·12…).
+  // 지점 하나로 보내면 나머지 아홉 곳이 없는 것처럼 보이니 본원으로 보낸다.
+  "daybeau.png": "https://daybeauclinic.co.kr/main",
+  "hle-medical.png": "https://hle-medical.co.jp/",
 };
 
 /**
