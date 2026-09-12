@@ -2314,3 +2314,37 @@ footer {
 }
 
 @media (max-width: 860px) { .group-grid { grid-template-columns: 1fr; } }
+
+/* ── 파트너 로고 링크 ─────────────────────────────────────────
+   로고를 누르면 그 회사 홈페이지로 간다.
+   링크가 걸린 칸만 눌리는 티를 낸다 — 안 눌리는 칸에 손 모양 커서가
+   뜨면 눌러보고 아무 일이 없어서 사이트가 고장난 줄 안다. */
+
+/* 격자 칸이 <a> 가 되어도 원래 모양 그대로여야 한다 */
+a.logo-cell { text-decoration: none; color: inherit; position: relative; }
+a.logo-cell.is-link { cursor: pointer; }
+/* 오른쪽 위 작은 화살표 — 평소엔 숨어 있다가 올리면 뜬다.
+   늘 보이게 두면 격자가 화살표 밭이 된다 */
+.logo-cell-go {
+  position: absolute; top: 7px; right: 9px;
+  font-size: 11px; line-height: 1; color: var(--gold-deep);
+  opacity: 0; transition: opacity .2s;
+}
+a.logo-cell.is-link:hover .logo-cell-go,
+a.logo-cell.is-link:focus-visible .logo-cell-go { opacity: 1; }
+a.logo-cell.is-link:focus-visible {
+  outline: 2px solid var(--gold); outline-offset: 2px;
+}
+
+/* 히어로 아래 띠 */
+.strip-link { display: inline-flex; align-items: center; }
+a.strip-link { cursor: pointer; }
+a.strip-link:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; border-radius: 4px; }
+a.strip-link:hover img { opacity: 1; transform: translateY(-1px); }
+.strip-logos img { transition: opacity .2s, transform .2s; }
+
+/* 이름만 있는 제휴 카드 */
+.biz-name a { color: inherit; text-decoration: none; border-bottom: 1px solid var(--gold); }
+.biz-name a:hover { color: var(--gold-deep); }
+.biz-name a:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+.biz-go { font-size: 0.78em; margin-left: 4px; color: var(--gold-deep); vertical-align: super; }

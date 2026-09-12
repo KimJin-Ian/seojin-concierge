@@ -7,6 +7,7 @@ import SiteFooter from "./components/SiteFooter";
 import EditMode from "./components/EditMode";
 import { useLang } from "./components/LangContext";
 
+import { urlOf, BIZ_URL } from "@/lib/partner-links";
 const KAKAO_URL = "http://pf.kakao.com/_QkZhd";
 const WHATSAPP_URL = "https://whatsapp.com/channel/0029VbD3dlqGU3BBeU7sKN15";
 const EMAIL = "dreamwithessmarketing@gmail.com";
@@ -153,9 +154,16 @@ export default function Home() {
           <h3 className="strip-title">{t("strip.title")}</h3>
           <p className="strip-sub">{t("strip.sub")}</p>
           <div className="strip-logos">
-            {["pixelab.jpg", "primi-clinic.jpg", "banpo-standar.jpg", "dove-clinic.png", "saebom-women.png", "seoul-haengsin.png", "dapung-han.jpg", "haeol.jpg", "hijack.png", "vividson.jpg"].map((f) => (
-              <img key={f} src={`/logos/${f}`} alt="The Wellness N 협력사 로고" loading="lazy" />
-            ))}
+            {["pixelab.jpg", "primi-clinic.jpg", "banpo-standar.jpg", "dove-clinic.png", "saebom-women.png", "seoul-haengsin.png", "dapung-han.jpg", "haeol.jpg", "hijack.png", "vividson.jpg"].map((f) => {
+              const img = <img src={`/logos/${f}`} alt="The Wellness N 협력사 로고" loading="lazy" />;
+              const href = urlOf(f);
+              // 주소를 모르는 곳은 그냥 그림으로 둔다. 빈 링크를 걸면
+              // 눌러도 아무 일이 없어서 사이트가 고장난 것처럼 보인다.
+              return href ? (
+                <a key={f} href={href} target="_blank" rel="noopener noreferrer nofollow"
+                   className="strip-link" aria-label="협력사 홈페이지 (새 창)">{img}</a>
+              ) : <span key={f} className="strip-link is-plain">{img}</span>;
+            })}
           </div>
           <a href="#partners" className="strip-more">{t("strip.more")}</a>
         </div>
@@ -171,11 +179,11 @@ export default function Home() {
           </div>
           <div className="ai-hero">
             <div className="ai-card brand">
-              <img
-                src="/logos/maloha-logo.png"
-                alt="Maloha"
-                style={{ height: 58, width: "auto", alignSelf: "flex-start", flex: "0 0 auto" }}
-              />
+              <a href={urlOf("maloha-logo.png")} target="_blank" rel="noopener noreferrer nofollow"
+                 title="Maloha 홈페이지 (새 창)"
+                 style={{ alignSelf: "flex-start", flex: "0 0 auto", display: "inline-flex" }}>
+                <img src="/logos/maloha-logo.png" alt="Maloha" style={{ height: 58, width: "auto" }} />
+              </a>
               <p className="tagline"><b>{t("ai.tagline1")}</b><br />{t("ai.tagline2")}</p>
               <div className="ai-chips">
                 <span className="chip">{t("ai.chip1")}</span>
@@ -197,9 +205,10 @@ export default function Home() {
               <span className="attr-tag">{t("ai.ptag")}</span>
               {t("ai.pdesc")}
             </div>
-            <span className="um-tile">
+            <a className="um-tile" href={urlOf("undermilli-logo.png")}
+               target="_blank" rel="noopener noreferrer nofollow" title="Undermilli 홈페이지 (새 창)">
               <img src="/logos/undermilli-logo.png" alt="Undermilli Inc." style={{ height: 24, width: "auto" }} />
-            </span>
+            </a>
           </div>
         </div>
       </section>
@@ -295,7 +304,8 @@ export default function Home() {
                   { name: "미랩클리닉", img: "mirab-clinic.jpg" },
                   { name: "메디원", img: "medi-one.png" },
                   { name: "마곡 리라이브치과", img: "relive-dentistry.png" },
-                  { name: "신사 신상성형외과", img: "sinsang-ps.svg" },
+                  { name: "신사 신상성형외과", img: "sinsang-ps.svg" },
+
                   { name: "뉴욕NYU치과", img: "nyu-dental.jpg" },
                   { name: "피어봄 피부과 (청담)", img: "pieobom-cheongdam.png" },
                 ],
@@ -357,25 +367,36 @@ export default function Home() {
                   <div key={s.key} className="partner-group">
                     <h4>{t(`partners.g.${s.key}`)} <span style={{ fontSize: 12, color: "var(--ink-soft)", fontWeight: 400 }}>· {s.items.length}{t("partners.suffix")}</span></h4>
                     <div className="logo-grid">
-                      {s.items.map((p) => (
-                        <div key={p.name} className={p.img ? "logo-cell" : "logo-cell text-only"} title={p.name}>
-                          {p.img ? (
-                            <>
-                              <img
-                                src={`/logos/${p.img}`}
-                                alt={`${p.name} 로고 · The Wellness N 협력사`}
-                                loading="lazy"
-                              />
-                              <div className="logo-cell-name">{p.name}</div>
-                            </>
-                          ) : (
-                            <>
-                              <span className="plate-tag">Partner</span>
-                              <span className="plate-nm">{p.name}</span>
-                            </>
-                          )}
-                        </div>
-                      ))}
+                      {s.items.map((p) => {
+                        const inner = p.img ? (
+                          <>
+                            <img
+                              src={`/logos/${p.img}`}
+                              alt={`${p.name} 로고 · The Wellness N 협력사`}
+                              loading="lazy"
+                            />
+                            <div className="logo-cell-name">{p.name}</div>
+                          </>
+                        ) : (
+                          <>
+                            <span className="plate-tag">Partner</span>
+                            <span className="plate-nm">{p.name}</span>
+                          </>
+                        );
+                        const cls = p.img ? "logo-cell" : "logo-cell text-only";
+                        const href = urlOf(p.img);
+                        // 링크가 있는 칸만 <a> 로 바꾼다. 없는 칸은 div 그대로 —
+                        // 커서가 손 모양으로 바뀌는데 안 눌리면 그게 더 나쁘다.
+                        return href ? (
+                          <a key={p.name} className={`${cls} is-link`} title={`${p.name} 홈페이지 (새 창)`}
+                             href={href} target="_blank" rel="noopener noreferrer nofollow">
+                            {inner}
+                            <span className="logo-cell-go" aria-hidden="true">↗</span>
+                          </a>
+                        ) : (
+                          <div key={p.name} className={cls} title={p.name}>{inner}</div>
+                        );
+                      })}
                     </div>
                   </div>
                 ))}
@@ -406,8 +427,15 @@ export default function Home() {
               <h4 className="biz-group-title">{t(`biz.${g}`)}</h4>
               <div className="biz-grid">
                 {keys.map((k) => (
-                  <article key={k} className="biz-card">
-                    <h5 className="biz-name">{t(`biz.${k}.name`)}</h5>
+                  <article key={k} className={BIZ_URL[k] ? "biz-card is-link" : "biz-card"}>
+                    <h5 className="biz-name">
+                      {BIZ_URL[k] ? (
+                        <a href={BIZ_URL[k]} target="_blank" rel="noopener noreferrer nofollow"
+                           title={`${t(`biz.${k}.name`)} 홈페이지 (새 창)`}>
+                          {t(`biz.${k}.name`)}<span className="biz-go" aria-hidden="true">↗</span>
+                        </a>
+                      ) : t(`biz.${k}.name`)}
+                    </h5>
                     <p className="biz-desc">{t(`biz.${k}.desc`)}</p>
                   </article>
                 ))}
@@ -492,12 +520,22 @@ export default function Home() {
                     <div className="net-cat">{t(`net.${p.key}.cat`)}</div>
                     <div className="net-logo">
                       {p.logo ? (
-                        <img
-                          src={p.logo}
-                          alt={`${t(`net.${p.key}.name`)} 로고 · The Wellness N 파트너`}
-                          style={p.logoH ? { maxHeight: p.logoH } : undefined}
-                          loading="lazy"
-                        />
+                        (() => {
+                          const im = (
+                            <img
+                              src={p.logo}
+                              alt={`${t(`net.${p.key}.name`)} 로고 · The Wellness N 파트너`}
+                              style={p.logoH ? { maxHeight: p.logoH } : undefined}
+                              loading="lazy"
+                            />
+                          );
+                          const href = urlOf(p.logo);
+                          return href ? (
+                            <a href={href} target="_blank" rel="noopener noreferrer nofollow"
+                               title={`${t(`net.${p.key}.name`)} 홈페이지 (새 창)`}
+                               style={{ display: "inline-flex" }}>{im}</a>
+                          ) : im;
+                        })()
                       ) : (
                         <span className="txt-logo">{p.txt}</span>
                       )}
@@ -1042,12 +1080,18 @@ export default function Home() {
           data-track="cta_click" data-category="contact" data-label="float_whatsapp">
           <span className="float-ico" aria-hidden="true">📱</span>
           <span className="float-label">{t("float.whatsapp")}</span>
-        </a>
-        <a href="https://www.bookpublishingwithess.com" target="_blank" rel="noopener noreferrer"
-          className="float-btn float-publish"
-          data-track="cta_click" data-category="contact" data-label="float_publish">
-          <span className="float-ico" aria-hidden="true">📚</span>
-          <span className="float-label">{t("float.publish")}</span>
+        </a>
+
+        <a href="https://www.bookpublishingwithess.com" target="_blank" rel="noopener noreferrer"
+
+          className="float-btn float-publish"
+
+          data-track="cta_click" data-category="contact" data-label="float_publish">
+
+          <span className="float-ico" aria-hidden="true">📚</span>
+
+          <span className="float-label">{t("float.publish")}</span>
+
         </a>
       </div>
     </>
