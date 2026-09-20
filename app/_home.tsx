@@ -514,6 +514,7 @@ export default function Home() {
               { key: "p6", logo: null, txt: t("net.p6.name") },
               { key: "p7", logo: "/logos/daybeau.png", logoH: 56 },
               { key: "p8", logo: "/logos/hle-medical.png", logoH: 40 },
+              { key: "p9", logo: "/logos/inflers.svg", logoH: 34 },
             ];
             return (
               <div className="net-grid">

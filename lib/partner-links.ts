@@ -63,6 +63,9 @@ export const PARTNER_URL: Record<string, string> = {
   // 지점 하나로 보내면 나머지 아홉 곳이 없는 것처럼 보이니 본원으로 보낸다.
   "daybeau.png": "https://daybeauclinic.co.kr/main",
   "hle-medical.png": "https://hle-medical.co.jp/",
+  // 인플러즈 — 한국 회사지만 일본 현지 인플루언서를 잇는 플랫폼이라 일본 창구로 들어간다.
+  // brand-kr 이 광고주(브랜드)용 창구다. 인플루언서용(jp) 주소로 보내면 엉뚱한 곳에 닿는다
+  "inflers.svg": "https://brand-kr.inflers.com/",
 };
 
 /**

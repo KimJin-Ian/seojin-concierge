@@ -182,6 +182,11 @@ const ko: Dict = {
   "net.p8.en": "HLE Medical · 도쿄 시나가와",
   "net.p8.role": "일본 협약 파트너. 줄기세포 배양액과 NAD+·NMN 기반 재생의료를 다루며, 일본에서 줄기세포 치료를 찾는 환자 상담을 함께합니다. 한일 양방향 의료관광의 일본 쪽 창구입니다.",
   "net.p8.give": "여정 기여 · 일본 재생의료 연계 · 한일 양방향 상담",
+  "net.p9.cat": "Japan · Influencer Marketing",
+  "net.p9.name": "인플러즈 Inflers",
+  "net.p9.en": "Inflers · 한일 크로스보더 SNS 마케팅",
+  "net.p9.role": "일본 협업 파트너. 한국 브랜드와 일본 현지 인플루언서를 잇는 크로스보더 SNS 마케팅 매칭 플랫폼으로, 일본 고객에게 우리 웰니스 여정을 알리는 온·오프라인 창구 역할을 합니다.",
+  "net.p9.give": "여정 기여 · 일본 현지 홍보 · 인플루언서 캠페인 연계",
   // ===== Care System (안심 케어 여정) =====
   "care.tag": "SAFETY & AFTERCARE",
   "care.title1": "시술 전부터 귀국 후까지,",
@@ -842,6 +847,11 @@ const en: Dict = {
   "net.p8.en": "HLE Medical · Shinagawa, Tokyo",
   "net.p8.role": "Our partner in Japan. Working in regenerative medicine built on stem cell supernatant and NAD+/NMN, it also advises patients seeking stem cell treatment in Japan — our counterpart for two-way medical travel between Korea and Japan.",
   "net.p8.give": "Journey role · Japan regenerative medicine · Two-way consultation",
+  "net.p9.cat": "Japan · Influencer Marketing",
+  "net.p9.name": "Inflers",
+  "net.p9.en": "Inflers · Korea–Japan cross-border SNS marketing",
+  "net.p9.role": "Our collaboration partner for Japan. A cross-border SNS marketing platform matching Korean brands with local Japanese influencers — our online and offline channel for introducing this wellness journey to customers in Japan.",
+  "net.p9.give": "Journey role · Outreach in Japan · Influencer campaigns",
   // ===== Care System =====
   "care.tag": "SAFETY & AFTERCARE",
   "care.title1": "From before treatment to after your return,",
