@@ -66,6 +66,9 @@ export const PARTNER_URL: Record<string, string> = {
   // 인플러즈 — 한국 회사지만 일본 현지 인플루언서를 잇는 플랫폼이라 일본 창구로 들어간다.
   // brand-kr 이 광고주(브랜드)용 창구다. 인플루언서용(jp) 주소로 보내면 엉뚱한 곳에 닿는다
   "inflers.svg": "https://brand-kr.inflers.com/",
+  // 일우 트레이딩 — 도쿄 기반 한일 비즈니스 브릿지. 자체 도메인 없이
+  // workers.dev 주소가 공식 창구다 (2026-09-23 확인, 200)
+  "ilwoo-trading.svg": "https://ilwootrading.weld57225.workers.dev/",
 };
 
 /**
