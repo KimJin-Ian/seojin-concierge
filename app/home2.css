@@ -101,7 +101,7 @@
 .pb-fits-label { font-size: 12.5px; color: var(--ink-soft); letter-spacing: .04em; margin-right: 4px; }
 .pb-fit-btn { border: 1px solid var(--line, #e6e0d4); border-radius: 999px; padding: 5px 12px; }
 .pb-fit-btn.active { border-color: var(--gold-deep); background: var(--cream); }
-.pb-for { color: #5a4a1d !important; background: #f8f3e6; }
+.pb-benefit.pb-for { color: #5a4a1d !important; background: #f8f3e6; }
 .pb-card[hidden] { display: none; }
 .pb-sub-title { font-size: 16px; font-weight: 600; color: var(--ink); margin-bottom: 10px; }
 .pb-sub-title span { color: var(--ink-soft); font-weight: 400; font-size: 13px; }
