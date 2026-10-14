@@ -9,6 +9,7 @@
  *   웰니스 · 스파: 웰니스라운지 · 모네브
  *   협력 기업 · 기술: 바이탈닥 · 말로하 · 언더밀리 · 누리라운지 · 에듀윌 …
  *   해외 협력사: 미국 K-Spa · 방콕 Vincent Clinic · HLE메디컬 · 인플러즈 · 일우 트레이딩
+ *   K뷰티 · 패션 · 이너뷰티: 화장품 · 옷 · 건강식품 (낫배드올굿부터 옷도 들어온다)
  *
  * 모든 칸이 같은 모양이다 — 로고(없으면 글자) · 이름 → "더보기" 를 누르면 설명과 홈페이지.
  * 설명이 따로 없는 곳은 **분야별 정해진 문장**(ptn.tpl.*)을 쓴다. 병원 특징을 지어내지 않는다.
@@ -18,6 +19,8 @@ import { BIZ_URL, urlOf } from "./partner-links";
 
 export type PartnerCat = "clinic" | "spa" | "biz" | "beauty" | "culture" | "dining" | "global";
 export type ClinicSub = "plastic" | "women" | "ortho" | "dental" | "hanbang" | "care";
+/** 자주 받는 상담 유형 — 병원 탭 "고민으로 찾기". 상담 기록(Drive '고객유형상담' · 병원별 견적)에서 많이 나온 것 */
+export type FitType = "antiaging" | "petit" | "surgery" | "regen" | "jaw";
 
 export interface Partner {
   id: string;
@@ -49,6 +52,14 @@ export interface Partner {
   badge?: string;
   /** 자세히 볼 때 함께 싣는 그림 (/logos/) */
   image?: string;
+  /** 가격을 어디서 받았나 — 없으면 공식 홈페이지(PRICE_CHECKED). partner = 협력사가 보내준 자료, clinic = 병원 소개 자료 */
+  priceSource?: "partner" | "clinic";
+  /** 협력사 자체 가입 · 구매 혜택 (더웰니스앤 전용 혜택은 benefit) */
+  perks?: string;
+  /** 이런 분께 추천 */
+  forWhom?: string;
+  /** 고민으로 찾기 — 어느 상담 유형에 맞나 */
+  fits?: FitType[];
 }
 
 /** 제품 가격을 공식 홈페이지에서 확인한 날 */
@@ -58,13 +69,79 @@ const P = (p: Partner): Partner => ({ ...p, url: p.url ?? urlOf(p.logo) });
 
 export const PARTNERS: Partner[] = [
   // ── 병원 · 성형외과 · 피부과 ──
-  P({ id: "pixelab", name: "강남 픽셀랩 성형외과·피부과", cat: "clinic", sub: "plastic", logo: "pixelab.jpg" }),
-  P({ id: "sinsang", name: "신사 신상성형외과", cat: "clinic", sub: "plastic", logo: "sinsang-ps.svg", tagKey: "net.p6.cat", descKeys: ["net.p6.role", "net.p6.give"] }),
+  // 2026-10-14 병원별 강점 — 병원이 보내준 답변 · 더웰니스앤 <병원별 소개비교> · 상담 기록에서
+  P({
+    id: "pixelab", name: "강남 픽셀랩 성형외과·피부과", cat: "clinic", sub: "plastic", logo: "pixelab.jpg",
+    badge: "윤곽 필러 · 리프팅",
+    desc: ["성형외과 전문의가 직접 하는 디테일한 시술. 피부과 전 영역의 하이엔드 장비만 쓰고, 대한민국 정부의 이중 인증을 받은 안심병원입니다."],
+    points: [
+      "메인 시술 — 입술 · 애교 · 관자 필러 등 얼굴 윤곽 필러, 지방분해주사(하루핏), 티타늄 리프팅",
+      "포텐자 700샷 보장 · 울트라펄스 알파 · MCT(자가혈액 줄기세포)",
+      "중안부 리프팅 장비 보유 — 3D 피부분석 사진을 찍은 뒤 상담하며 맞는 시술 방향을 안내합니다",
+      "해외 고객도 국내와 같은 기준으로 — 온다 · 하루핏 등",
+    ],
+    signature: "입술 · 애교 · 관자 필러 · 하루핏 지방분해주사 · 티타늄 리프팅",
+    fits: ["antiaging", "petit", "regen"],
+  }),
+  P({
+    id: "sinsang", name: "신사 신상성형외과", cat: "clinic", sub: "plastic", logo: "sinsang-ps.svg", tagKey: "net.p6.cat", descKeys: ["net.p6.role", "net.p6.give"],
+    points: [
+      "눈 · 코 · 윤곽 · 거상 성형과 줄기세포(SVF · MCT) 프로그램",
+      "정밀 피부카메라 촬영 → 원장 1:1 상담으로 시술을 정합니다",
+      "수면마취를 원하지 않으면 통증 완화 수액 · 마취크림 · LDM 침투 관리로 편안하게",
+    ],
+    signature: "고민별 추천 — 모공 · 피부결 포텐자/버츄 · 입술 레스틸렌 키스 · 처짐 울쎄라/세르프 · 보습 물광주사 + 리쥬란 · 팔자 필러 · 톤 백옥주사",
+    fits: ["petit", "surgery", "regen"],
+  }),
   P({ id: "pieobom", name: "피어봄 피부과 (청담)", cat: "clinic", sub: "plastic", logo: "pieobom-cheongdam.png" }),
-  P({ id: "dove", name: "압구정 도브의원", cat: "clinic", sub: "plastic", logo: "dove-clinic.png" }),
+  P({
+    id: "dove", name: "압구정 도브의원", cat: "clinic", sub: "plastic", logo: "dove-clinic.png",
+    badge: "하루 20명 한정",
+    desc: ["공장형 진료를 하지 않습니다 — 하루 예약을 20명으로 제한하고, 한 분 한 분 충분히 상담하며 공들여 진료합니다. 해외 고객 리뷰에서도 꼼꼼하고 프라이빗한 진료가 가장 많이 언급됩니다."],
+    points: [
+      "DV CELL — 도브의원만의 노하우로 하는 자가혈 스킨부스터",
+      "비수술 눈가 교정 — 절개 부담 없이 섬세한 디자인으로 자연스럽고 또렷한 눈가",
+      "1mm 리쥬란 · 1mm 리투오 — 1mm 단위로 정교하게, 통증은 줄이고 효과는 높입니다",
+      "색소 · 홍조 치료와 비수술 얼굴형 교정(눈밑 · 앞볼 · 팔자 · 입술 · 이마 · 코), 혈액 줄기세포 프로그램",
+    ],
+    signature: "약 10년 노하우의 3대 시그니처 — DV CELL · 비수술 눈가 교정 · 1mm 리쥬란/리투오",
+    fits: ["antiaging", "petit", "regen"],
+  }),
   P({ id: "primi", name: "성수 프리미클리닉", cat: "clinic", sub: "plastic", logo: "primi-clinic.jpg" }),
   P({ id: "mirab", name: "미랩클리닉", cat: "clinic", sub: "plastic", logo: "mirab-clinic.jpg" }),
-  P({ id: "daybeau", name: "데이뷰의원", cat: "clinic", sub: "plastic", logo: "daybeau.png", tagKey: "net.p7.cat", descKeys: ["net.p7.role", "net.p7.give"] }),
+  P({ id: "daybeau", name: "데이뷰의원", cat: "clinic", sub: "plastic", logo: "daybeau.png", tagKey: "net.p7.cat", descKeys: ["net.p7.role", "net.p7.give"], fits: ["antiaging", "regen"] }),
+  // 2026-10-14 — 더데이랩스 · 데이뷰의원이 보내준 '셀리움의원 × THE WELLNESS N 소개 자료' 그대로
+  P({
+    id: "cellium", name: "셀리움의원 CELLIUM (더데이랩스 · 데이뷰의원)", cat: "clinic", sub: "plastic", logoText: "CELLIUM",
+    badge: "재생의학 · 롱제비티",
+    desc: [
+      "Regeneration × Skin × Health × Longevity — 자연스러운 아름다움과 건강한 노화를 함께 추구하는 프리미엄 안티에이징 & 재생의학 클리닉입니다.",
+      "시술 하나를 파는 병원이 아니라, 재생의학을 바탕으로 피부 · 건강 · 기능적 노화를 함께 관리하고 한 사람의 6개월~1년을 설계하는 Personalized Longevity Clinic입니다.",
+    ],
+    points: [
+      "20년 이상 임상경험의 의료진 — 장비 하나에 기대지 않고 피부 · 건강 상태에 맞춰 여러 치료를 골라 조합합니다",
+      "울쎄라 프라임 · 써마지 FLX 등 검증된 프리미엄 정품 장비",
+      "공장형 · 환자 선택형 진료 지양 — 진단 → 치료 선택 → 복합치료 → 회복 → 유지관리를 사람마다 설계",
+      "피부 + 정형외과 + 내과적 건강관리 — 겉의 노화와 속 건강을 함께 봅니다",
+      "시술 뒤 6개월~1년 관리 계획까지",
+      "국가별 안내 — 일본: 자연스러운 리프팅 + 피부결 · 재생 / 중국: 프리미엄 리프팅 + 피부재생 / 동남아: 리프팅 + 색소 · 톤 / 미국 · 캐나다: 짧은 체류 집중형 안티에이징 + 롱제비티",
+    ],
+    signature: "BEST 5 — 재생의학 복합 안티에이징(Regenerative Consortium Therapy) · 프리미엄 리프팅(울쎄라 프라임 × 써마지 FLX × 티타늄) · PRF 자가혈 피부재생 · Skin Quality(리쥬란 · 리투오 · 포텐자) · Longevity · Health · Wellness",
+    products: [
+      { name: "울쎄라 프라임 300샷", price: "150만원대" },
+      { name: "써마지 FLX 600샷", price: "300만원대" },
+      { name: "티타늄 리프팅 80KJ", price: "80만원대" },
+      { name: "포텐자", price: "45만원대" },
+      { name: "리쥬란", price: "30만원 이상" },
+      { name: "스킨부스터 · 피부재생 프로그램", price: "약 150만원대" },
+      { name: "프리미엄 피부 장비 프로그램", price: "약 300만원대" },
+      { name: "재생 · 건강 · 웰니스 프로그램", price: "약 2,000만원대" },
+      { name: "PRF 및 기타 재생 프로그램", price: "상담 후 결정", note: "채취량 · 프로그램 구성에 따라" },
+    ],
+    priceSource: "clinic",
+    forWhom: "40~60대 프리미엄 안티에이징 · 롱제비티 — 인위적인 변화 없이 자연스럽게 젊어지고 싶은 분, 프라이버시와 충분한 상담을 중시하는 VIP, 짧은 한국 체류 중 여러 치료를 효율적으로 받고 싶은 해외 고객",
+    fits: ["antiaging", "regen"],
+  }),
   // 2026-10-14 추가 — 협력사가 보내준 소개 그대로 (대표님 전달)
   P({
     id: "jayeon", name: "자연예쁨의원", cat: "clinic", sub: "plastic", logo: "jayeon-yeppeum.jpg",
@@ -75,13 +152,24 @@ export const PARTNERS: Partner[] = [
     ],
     signature: "울쎄라 · 세르프 · 올타이트 · 레비나스 등 리프팅과 스킨부스터를 피부 상태에 맞춰 조합하는 맞춤형 안티에이징 프로그램",
     benefit: "더웰니스앤 소개 고객 — 원장님이 직접 만든 PDRN 미스트 증정 · 리프팅 시술 시 샷수 추가 업그레이드 · 마크뷰 피부진단 무료",
+    fits: ["antiaging", "petit"],
   }),
   P({
     id: "alldetail", name: "올디테일의원", cat: "clinic", sub: "plastic", logo: "alldetail.jpg",
     desc: ["Design & Comfort — 디테일한 디자인과 마취로 편안한 아름다움을 선사합니다.", "가격은 개원 후 안내드립니다."],
     signature: "팔자지우개",
+    fits: ["petit"],
   }),
-  P({ id: "wooa", name: "우아성형외과", cat: "clinic", sub: "plastic", logoText: "우아성형외과" }),
+  P({
+    id: "wooa", name: "우아성형외과 WOOA", cat: "clinic", sub: "plastic", logoText: "WOOA",
+    badge: "성형 · 피부 · 줄기세포",
+    desc: ["가슴 · 눈 · 코 · 안면거상 · 지방흡입 성형부터 리프팅 · 스킨부스터 피부 시술, 줄기세포(WOOA STEM CELL) 프로그램까지 한 병원에서 상담합니다."],
+    points: [
+      "해외 고객 컨시어지 — 수술비 규모에 따라 숙박(원내 입원실 우선) · 공항 픽업 · 샌딩 지원 (조건은 상담 때 확인)",
+      "수술 뒤 사후관리 — 얼굴 수술 2일 차 · 가슴 수술 3일 차 · 거상 7일 차에 클렌징 · LED · 스킨케어, 연계 헤어숍 샴푸권",
+    ],
+    fits: ["surgery", "antiaging", "regen"],
+  }),
   P({
     id: "newk", name: "뉴케이의원 강남점", cat: "clinic", sub: "plastic", logoText: "NEW K",
     url: "https://www.daangn.com/kr/local-profile/1syynkaqif22/",
@@ -97,16 +185,21 @@ export const PARTNERS: Partner[] = [
   P({ id: "standar", name: "반포 스탠다 정형외과", cat: "clinic", sub: "ortho", logo: "banpo-standar.jpg" }),
   // ── 치과 ──
   P({ id: "haengsin", name: "일산 서울행신치과", cat: "clinic", sub: "dental", logo: "seoul-haengsin.png" }),
-  P({ id: "teokdumi", name: "목동 턱투미 구강내과치과", cat: "clinic", sub: "dental", logo: "teokdumi.jpg" }),
-  P({ id: "yangyundol", name: "양윤돌치과의원 (구강악안면외과)", cat: "clinic", sub: "dental", logo: "yangyundol.jpg" }),
+  P({ id: "teokdumi", name: "목동 턱투미 구강내과치과", cat: "clinic", sub: "dental", logo: "teokdumi.jpg", fits: ["jaw"] }),
+  P({ id: "yangyundol", name: "양윤돌치과의원 (구강악안면외과)", cat: "clinic", sub: "dental", logo: "yangyundol.jpg", fits: ["jaw"] }),
   P({
     id: "goodface", name: "교대 좋은얼굴 삼풍치과", cat: "clinic", sub: "dental", logo: "goodface-sampung.jpg",
     url: "https://www.goodfacedental.co.kr/", badge: "더컬쳐앤 인터뷰",
+    desc: ["치아만 보지 않고 얼굴과 기능까지 함께 보는 치과 — 치아 · 턱 · 얼굴 · 호흡 · 교합을 종합 진단하고, 기능과 심미를 함께 개선합니다."],
     points: [
       "치아 · 턱 · 얼굴에 걸친 7가지 분야의 교정 (7교정)",
       "문제의 원인과 결과를 함께 파악합니다",
       "30여 년 연구 · 진료 중심의 교정치과",
+      "정밀검사(30~40분) — 치열 · 턱뼈 · 교합 · 안면비대칭 · 코/입 호흡 · 턱관절 · 얼굴 구조를 함께 분석하고 데이터로 설명합니다",
+      "주걱턱 · 비대칭 · 돌출입 · 긴 얼굴 — 수술 외 치료 가능성부터 평가합니다 (골격 상태에 따라 수술이 필요할 수 있습니다)",
+      "예방 중심 — 충치 치료 이전에 치아와 턱 문제를 일찍 찾아 관리하고, 잘 씹히는 교합 · 편안한 턱 움직임을 목표로 합니다",
     ],
+    fits: ["jaw"],
     image: "goodface-poster.jpg",
   }),
   P({ id: "relive", name: "마곡 리라이브치과", cat: "clinic", sub: "dental", logo: "relive-dentistry.png" }),
@@ -125,7 +218,17 @@ export const PARTNERS: Partner[] = [
   // ── 웰니스 · 스파 ──
   P({ id: "lounge", name: "웰니스라운지", nameKey: "mou.name", cat: "spa", logo: "wellness-lounge-logo.jpg", tagKey: "mou.eyebrow", descKeys: ["mou.namesub", "mou.d1", "mou.d2", "mou.quote"] }),
   P({ id: "monev", name: "모네브 MONEV", nameKey: "net.p1.name", cat: "spa", logoText: "MONEV", tagKey: "net.p1.cat", descKeys: ["net.p1.role", "net.p1.give"] }),
-  P({ id: "soundbody", name: "사운드바디 (방배 웰니스)", cat: "spa", logo: "soundbody.jpg" }),
+  P({
+    id: "soundbody", name: "사운드바디 SOUND BODY · SKIN (방배)", cat: "spa", logo: "soundbody.jpg",
+    badge: "얼굴 · 바디 60분 관리",
+    desc: ["방배동의 얼굴 · 바디 관리샵 — 얼굴 근막 경락부터 등 · 힙라인까지, 모든 관리를 60분 집중으로 진행합니다."],
+    products: [
+      { name: "아나운서관리 (60분)", price: "154,000원", note: "얼굴관리 + 바디 1부위 (팔 · 상체 · 복부 · 등 · 하체 중 택1)" },
+      { name: "조각관리 (60분)", price: "132,000원", note: "얼굴 근막을 풀어내는 경락관리 — 부작용은 줄이고 효과는 높입니다" },
+      { name: "골드링 등관리 (60분)", price: "99,000원", note: "목 · 어깨 · 견갑골 · 허리 · 힙라인 중점" },
+    ],
+    priceSource: "partner",
+  }),
 
   // ── 협력 기업 · 기술 ──
   P({ id: "vitaldoc", name: "바이탈닥 VitalDoc", nameKey: "net.p2.name", cat: "biz", logoText: "VitalDoc", tagKey: "net.p2.cat", descKeys: ["net.p2.role", "net.p2.give"] }),
@@ -157,7 +260,7 @@ export const PARTNERS: Partner[] = [
   P({
     id: "peopet", name: "페오펫 Peopet", cat: "biz", logo: "peopet.png", url: "https://peopet.co.kr/",
     badge: "반려동물",
-    desc: ["반려동물 생애주기 올인원 플랫폼 — 반려동물 등록부터 보험 · 쇼핑까지 한 앱에서 이어집니다."],
+    desc: ["반려동물 생애주기 금융 유동화 솔루션을 기반으로, 펫 투자와 M&A를 통해 펫 올인원 서비스를 제공하는 펫 지주회사입니다."],
   }),
   P({ id: "eduwill", name: "에듀윌", nameKey: "biz.eduwill.name", cat: "biz", logoText: "EDUWILL", url: BIZ_URL.eduwill, descKeys: ["biz.eduwill.desc"] }),
   P({ id: "metadx", name: "메타디엑스 (MetaDx)", nameKey: "biz.metadx.name", cat: "biz", logoText: "MetaDx", url: BIZ_URL.metadx, descKeys: ["biz.metadx.desc"] }),
@@ -226,7 +329,44 @@ export const PARTNERS: Partner[] = [
       { name: "프로틴 크러셔", price: "43,000원", note: "정가 64,000원" },
     ],
   }),
-  P({ id: "laceltics", name: "라셀틱스", cat: "beauty", logo: "laceltics.jpg" }),
+  P({
+    id: "laceltics", name: "라셀틱스", cat: "beauty", logo: "laceltics.jpg",
+    badge: "화해 어워드 1위",
+    desc: ["2026 상반기 화해 어워드 에센스 · 앰플 · 세럼 부문 베스트 신제품 1위. '주름 지우개 앰플'로 불리는 스킨 리커버리 펩타톡스 앰플이 대표 제품입니다."],
+    points: [
+      "화해 평가단 200명 실사용 리뷰 평점 4.6 · 누적 후기 1,200개 이상",
+      "아세틸헥사펩타이드-8 — 주름 · 탄력 개선을 돕는 펩타이드 앰플 (50ml)",
+    ],
+    signature: "스킨 리커버리 펩타톡스 앰플 (Skin Recovery Pepta Tox Ampoule)",
+  }),
+  // 2026-10-14 추가 — 언테임썬은 공식몰 가격, 낫배드올굿은 공식몰 가격 + 협력사가 보내준 가격대 · 혜택
+  P({
+    id: "untamedsun", name: "언테임썬 Untamed Sun", cat: "beauty", logo: "untamed-sun.jpg", url: "https://untamedsun.co.kr/",
+    badge: "야생 천연 화장품",
+    desc: ["'길들여지지 않은 태양' — 야생 천연을 뜻하는 이름처럼, 자연유래 농법으로 키운 꽃과 야생 식물을 담은 스킨 · 바디 · 헤어 케어 브랜드입니다. 저자극성 원료를 씁니다."],
+    products: [
+      { name: "멀티밤 20g", price: "29,000원", note: "베스트셀러" },
+      { name: "샴푸 400ml", price: "35,000원" },
+      { name: "바디워시 400ml", price: "35,000원" },
+      { name: "바디로션 400ml", price: "40,000원" },
+      { name: "핸드워시 · 핸드로션 250ml", price: "32,000원" },
+      { name: "스킨 · 로션 120ml", price: "53,000원" },
+      { name: "리제너레이션 크림 · 수분키퍼크림 30g", price: "86,000원" },
+    ],
+  }),
+  P({
+    id: "notbad", name: "낫배드올굿 NOTBADORGOOD", cat: "beauty", logo: "notbadorgood.jpg", url: "https://www.notbadorgood.com/",
+    badge: "캐주얼 패션 · 상시 25~35% 할인",
+    desc: ["특별함과 평범함 사이의 경계를 이야기하는 캐주얼 브랜드 — 유행보다 오래 남는 가치, 일상에 편안하게 스며드는 옷을 만듭니다."],
+    points: ["후드집업 · 후드티 5만원대", "맨투맨 · 스웻팬츠 · 트랙팬츠 4만원대", "긴팔티 · 반팔티 3만원대"],
+    products: [
+      { name: "시그니처 로고 크롭 후드티셔츠", price: "49,500원", note: "소비자가 66,000원" },
+      { name: "크랙 크로스 후드 집업", price: "54,750원", note: "소비자가 73,000원" },
+      { name: "시그니처 심볼 · 로고 긴팔티셔츠", price: "39,000원", note: "소비자가 52,000원" },
+      { name: "시그니처 심볼 스웻 셋업", price: "88,400원", note: "소비자가 136,000원" },
+    ],
+    perks: "신규 회원 가입 5,000원 할인 쿠폰 + 첫 구매 완료 시 5,000원 쿠폰 추가 · 카카오채널 추가 시 10,000원 할인 쿠폰 즉시 지급",
+  }),
   P({ id: "yunine", name: "윤이네식초", cat: "beauty", logo: "yunine-vinegar.jpg", desc: ["과일 식초 — 바나나 · 파인애플 · 자몽 · 키위 · 오렌지."] }),
   P({ id: "haeol", name: "해올 (Haeol)", cat: "beauty", logo: "haeol.jpg" }),
   P({ id: "hijack", name: "HIJACK", cat: "beauty", logo: "hijack.png" }),
@@ -296,3 +436,5 @@ export const PARTNERS: Partner[] = [
 export const PARTNER_CATS: PartnerCat[] = ["clinic", "spa", "biz", "global", "beauty", "culture", "dining"];
 /** 병원 안 분야 순서 */
 export const CLINIC_SUBS: ClinicSub[] = ["plastic", "women", "ortho", "dental", "hanbang", "care"];
+/** 고민으로 찾기 순서 */
+export const FIT_TYPES: FitType[] = ["antiaging", "petit", "surgery", "regen", "jaw"];

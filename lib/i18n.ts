@@ -308,7 +308,7 @@ const ko: Dict = {
   "ai.b4d": "병원 내부 설치(온프레미스)로 상담 내용이 외부로 나가지 않습니다.",
   "ai.ptag": "협력 기업 · 기술 파트너",
   "ai.pdesc": "외국인 환자의 언어·디지털 문제를 더웰니스앤과 함께 해결하는 음성 AI 원천기술 파트너, 언더밀리(Undermilli)입니다.",
-  "strip.title": "이미 30+ 병원과 40곳+ 협력사가 함께합니다",
+  "strip.title": "이미 30+ 병원과 80곳+ 협력사가 함께합니다",
   "strip.sub": "강남 프리미엄 병원·한의원·K뷰티·문화·호텔·요식 — 더웰니스앤이 직접 검증한 협력 네트워크",
   "strip.more": "전체 협력사 보기 ↓",
   "partners.g.clinic": "병원",
@@ -434,7 +434,7 @@ const ko: Dict = {
 
   // Partners
   "partners.tag": "Trusted Partners · 더웰니스앤 협력사",
-  "partners.title1": "40곳+ 협력사",
+  "partners.title1": "80곳+ 협력사",
   "partners.title2": "와 함께합니다",
   "partners.sub": "병원·한의원부터 K뷰티·문화·호텔·요식까지 — 더웰니스앤이 직접 검증한 협력사와 함께합니다. 한 곳에 종속되지 않고 각 분야의 강점을 비교해 객관적으로 매칭합니다.",
 
@@ -978,7 +978,7 @@ const en: Dict = {
   "ai.b4d": "On-premise install keeps consultation content from leaving the hospital.",
   "ai.ptag": "Partner Company · Tech Partner",
   "ai.pdesc": "Undermilli is a voice-AI deep-tech partner that solves foreign patients' language and digital challenges together with The Wellness N.",
-  "strip.title": "Already partnered with 30+ hospitals and 40+ partners",
+  "strip.title": "Already partnered with 30+ hospitals and 80+ partners",
   "strip.sub": "Premium Gangnam hospitals, oriental clinics, K-beauty, culture, hotels and dining — a network personally vetted by The Wellness N.",
   "strip.more": "See all partners ↓",
   "partners.g.clinic": "Hospitals & Clinics",
@@ -1092,8 +1092,8 @@ const en: Dict = {
   "voices.sub": "Real reviews from customers who came through The Wellness N. Even the same concern has different solutions per person.",
 
   "partners.tag": "Hospital Partners",
-  "partners.title1": "Partnered with 30+",
-  "partners.title2": "Premium Hospitals in Gangnam",
+  "partners.title1": "Partnered with 80+",
+  "partners.title2": " clinics & brands",
   "partners.sub": "Not tied to one hospital — we compare strengths objectively and match the right one.",
 
   "overseas.tag": "Global MOU",
@@ -1608,7 +1608,7 @@ const zh: Dict = {
   "ai.b4d": "院内本地部署，咨询内容不外流。",
   "ai.ptag": "合作企业 · 技术伙伴",
   "ai.pdesc": "Undermilli 是与 The Wellness N 共同解决外国患者语言与数字难题的语音 AI 核心技术伙伴。",
-  "strip.title": "已携手 30+ 家医院与 40+ 家合作伙伴",
+  "strip.title": "已携手 30+ 家医院与 80+ 家合作伙伴",
   "strip.sub": "江南高端医院·韩医院·K-美容·文化·酒店·餐饮 —— The Wellness N 亲自甄选的合作网络。",
   "strip.more": "查看全部合作伙伴 ↓",
   "partners.g.clinic": "医院",
@@ -1722,8 +1722,8 @@ const zh: Dict = {
   "voices.sub": "通过The Wellness N的客户们各领域的真实评论。即使是同样的困扰,每个人的解决方案也不同。",
 
   "partners.tag": "合作医院",
-  "partners.title1": "与30+江南顶级医院",
-  "partners.title2": "合作",
+  "partners.title1": "携手80+家",
+  "partners.title2": "合作伙伴",
   "partners.sub": "不是被一家医院束缚,而是对比每家医院的优势客观匹配。",
 
   "overseas.tag": "全球MOU",
@@ -2236,7 +2236,7 @@ const ja: Dict = {
   "ai.b4d": "院内オンプレミス導入で、相談内容が外部に出ません。",
   "ai.ptag": "提携企業 · 技術パートナー",
   "ai.pdesc": "Undermilli は、外国人患者の言語・デジタル課題を The Wellness N とともに解決する音声 AI 基盤技術パートナーです。",
-  "strip.title": "すでに 30+ の病院と 40+ の協力先が参加",
+  "strip.title": "すでに 30+ の病院と 80+ の協力先が参加",
   "strip.sub": "江南プレミアム病院・韓方・K-ビューティー・文化・ホテル・飲食 —— The Wellness N が自ら厳選した協力ネットワーク。",
   "strip.more": "提携先をすべて見る ↓",
   "partners.g.clinic": "病院",
@@ -2350,7 +2350,7 @@ const ja: Dict = {
   "voices.sub": "The Wellness Nを経た顧客たちの分野別リアルレビュー。同じ悩みでも人によって解決方法は違います。",
 
   "partners.tag": "提携病院",
-  "partners.title1": "30+江南プレミアム病院",
+  "partners.title1": "80+の協力先",
   "partners.title2": "と提携",
   "partners.sub": "病院一ヶ所に縛られず、各病院の強みを比較して客観的にマッチング。",
 
@@ -2860,7 +2860,7 @@ const th: Dict = {
   "ai.b4d": "ติดตั้งภายในโรงพยาบาล (On-premise) ข้อมูลการปรึกษาไม่รั่วไหลออกภายนอก",
   "ai.ptag": "บริษัทพันธมิตร · พาร์ตเนอร์เทคโนโลยี",
   "ai.pdesc": "Undermilli คือพาร์ตเนอร์เทคโนโลยี Voice AI ที่ร่วมกับ The Wellness N แก้ปัญหาด้านภาษาและดิจิทัลของผู้ป่วยต่างชาติ",
-  "strip.title": "ร่วมมือกับโรงพยาบาล 30+ แห่ง และพันธมิตร 40+ ราย",
+  "strip.title": "ร่วมมือกับโรงพยาบาล 30+ แห่ง และพันธมิตร 80+ ราย",
   "strip.sub": "โรงพยาบาลพรีเมียมย่านกังนัม·คลินิกแพทย์แผนเกาหลี·K-Beauty·วัฒนธรรม·โรงแรม·ร้านอาหาร — เครือข่ายที่ The Wellness N คัดสรรเอง",
   "strip.more": "ดูพันธมิตรทั้งหมด ↓",
   "partners.g.clinic": "โรงพยาบาล",
@@ -2974,8 +2974,8 @@ const th: Dict = {
   "voices.sub": "รีวิวจริงจากลูกค้าที่ผ่าน The Wellness N แม้ความกังวลเหมือนกัน แต่ละคนมีทางแก้ต่างกัน",
 
   "partners.tag": "โรงพยาบาลพันธมิตร",
-  "partners.title1": "ร่วมกับ 30+ โรงพยาบาล",
-  "partners.title2": "พรีเมียมกังนัม",
+  "partners.title1": "ร่วมกับพันธมิตร 80+ ราย",
+  "partners.title2": " ทั้งโรงพยาบาลและแบรนด์",
   "partners.sub": "ไม่ผูกกับโรงพยาบาลเดียว แต่เปรียบเทียบจุดแข็งของแต่ละแห่งอย่างเป็นกลาง",
 
   "overseas.tag": "Global MOU",
@@ -3494,7 +3494,7 @@ const vi: Dict = {
   "ai.b4d": "Cài đặt nội bộ (on-premise) nên nội dung tư vấn không ra ngoài bệnh viện.",
   "ai.ptag": "Công ty đối tác · Đối tác công nghệ",
   "ai.pdesc": "Undermilli là đối tác công nghệ lõi Voice AI cùng The Wellness N giải quyết vấn đề ngôn ngữ và số hóa cho bệnh nhân nước ngoài.",
-  "strip.title": "Đã hợp tác với hơn 30 bệnh viện và hơn 40 đối tác",
+  "strip.title": "Đã hợp tác với hơn 30 bệnh viện và hơn 80 đối tác",
   "strip.sub": "Bệnh viện cao cấp Gangnam·Đông y·K-Beauty·văn hóa·khách sạn·ẩm thực — mạng lưới do The Wellness N đích thân tuyển chọn.",
   "strip.more": "Xem tất cả đối tác ↓",
   "partners.g.clinic": "Bệnh viện & Phòng khám",
@@ -3608,8 +3608,8 @@ const vi: Dict = {
   "voices.sub": "Đánh giá thật từ khách hàng qua The Wellness N Cùng một vấn đề, mỗi người có giải pháp khác nhau",
 
   "partners.tag": "Bệnh viện đối tác",
-  "partners.title1": "Hợp tác với 30+ bệnh viện",
-  "partners.title2": "cao cấp Gangnam",
+  "partners.title1": "Hợp tác với hơn 80",
+  "partners.title2": " đối tác",
   "partners.sub": "Không bị ràng buộc với một bệnh viện mà so sánh điểm mạnh của từng nơi một cách khách quan",
 
   "overseas.tag": "MOU toàn cầu",
@@ -4118,7 +4118,7 @@ const id: Dict = {
   "ai.b4d": "Pemasangan internal (on-premise) menjaga isi konsultasi tidak keluar dari rumah sakit.",
   "ai.ptag": "Perusahaan Mitra · Mitra Teknologi",
   "ai.pdesc": "Undermilli adalah mitra teknologi inti Voice AI yang bersama The Wellness N menyelesaikan masalah bahasa dan digital pasien asing.",
-  "strip.title": "Telah bermitra dengan 30+ rumah sakit dan 40+ mitra",
+  "strip.title": "Telah bermitra dengan 30+ rumah sakit dan 80+ mitra",
   "strip.sub": "RS premium Gangnam·klinik pengobatan Korea·K-Beauty·budaya·hotel·kuliner — jaringan yang diseleksi langsung oleh The Wellness N.",
   "strip.more": "Lihat semua mitra ↓",
   "partners.g.clinic": "Rumah Sakit & Klinik",
@@ -4232,8 +4232,8 @@ const id: Dict = {
   "voices.sub": "Review nyata pelanggan The Wellness N Kekhawatiran sama pun, setiap orang punya solusi berbeda",
 
   "partners.tag": "Rumah Sakit Mitra",
-  "partners.title1": "Bermitra dengan 30+",
-  "partners.title2": "Rumah Sakit Premium Gangnam",
+  "partners.title1": "Bermitra dengan 80+",
+  "partners.title2": " klinik & merek",
   "partners.sub": "Tidak terikat pada satu rumah sakit, tetapi membandingkan kekuatan masing-masing secara objektif",
 
   "overseas.tag": "MOU Global",
