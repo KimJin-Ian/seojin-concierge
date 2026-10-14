@@ -13,6 +13,8 @@ export const LANGS: { code: Lang; label: string; short: string }[] = [
   { code: "id", label: "Bahasa Indonesia", short: "ID" },
 ];
 
+import { HOME2 } from "./i18n-home2";
+
 type Dict = Record<string, string>;
 
 // ─────────────────────────────────────────────────────────────
@@ -4468,7 +4470,16 @@ const id: Dict = {
   "proc.s6.desc": "Pengingat jadwal pasca pulang, booking ulang prioritas, keanggotaan: perawatan rutin + diskon 5~20% + konsultasi hukum",
 };
 
-export const DICTIONARIES: Record<Lang, Dict> = { ko, en, zh, ja, th, vi, id };
+// 2026-10-13 첫 화면 개편 문구는 i18n-home2.ts 에 따로 두고 여기서 덮어쓴다
+export const DICTIONARIES: Record<Lang, Dict> = {
+  ko: { ...ko, ...HOME2.ko },
+  en: { ...en, ...HOME2.en },
+  zh: { ...zh, ...HOME2.zh },
+  ja: { ...ja, ...HOME2.ja },
+  th: { ...th, ...HOME2.th },
+  vi: { ...vi, ...HOME2.vi },
+  id: { ...id, ...HOME2.id },
+};
 
 export function tFor(lang: Lang, key: string): string {
   return DICTIONARIES[lang]?.[key] ?? DICTIONARIES.ko[key] ?? key;

@@ -2,18 +2,50 @@
 
 import SiteHeader from "./components/SiteHeader";
 import Treatments from "./components/Treatments";
+import PartnerBoard from "./components/PartnerBoard";
 import DynamicSections from "./components/DynamicSections";
 import SiteFooter from "./components/SiteFooter";
 import EditMode from "./components/EditMode";
 import { useLang } from "./components/LangContext";
 
-import { urlOf, BIZ_URL } from "@/lib/partner-links";
+/**
+ * 더웰니스앤 첫 화면 — 2026-10-13 개편 (대표님 수정사항)
+ *
+ *   히어로(카톡 + WhatsApp) → 세 가지 사업(한 줄에 셋)
+ *   → 왜 더웰니스앤인가 — 안전망 · 기존 의료관광과의 차이 · 숫자 · 끊기지 않는 케어(전 여정) · 전체 협업 방향
+ *   → 시술 카테고리(한 줄에 다섯, 인기 키워드 탭 합침) → 어떤 고민이 해결됐나
+ *   → 협업 업체 소개(분야 탭 · 한 줄에 넷 · 칸마다 더보기)
+ *   → 고민 · 예산 · 기간별 맞춤 케어 01~07
+ *   → 상담
+ *
+ * 스크롤을 줄이는 게 목표다 — 가로 한 줄씩 늘어놓던 칸을 바둑판으로 바꿨다.
+ * 첫 화면에서 줄인 원래 칸(AI 통역 상세 · 예산별 선택 · 전체 비교표 · 진행 과정 · 회사 소개)은
+ * 지우지 않고 /[lang]/more 로 옮겼다 (components/MoreSections.tsx).
+ *
+ * 메뉴(admin 에서 관리)가 /#about · /#diff · /#trust · /#process · /#keywords 로 걸려 있어
+ * 그 id 를 새 자리에 그대로 달았다 — 메뉴가 깨지지 않게.
+ */
+
 const KAKAO_URL = "http://pf.kakao.com/_QkZhd";
 const WHATSAPP_URL = "https://whatsapp.com/channel/0029VbD3dlqGU3BBeU7sKN15";
 const EMAIL = "dreamwithessmarketing@gmail.com";
 
+/** 번호 붙은 소제목 — 맞춤 케어 01~07 */
+function Step({ n, title, sub, id, children }: { n: number; title: string; sub?: string; id?: string; children: React.ReactNode }) {
+  return (
+    <div className="h2-step" id={id}>
+      <div className="h2-step-head">
+        <span className="h2-step-n">{String(n).padStart(2, "0")}</span>
+        <h3>{title}</h3>
+        {sub ? <span className="h2-step-sub">{sub}</span> : null}
+      </div>
+      {children}
+    </div>
+  );
+}
+
 export default function Home() {
-  const { t } = useLang();
+  const { t, lang } = useLang();
   return (
     <>
       {/* 비주얼 에디터 모드 (?edit=1 시에만 활성화) */}
@@ -34,16 +66,13 @@ export default function Home() {
             </h1>
             <p className="hero-sub">{t("hero.sub")}</p>
             <div className="hero-buttons">
-              <a
-                href={KAKAO_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn btn-primary"
-                data-track="cta_click"
-                data-category="contact"
-                data-label="hero_kakao"
-              >
+              <a href={KAKAO_URL} target="_blank" rel="noopener noreferrer" className="btn btn-primary"
+                 data-track="cta_click" data-category="contact" data-label="hero_kakao">
                 {t("hero.cta")}
+              </a>
+              <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="btn btn-whatsapp"
+                 data-track="cta_click" data-category="contact" data-label="hero_whatsapp">
+                {t("hero.whatsapp")}
               </a>
               <a href="#packages" className="btn btn-ghost">{t("hero.cta2")}</a>
             </div>
@@ -77,33 +106,21 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 그룹 사업 소개 — 세 회사가 한 그룹임을 밝혀 협업 문의를 받는다 */}
-      <section id="group" className="sec-group">
+      {/* 그룹 사업 소개 — 세 회사. 한 줄에 셋 (휴대폰에서도) */}
+      <section id="group" className="sec-group h2-tight">
         <div className="container">
           <div className="section-head">
             <span className="section-tag">{t("group.tag")}</span>
-            <h2 className="section-title">
-              {t("group.title1")} <strong>{t("group.title2")}</strong>
-            </h2>
-            <p className="section-sub">{t("group.sub")}</p>
+            <h2 className="section-title">{t("group.title1")} <strong>{t("group.title2")}</strong></h2>
           </div>
-
-          <div className="group-grid">
+          <div className="group-grid h2-group3">
             {([
               ["wellness", "https://www.thewellnessn.com", "🏥"],
               ["publish", "https://www.bookpublishingwithess.com", "📚"],
               ["culture", "https://www.theculturen.com", "🎭"],
             ] as const).map(([key, href, ico]) => (
-              <a
-                key={key}
-                href={href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group-card"
-                data-track="cta_click"
-                data-category="group"
-                data-label={`group_${key}`}
-              >
+              <a key={key} href={href} target="_blank" rel="noopener noreferrer" className="group-card"
+                 data-track="cta_click" data-category="group" data-label={`group_${key}`}>
                 <span className="group-ico" aria-hidden="true">{ico}</span>
                 <span className="group-name">{t(`group.${key}.name`)}</span>
                 <span className="group-desc">{t(`group.${key}.desc`)}</span>
@@ -111,848 +128,114 @@ export default function Home() {
               </a>
             ))}
           </div>
-
-          <p className="group-note">{t("group.note")}</p>
         </div>
       </section>
 
-      {/* 고민별 진입 — "먼저, 당신의 고민은 무엇인가요?" (히어로 직후 첫 진입점) */}
-      <section className="concern" id="concern" data-edit-key="concern">
-        <div className="container">
-          <div className="section-head">
-            <span className="section-tag">{t("concern.tag")}</span>
-            <h2 className="section-title">{t("concern.title1")} <strong>{t("concern.title2")}</strong></h2>
-            <p className="section-sub">{t("concern.sub")}</p>
-          </div>
-
-          <div className="concern-grid">
-            {["a", "b", "c", "d", "e"].map((k, i) => (
-              <a key={k} href={KAKAO_URL} target="_blank" rel="noopener noreferrer"
-                className={`concern-card${k === "e" ? " concern-wide" : ""}`}
-                data-track="cta_click" data-category="concern" data-label={`concern_${k}`}>
-                <span className="concern-letter">{String.fromCharCode(65 + i)}</span>
-                <h3>{t(`concern.${k}.q`)}</h3>
-                <div className="concern-price">{t(`concern.${k}.price`)}</div>
-                <div className="concern-items">
-                  {t(`concern.${k}.items`).split(" · ").map((s) => (
-                    <span key={s}>{s.trim()}</span>
-                  ))}
-                </div>
-                <p className="concern-for">{t(`concern.${k}.for`)}</p>
-              </a>
-            ))}
-          </div>
-
-          <p className="concern-note">{t("concern.note")}</p>
-          <p className="price-disclaimer">{t("price.disclaimer")}</p>
-        </div>
-      </section>
-
-      {/* 협력 네트워크 스트립 — 초창기 신뢰 (히어로 직후) */}
-      <section className="partner-strip" data-edit-key="partnerstrip">
-        <div className="container">
-          <h3 className="strip-title">{t("strip.title")}</h3>
-          <p className="strip-sub">{t("strip.sub")}</p>
-          <div className="strip-logos">
-            {["pixelab.jpg", "primi-clinic.jpg", "banpo-standar.jpg", "dove-clinic.png", "saebom-women.png", "seoul-haengsin.png", "dapung-han.jpg", "haeol.jpg", "hijack.png", "vividson.jpg"].map((f) => {
-              const img = <img src={`/logos/${f}`} alt="The Wellness N 협력사 로고" loading="lazy" />;
-              const href = urlOf(f);
-              // 주소를 모르는 곳은 그냥 그림으로 둔다. 빈 링크를 걸면
-              // 눌러도 아무 일이 없어서 사이트가 고장난 것처럼 보인다.
-              return href ? (
-                <a key={f} href={href} target="_blank" rel="noopener noreferrer nofollow"
-                   className="strip-link" aria-label="협력사 홈페이지 (새 창)">{img}</a>
-              ) : <span key={f} className="strip-link is-plain">{img}</span>;
-            })}
-          </div>
-          <a href="#partners" className="strip-more">{t("strip.more")}</a>
-        </div>
-      </section>
-
-      {/* AI 동시통역 — 병원이 필요한 서비스 (협력 기업: 언더밀리/말로하) */}
-      <section className="ai-sec" id="ai" data-edit-key="ai">
-        <div className="container">
-          <div className="section-head">
-            <span className="section-tag">{t("ai.tag")}</span>
-            <h2 className="section-title">{t("ai.title1")} <strong>{t("ai.title2")}</strong></h2>
-            <p className="section-sub">{t("ai.sub")}</p>
-          </div>
-          <div className="ai-hero">
-            <div className="ai-card brand">
-              <a href={urlOf("maloha-logo.png")} target="_blank" rel="noopener noreferrer nofollow"
-                 title="Maloha 홈페이지 (새 창)"
-                 style={{ alignSelf: "flex-start", flex: "0 0 auto", display: "inline-flex" }}>
-                <img src="/logos/maloha-logo.png" alt="Maloha" style={{ height: 58, width: "auto" }} />
-              </a>
-              <p className="tagline"><b>{t("ai.tagline1")}</b><br />{t("ai.tagline2")}</p>
-              <div className="ai-chips">
-                <span className="chip">{t("ai.chip1")}</span>
-                <span className="chip">{t("ai.chip2")}</span>
-                <span className="chip">{t("ai.chip3")}</span>
-              </div>
-            </div>
-            <div className="ai-card light">
-              <ul className="ai-benefits">
-                <li><span className="check">✓</span><div><b>{t("ai.b1t")}</b><div className="d">{t("ai.b1d")}</div></div></li>
-                <li><span className="check">✓</span><div><b>{t("ai.b2t")}</b><div className="d">{t("ai.b2d")}</div></div></li>
-                <li><span className="check">✓</span><div><b>{t("ai.b3t")}</b><div className="d">{t("ai.b3d")}</div></div></li>
-                <li><span className="check">✓</span><div><b>{t("ai.b4t")}</b><div className="d">{t("ai.b4d")}</div></div></li>
-              </ul>
-            </div>
-          </div>
-          <div className="partner-attr">
-            <div className="meta">
-              <span className="attr-tag">{t("ai.ptag")}</span>
-              {t("ai.pdesc")}
-            </div>
-            <a className="um-tile" href={urlOf("undermilli-logo.png")}
-               target="_blank" rel="noopener noreferrer nofollow" title="Undermilli 홈페이지 (새 창)">
-              <img src="/logos/undermilli-logo.png" alt="Undermilli Inc." style={{ height: 24, width: "auto" }} />
-            </a>
-          </div>
-        </div>
-      </section>
-
-      {/* TRUST / 불안 심리 해소 */}
-      <section className="trust" id="trust" data-edit-key="trust">
-        <div className="container">
-          <div className="section-head">
-            <span className="section-tag">{t("trust.tag")}</span>
-            <h2 className="section-title">
-              <strong>{t("trust.title")}</strong>
-            </h2>
-            <p className="section-sub">{t("trust.sub")}</p>
-          </div>
-          <div className="trust-grid">
-            <div className="trust-card">
-              <div className="trust-icon">⚖️</div>
-              <h4>{t("trust.c1.title")}</h4>
-              <p>{t("trust.c1.desc")}</p>
-            </div>
-            <div className="trust-card">
-              <div className="trust-icon">🤝</div>
-              <h4>{t("trust.c2.title")}</h4>
-              <p>{t("trust.c2.desc")}</p>
-            </div>
-            <div className="trust-card">
-              <div className="trust-icon">⭐</div>
-              <h4>{t("trust.c3.title")}</h4>
-              <p>{t("trust.c3.desc")}</p>
-            </div>
-            <div className="trust-card">
-              <div className="trust-icon">🔬</div>
-              <h4>{t("trust.c4.title")}</h4>
-              <p>{t("trust.c4.desc")}</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* OVERSEAS MOU */}
-      <section className="overseas" data-edit-key="overseas">
-        <div className="container">
-          <div className="section-head">
-            <span className="section-tag">{t("overseas.tag")}</span>
-            <h2 className="section-title">{t("overseas.title")}</h2>
-            <p className="section-sub">{t("overseas.sub")}</p>
-          </div>
-          <div className="overseas-grid">
-            <div className="overseas-card">
-              <div className="overseas-flag">🇺🇸</div>
-              <h4>{t("overseas.us")}</h4>
-              <p>{t("overseas.us.desc")}</p>
-            </div>
-            <div className="overseas-card">
-              <div className="overseas-flag">🇹🇭</div>
-              <h4>{t("overseas.th")}</h4>
-              <p>{t("overseas.th.desc")}</p>
-            </div>
-            <div className="overseas-card">
-              <div className="overseas-flag">🇰🇷</div>
-              <h4>{t("overseas.kpop")}</h4>
-              <p>{t("overseas.kpop.desc")}</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* PARTNERS — 협력사 (분야별: 병원·한의원·K뷰티·문화·요식) */}
-      <section className="partners" id="partners" data-edit-key="partners">
-        <div className="container">
-          <div className="section-head">
-            <span className="section-tag">{t("partners.tag")}</span>
-            <h2 className="section-title">
-              <strong>{t("partners.title1")}</strong>{t("partners.title2")}
-            </h2>
-            <p className="section-sub">{t("partners.sub")}</p>
-          </div>
-
-          {(() => {
-            type P = { name: string; img?: string };
-            const SECTORS: { key: string; label: string; en: string; items: P[] }[] = [
-              {
-                key: "clinic", label: "병원", en: "Clinics & Hospitals",
-                items: [
-                  { name: "강남 픽셀랩 성형외과·피부과", img: "pixelab.jpg" },
-                  { name: "성수 프리미클리닉", img: "primi-clinic.jpg" },
-                  { name: "반포 스탠다 정형외과", img: "banpo-standar.jpg" },
-                  { name: "압구정 도브의원", img: "dove-clinic.png" },
-                  { name: "잠실 새봄여성의원", img: "saebom-women.png" },
-                  { name: "일산 서울행신치과", img: "seoul-haengsin.png" },
-                  { name: "목동 턱투미 구강내과치과", img: "teokdumi.jpg" },
-                  { name: "양윤돌치과의원", img: "yangyundol.jpg" },
-                  { name: "미랩클리닉", img: "mirab-clinic.jpg" },
-                  { name: "메디원", img: "medi-one.png" },
-                  { name: "마곡 리라이브치과", img: "relive-dentistry.png" },
-                  { name: "신사 신상성형외과", img: "sinsang-ps.svg" },
-
-                  { name: "뉴욕NYU치과", img: "nyu-dental.jpg" },
-                  { name: "피어봄 피부과 (청담)", img: "pieobom-cheongdam.png" },
-                ],
-              },
-              {
-                key: "hanbang", label: "한의원", en: "Oriental Medicine",
-                items: [
-                  { name: "서대문구 다품한의원", img: "dapung-han.jpg" },
-                  { name: "성수 회복재한의원", img: "hoebokjae-han.png" },
-                  { name: "바론한의원", img: "baron-han.jpg" },
-                  { name: "북가좌 경희한의원 본점", img: "bukgajwa-kyunghee.png" },
-                  { name: "동탄 함께걷는한의원", img: "together-clinic.png" },
-                  { name: "상왕십리 경희한의원" },
-                ],
-              },
-              {
-                key: "beauty", label: "K뷰티 · 이너뷰티", en: "K-Beauty & Inner Beauty",
-                items: [
-                  { name: "해올 (Haeol)", img: "haeol.jpg" },
-                  { name: "HIJACK", img: "hijack.png" },
-                  { name: "무하 (Mooha)", img: "mooha.png" },
-                  { name: "비비슨 (Vividson)", img: "vividson.jpg" },
-                  { name: "브릴리언트", img: "brilliant.png" },
-                  { name: "썸데이", img: "someday.png" },
-                  { name: "주당의 비결 (숙취해소제)", img: "judang-secret.png" },
-                  { name: "클레로엔 유산균필" },
-                  { name: "R828" },
-                  { name: "수소 마스크팩" },
-                  { name: "암 전문 화장품" },
-                  { name: "오픈피아", img: "opunfia.png" },
-                ],
-              },
-              {
-                key: "culture", label: "공연 · 문화 · 호텔", en: "Culture & Hospitality",
-                items: [
-                  { name: "뮤지컬 써니텐", img: "musical-sunnyten.jpg" },
-                  { name: "뮤지컬펍 스폿라이트", img: "musical-spotlight.jpg" },
-                  { name: "글로호텔", img: "glue-hotel.jpg" },
-                  { name: "대학로 무한 아트센터" },
-                  { name: "누리라운지" },
-                  { name: "월미도 블루마린호텔", img: "blue-marine-hotel.png" },
-                ],
-              },
-              {
-                key: "dining", label: "요식업", en: "Dining",
-                items: [
-                  { name: "무큐르 곱창밴드", img: "mooqure.png" },
-                  { name: "와인솔로", img: "wine-solo.png" },
-                  { name: "와인포차", img: "wine-pocha.png" },
-                  { name: "무드서울 레스토랑 (반포한강)" },
-                  { name: "여의도 신도세기 고기집", img: "sindosegi.png" },
-                  { name: "가야한우 갈비살 (서강대 직영)" },
-                ],
-              },
-            ];
-            return (
-              <div className="partner-tabs">
-                {SECTORS.map((s) => (
-                  <div key={s.key} className="partner-group">
-                    <h4>{t(`partners.g.${s.key}`)} <span style={{ fontSize: 12, color: "var(--ink-soft)", fontWeight: 400 }}>· {s.items.length}{t("partners.suffix")}</span></h4>
-                    <div className="logo-grid">
-                      {s.items.map((p) => {
-                        const inner = p.img ? (
-                          <>
-                            <img
-                              src={`/logos/${p.img}`}
-                              alt={`${p.name} 로고 · The Wellness N 협력사`}
-                              loading="lazy"
-                            />
-                            <div className="logo-cell-name">{p.name}</div>
-                          </>
-                        ) : (
-                          <>
-                            <span className="plate-tag">Partner</span>
-                            <span className="plate-nm">{p.name}</span>
-                          </>
-                        );
-                        const cls = p.img ? "logo-cell" : "logo-cell text-only";
-                        const href = urlOf(p.img);
-                        // 링크가 있는 칸만 <a> 로 바꾼다. 없는 칸은 div 그대로 —
-                        // 커서가 손 모양으로 바뀌는데 안 눌리면 그게 더 나쁘다.
-                        return href ? (
-                          <a key={p.name} className={`${cls} is-link`} title={`${p.name} 홈페이지 (새 창)`}
-                             href={href} target="_blank" rel="noopener noreferrer nofollow">
-                            {inner}
-                            <span className="logo-cell-go" aria-hidden="true">↗</span>
-                          </a>
-                        ) : (
-                          <div key={p.name} className={cls} title={p.name}>{inner}</div>
-                        );
-                      })}
-                    </div>
-                  </div>
-                ))}
-              </div>
-            );
-          })()}
-
-          <div className="logo-placeholder">
-            <p>{t("partners.note")}</p>
-          </div>
-        </div>
-      </section>
-
-      {/* 사업 제휴 · 기술 협력 — 로고를 받은 곳이 없어 이름과 설명으로만 소개한다 */}
-      <section className="biz-partner" id="biz" data-edit-key="biz">
-        <div className="container">
-          <div className="section-head">
-            <span className="section-tag">{t("biz.tag")}</span>
-            <h2 className="section-title">{t("biz.title1")} <strong>{t("biz.title2")}</strong></h2>
-            <p className="section-sub">{t("biz.sub")}</p>
-          </div>
-
-          {([
-            ["g1", ["eduwill", "metadx", "medibible", "soldoc"]],
-            ["g2", ["atoz", "aim"]],
-          ] as const).map(([g, keys]) => (
-            <div key={g} className="biz-group">
-              <h4 className="biz-group-title">{t(`biz.${g}`)}</h4>
-              <div className="biz-grid">
-                {keys.map((k) => (
-                  <article key={k} className={BIZ_URL[k] ? "biz-card is-link" : "biz-card"}>
-                    <h5 className="biz-name">
-                      {BIZ_URL[k] ? (
-                        <a href={BIZ_URL[k]} target="_blank" rel="noopener noreferrer nofollow"
-                           title={`${t(`biz.${k}.name`)} 홈페이지 (새 창)`}>
-                          {t(`biz.${k}.name`)}<span className="biz-go" aria-hidden="true">↗</span>
-                        </a>
-                      ) : t(`biz.${k}.name`)}
-                    </h5>
-                    <p className="biz-desc">{t(`biz.${k}.desc`)}</p>
-                  </article>
-                ))}
-              </div>
-            </div>
-          ))}
-
-          {/* 번호를 붙인 이유 — 이건 나열이 아니라 환자가 실제로 거치는 순서다.
-              각 기업이 어느 단계를 맡는지가 이 순서에 그대로 담겨 있다. */}
-          <div className="biz-flow">
-            <h4 className="biz-flow-title">{t("biz.flow.title")}</h4>
-            <ol className="biz-flow-steps">
-              {["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8"].map((s, i) => (
-                <li key={s}>
-                  <span className="biz-flow-n">{i + 1}</span>
-                  {t(`biz.flow.${s}`)}
-                </li>
-              ))}
-            </ol>
-            <p className="biz-flow-desc">{t("biz.flow.desc")}</p>
-          </div>
-        </div>
-      </section>
-
-      {/* MOU 협약 기관 — 웰니스라운지 (매거진형, 협력사 대표 하이라이트) */}
-      <section className="mou-partner" id="mou" data-edit-key="mou">
-        <div className="container">
-          <div className="section-head">
-            <span className="section-tag">{t("mou.tag")}</span>
-            <h2 className="section-title">{t("mou.title1")} <strong>{t("mou.title2")}</strong></h2>
-            <p className="section-sub">{t("mou.sub")}</p>
-          </div>
-          <div className="mou-featured">
-            <div className="mou-logo-panel">
-              <img
-                src="/logos/wellness-lounge-logo.jpg"
-                alt="웰니스라운지 · The Wellness N 협약 기관"
-                loading="lazy"
-              />
-              <span className="mou-loc"><b>{t("mou.name")}</b><br />{t("mou.loc")}</span>
-            </div>
-            <div className="mou-body">
-              <span className="mou-eyebrow">{t("mou.eyebrow")}</span>
-              <h3 className="mou-name">{t("mou.name")}<span className="mou-namesub">{t("mou.namesub")}</span></h3>
-              <p className="mou-desc">{t("mou.d1")}</p>
-              <p className="mou-desc">{t("mou.d2")}</p>
-              <div className="mou-chips">
-                <span>{t("mou.c1")}</span>
-                <span>{t("mou.c2")}</span>
-                <span>{t("mou.c3")}</span>
-                <span>{t("mou.c4")}</span>
-                <span>{t("mou.c5")}</span>
-              </div>
-              <div className="mou-divider"></div>
-              <p className="mou-quote">{t("mou.quote")}</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* MOU PARTNER NETWORK — 전략 파트너 생태계 */}
-      <section className="partners-net" id="network" data-edit-key="network">
-        <div className="container">
-          <div className="section-head">
-            <span className="section-tag">{t("net.tag")}</span>
-            <h2 className="section-title">{t("net.title1")} <strong>{t("net.title2")}</strong></h2>
-            <p className="section-sub">{t("net.sub")}</p>
-          </div>
-          {(() => {
-            const PARTNERS = [
-              { key: "p1", logo: null, txt: "MONEV" },
-              { key: "p2", logo: null, txt: "VitalDoc" },
-              { key: "p3", logo: "/logos/lifemedi.svg" },
-              { key: "p4", logo: "/logos/jinny-pharmacy.png", logoH: 44 },
-              { key: "p5", logo: null, txt: t("net.p5.name") },
-              { key: "p6", logo: null, txt: t("net.p6.name") },
-              { key: "p7", logo: "/logos/daybeau.png", logoH: 56 },
-              { key: "p8", logo: "/logos/hle-medical.png", logoH: 40 },
-              { key: "p9", logo: "/logos/inflers.svg", logoH: 34 },
-              { key: "p10", logo: "/logos/ilwoo-trading.svg", logoH: 40 },
-            ];
-            return (
-              <div className="net-grid">
-                {PARTNERS.map((p) => (
-                  <div key={p.key} className="net-card">
-                    <div className="net-cat">{t(`net.${p.key}.cat`)}</div>
-                    <div className="net-logo">
-                      {p.logo ? (
-                        (() => {
-                          const im = (
-                            <img
-                              src={p.logo}
-                              alt={`${t(`net.${p.key}.name`)} 로고 · The Wellness N 파트너`}
-                              style={p.logoH ? { maxHeight: p.logoH } : undefined}
-                              loading="lazy"
-                            />
-                          );
-                          const href = urlOf(p.logo);
-                          return href ? (
-                            <a href={href} target="_blank" rel="noopener noreferrer nofollow"
-                               title={`${t(`net.${p.key}.name`)} 홈페이지 (새 창)`}
-                               style={{ display: "inline-flex" }}>{im}</a>
-                          ) : im;
-                        })()
-                      ) : (
-                        <span className="txt-logo">{p.txt}</span>
-                      )}
-                    </div>
-                    <h4>{t(`net.${p.key}.name`)}</h4>
-                    <div className="net-en">{t(`net.${p.key}.en`)}</div>
-                    <p className="net-role">{t(`net.${p.key}.role`)}</p>
-                    <div className="net-give">{t(`net.${p.key}.give`)}</div>
-                  </div>
-                ))}
-              </div>
-            );
-          })()}
-        </div>
-      </section>
-
-      {/* CARE SYSTEM — 안심 케어 3단계 여정 */}
-      <section className="care-band" id="care" data-edit-key="care">
-        <div className="container">
-          <div className="section-head">
-            <span className="section-tag">{t("care.tag")}</span>
-            <h2 className="section-title">{t("care.title1")} <strong>{t("care.title2")}</strong></h2>
-            <p className="section-sub">{t("care.sub")}</p>
-          </div>
-          <div className="care-steps">
-            {["s1", "s2", "s3"].map((s, i) => (
-              <div key={s} className="care-step">
-                <div className="care-num">{i + 1}</div>
-                <div className="care-phase">{t(`care.${s}.phase`)}</div>
-                <h4>{t(`care.${s}.title`)}</h4>
-                <p>{t(`care.${s}.desc`)}</p>
-                <div className="care-by">{t(`care.${s}.by`)}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* DIFFERENTIATORS — 왜 우리인가 */}
-      <section className="why" id="diff" data-edit-key="diff">
+      {/* ═══ 왜 더웰니스앤인가 — 안전 · 차이 · 숫자 · 끊기지 않는 케어 · 협업 방향 ═══ */}
+      <section className="h2-why" id="diff" data-edit-key="diff">
         <div className="container">
           <div className="section-head">
             <span className="section-tag">{t("diff.tag")}</span>
             <h2 className="section-title">{t("diff.title")}</h2>
-            <p className="section-sub">{t("diff.sub")}</p>
+            <p className="section-sub"><b>{t("about.title1")}</b> {t("about.title2")} {t("about.p1")}</p>
           </div>
 
-          <div className="compare">
-            <div className="compare-col compare-bad">
-              <h4>{t("diff.bad.title")}</h4>
-              <h3>{t("diff.bad.sub")}</h3>
-              <ul className="compare-list">
-                <li><span className="icon-x">×</span>{t("diff.b1")}</li>
-                <li><span className="icon-x">×</span>{t("diff.b2")}</li>
-                <li><span className="icon-x">×</span>{t("diff.b3")}</li>
-                <li><span className="icon-x">×</span>{t("diff.b4")}</li>
-                <li><span className="icon-x">×</span>{t("diff.b5")}</li>
-                <li><span className="icon-x">×</span>{t("diff.b6")}</li>
-                <li><span className="icon-x">×</span>{t("diff.b7")}</li>
-              </ul>
-            </div>
-            <div className="compare-col compare-good">
-              <h4>{t("diff.good.title")}</h4>
-              <h3>{t("diff.good.sub")}</h3>
-              <ul className="compare-list">
-                <li><span className="icon-v">✓</span>{t("diff.g1")}</li>
-                <li><span className="icon-v">✓</span>{t("diff.g2")}</li>
-                <li><span className="icon-v">✓</span>{t("diff.g3")}</li>
-                <li><span className="icon-v">✓</span>{t("diff.g4")}</li>
-                <li><span className="icon-v">✓</span>{t("diff.g5")}</li>
-                <li><span className="icon-v">✓</span>{t("diff.g6")}</li>
-                <li><span className="icon-v">✓</span>{t("diff.g7")}</li>
-              </ul>
+          {/* 숫자 — 30+ 병원 · 할인 · 방콕 대비 · 다국어 통역 */}
+          <div className="h2-stats" id="about">
+            {[1, 2, 3, 4].map((n) => (
+              <div key={n} className="h2-stat">
+                <div className="h2-stat-num">{t(`about.stat${n}.num`)}</div>
+                <div className="h2-stat-lbl">{t(`about.stat${n}.lbl`)}</div>
+              </div>
+            ))}
+          </div>
+
+          {/* 안전이 가장 중요합니다 — 법률팀 · 해외 MOU · 셀럽 검증 · 정품·샷수 */}
+          <div className="h2-block" id="trust" data-edit-key="trust">
+            <h3 className="h2-block-title">{t("trust.title")}</h3>
+            <p className="h2-block-sub">{t("trust.sub")}</p>
+            <div className="h2-grid4">
+              {[["⚖️", 1], ["🤝", 2], ["⭐", 3], ["🔬", 4]].map(([ico, n]) => (
+                <div key={n} className="h2-card">
+                  <div className="h2-card-ico">{ico}</div>
+                  <h4>{t(`trust.c${n}.title`)}</h4>
+                  <p>{t(`trust.c${n}.desc`)}</p>
+                </div>
+              ))}
             </div>
           </div>
 
-          <div className="reason-box">
-            <h4>{t("diff.reason.title")}</h4>
-            <p>{t("diff.reason.text")}</p>
+          {/* 기존 의료관광과 무엇이 다른가 — 위 안전망과 겹치는 줄은 뺀 세 줄 + 방콕 */}
+          <div className="h2-block">
+            <h3 className="h2-block-title">{t("why.compare")}</h3>
+            <div className="h2-vs">
+              {[1, 2, 3].map((n) => (
+                <div key={n} className="h2-vs-row">
+                  <div className="h2-vs-bad"><span aria-hidden="true">×</span>{t(`diff.b${n}`)}</div>
+                  <div className="h2-vs-arrow" aria-hidden="true">→</div>
+                  <div className="h2-vs-good"><span aria-hidden="true">✓</span>{t(`diff.g${n}`)}</div>
+                </div>
+              ))}
+            </div>
+            <div className="h2-reason">
+              <b>{t("diff.reason.title")}</b> {t("diff.reason.text")}
+            </div>
           </div>
+
+          {/* 시술 전부터 귀국 후까지 — 전 여정 6단계에 케어 파트너를 붙였다 (예전 '진행 과정' + '끊기지 않는 케어') */}
+          <div className="h2-block" id="process" data-edit-key="proc">
+            <h3 className="h2-block-title" id="care">{t("care.title1")} <strong>{t("care.title2")}</strong></h3>
+            <p className="h2-block-sub">{t("why.journey.sub")}</p>
+            <ol className="h2-journey">
+              {[1, 2, 3, 4, 5, 6].map((n) => {
+                const care = n === 4 ? "s1" : n === 5 ? "s2" : n === 6 ? "s3" : null;
+                return (
+                  <li key={n} className="h2-journey-step">
+                    <span className="h2-journey-n">{String(n).padStart(2, "0")}</span>
+                    <h4>{t(`proc.s${n}.title`)}</h4>
+                    <p>{t(`proc.s${n}.desc`)}</p>
+                    {care ? <div className="h2-journey-by"><b>{t(`care.${care}.title`)}</b> · {t(`care.${care}.by`)}</div> : null}
+                  </li>
+                );
+              })}
+            </ol>
+          </div>
+
+          {/* 전체 협업 방향 */}
+          <div className="h2-block">
+            <h3 className="h2-block-title">{t("biz.flow.title")}</h3>
+            <ol className="h2-flow">
+              {["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8"].map((s, i) => (
+                <li key={s}><span>{i + 1}</span>{t(`biz.flow.${s}`)}</li>
+              ))}
+            </ol>
+            <p className="h2-block-sub" style={{ marginTop: 12 }}>{t("biz.flow.desc")}</p>
+          </div>
+
+          <p className="h2-more-link"><a href={`/${lang}/more`}>{t("more.link")}</a></p>
         </div>
       </section>
 
-      {/* TREATMENTS */}
-      <section className="treatments" id="treatments" data-edit-key="treat">
+      {/* ═══ 시술 카테고리 — 한 줄에 다섯 · 인기 키워드 탭 합침 ═══ */}
+      <section className="treatments h2-tight" id="treatments" data-edit-key="treat">
         <div className="container">
-          <div className="section-head">
+          <div className="section-head" id="keywords">
             <span className="section-tag">{t("treat.tag")}</span>
-            <h2 className="section-title">
-              <strong>{t("treat.title")}</strong>
-            </h2>
+            <h2 className="section-title"><strong>{t("treat.title")}</strong></h2>
             <p className="section-sub">{t("treat.sub")}</p>
           </div>
           <Treatments />
         </div>
       </section>
 
-      {/* 예산별 선택 — 5구간 */}
-      <section className="budget" id="budget" data-edit-key="budget">
-        <div className="container">
-          <div className="section-head">
-            <span className="section-tag">{t("budget.tag")}</span>
-            <h2 className="section-title">{t("budget.title1")} <strong>{t("budget.title2")}</strong></h2>
-            <p className="section-sub">{t("budget.sub")}</p>
-          </div>
-
-          <div className="budget-grid">
-            {["b1", "b2", "b3", "b4", "b5"].map((k) => (
-              <div key={k} className={`budget-card${k === "b5" ? " budget-vip" : ""}`}>
-                <div className="budget-range">{t(`budget.${k}.range`)}</div>
-                <h3>{t(`budget.${k}.name`)}</h3>
-                <ul>
-                  {t(`budget.${k}.items`).split(" · ").map((s) => (
-                    <li key={s}>{s.trim()}</li>
-                  ))}
-                </ul>
-                <p className="budget-for">{t(`budget.${k}.for`)}</p>
-              </div>
-            ))}
-          </div>
-          <p className="price-disclaimer">{t("price.disclaimer")}</p>
-        </div>
-      </section>
-
-      {/* 체류기간별 일정 */}
-      <section className="stay" id="stay" data-edit-key="stay">
-        <div className="container">
-          <div className="section-head">
-            <span className="section-tag">{t("stay.tag")}</span>
-            <h2 className="section-title">{t("stay.title1")} <strong>{t("stay.title2")}</strong></h2>
-            <p className="section-sub">{t("stay.sub")}</p>
-          </div>
-
-          <div className="stay-grid">
-            {["s1", "s2", "s3"].map((k) => (
-              <div key={k} className="stay-card">
-                <div className="stay-dur">{t(`stay.${k}.dur`)}</div>
-                <h3>{t(`stay.${k}.name`)}</h3>
-                <ol>
-                  {t(`stay.${k}.plan`).split(" · ").map((s) => (
-                    <li key={s}>{s.trim()}</li>
-                  ))}
-                </ol>
-                <p className="stay-for">{t(`stay.${k}.for`)}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* PACKAGES */}
-      <section className="packages" id="packages" data-edit-key="pkg">
-        <div className="container">
-          <div className="section-head">
-            <span className="section-tag" style={{ color: "var(--gold)" }}>{t("pkg.tag")}</span>
-            <h2 className="section-title">{t("pkg.title1")} <strong>{t("pkg.title2")}</strong></h2>
-            <p className="section-sub">{t("pkg.sub")}</p>
-          </div>
-
-          {/* 메인 3종 */}
-          <div className="pkg-grid">
-            {[1, 2, 3].map((n) => (
-              <div key={n} className="pkg-card">
-                <span className="pkg-badge">{t(`pkg.s${n}.tag`)}</span>
-                <h3>{t(`pkg.s${n}.title`)}</h3>
-                <p>{t(`pkg.s${n}.sub`)}</p>
-                <ul className="pkg-list">
-                  <li>{t(`pkg.s${n}.l1`)}</li>
-                  <li>{t(`pkg.s${n}.l2`)}</li>
-                  <li>{t(`pkg.s${n}.l3`)}</li>
-                  <li>{t(`pkg.s${n}.l4`)}</li>
-                  <li>{t(`pkg.s${n}.l5`)}</li>
-                </ul>
-                <a href={KAKAO_URL} target="_blank" rel="noopener noreferrer" className="pkg-cta">
-                  {t(`pkg.s${n}.cta`)}
-                </a>
-              </div>
-            ))}
-          </div>
-
-          {/* 추가 분류 */}
-          <h3 className="sub-h3">{t("pkg.extra.title")}</h3>
-          <div className="extra-grid">
-            {[1, 2, 3, 4, 5, 6].map((n) => (
-              <div key={n} className="extra-card">
-                <div className="extra-tag">{t(`pkg.e${n}.tag`)}</div>
-                <h4>{t(`pkg.e${n}.title`)}</h4>
-                <p>{t(`pkg.e${n}.desc`)}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* PROCESS — 이용 절차 (패키지 직후, 구매 고려 시점) */}
-      <section className="process" id="process" data-edit-key="proc">
-        <div className="container">
-          <div className="section-head">
-            <span className="section-tag">{t("proc.tag")}</span>
-            <h2 className="section-title">
-              {t("proc.title1")} <strong>{t("proc.title2")}</strong>
-            </h2>
-            <p className="section-sub">{t("proc.sub")}</p>
-          </div>
-          <div className="process-grid">
-            {[1, 2, 3, 4, 5, 6].map((n) => (
-              <div key={n} className="proc-item">
-                <div className="proc-num">{String(n).padStart(2, "0")}</div>
-                <div>
-                  <h4>{t(`proc.s${n}.title`)}</h4>
-                  <p>{t(`proc.s${n}.desc`)}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* K-POP TOUR */}
-      <section className="kpop" id="kpop" data-edit-key="kpop">
-        <div className="container">
-          <div className="kpop-grid">
-            <div>
-              <span className="section-tag" style={{ color: "var(--gold)" }}>{t("kpop.tag")}</span>
-              <h2 className="section-title">
-                <strong>{t("kpop.title1")}</strong> {t("kpop.title2")}
-              </h2>
-              <div className="section-rule"></div>
-              <p>{t("kpop.p1")}</p>
-              <p>{t("kpop.p2")}</p>
-              <ul className="kpop-points">
-                <li>{t("kpop.pt1")}</li>
-                <li>{t("kpop.pt2")}</li>
-                <li>{t("kpop.pt3")}</li>
-                <li>{t("kpop.pt4")}</li>
-                <li>{t("kpop.pt5")}</li>
-              </ul>
-              <div className="kpop-progs">
-                {["pr1", "pr2", "pr3", "pr4", "pr5", "pr6", "pr7", "pr8"].map((p) => (
-                  <div key={p} className="kpop-prog">
-                    <b>{t(`kpop.${p}.l`)}</b>
-                    <span>{t(`kpop.${p}.d`)}</span>
-                  </div>
-                ))}
-              </div>
-              <a href={KAKAO_URL} target="_blank" rel="noopener noreferrer" className="btn btn-primary">
-                {t("kpop.cta")}
-              </a>
-            </div>
-            <div className="kpop-visual">
-              <div className="kpop-emoji">🎤 🎵 ✨</div>
-              <div className="kpop-title" style={{ whiteSpace: "pre-line" }}>{t("kpop.visual.title")}</div>
-              <div className="kpop-sub">{t("kpop.visual.sub")}</div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* MEMBERSHIP */}
-      <section className="membership" id="membership" data-edit-key="mem">
-        <div className="container">
-          <div className="section-head">
-            <span className="section-tag">{t("mem.tag")}</span>
-            <h2 className="section-title">
-              <strong>{t("mem.title")}</strong>
-            </h2>
-            <p className="section-sub">{t("mem.sub")}</p>
-          </div>
-
-          <div className="mem-grid">
-            <div className="mem-card">
-              <div className="mem-tier">{t("mem.silver.tier")}</div>
-              <div className="mem-price">{t("mem.silver.price")}</div>
-              <ul>
-                <li>{t("mem.silver.l1")}</li>
-                <li>{t("mem.silver.l2")}</li>
-                <li>{t("mem.silver.l3")}</li>
-                <li>{t("mem.silver.l4")}</li>
-              </ul>
-            </div>
-            <div className="mem-card mem-featured">
-              <div className="mem-tier">{t("mem.gold.tier")}</div>
-              <div className="mem-price">{t("mem.gold.price")}</div>
-              <ul>
-                <li>{t("mem.gold.l1")}</li>
-                <li>{t("mem.gold.l2")}</li>
-                <li>{t("mem.gold.l3")}</li>
-                <li>{t("mem.gold.l4")}</li>
-                <li>{t("mem.gold.l5")}</li>
-                <li>{t("mem.gold.l6")}</li>
-              </ul>
-            </div>
-            <div className="mem-card">
-              <div className="mem-tier">{t("mem.platinum.tier")}</div>
-              <div className="mem-price">{t("mem.platinum.price")}</div>
-              <ul>
-                <li>{t("mem.platinum.l1")}</li>
-                <li>{t("mem.platinum.l2")}</li>
-                <li>{t("mem.platinum.l3")}</li>
-                <li>{t("mem.platinum.l4")}</li>
-                <li>{t("mem.platinum.l5")}</li>
-                <li>{t("mem.platinum.l6")}</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* EXECUTIVE PROGRAM — VIP Professional Healthcare Visit (B2B 프리미엄) */}
-      <section className="exec-program" id="executive" data-edit-key="exec">
-        <div className="container">
-          <div className="section-head">
-            <span className="section-tag">{t("exec.tag")}</span>
-            <h2 className="section-title">{t("exec.title1")} <strong>{t("exec.title2")}</strong></h2>
-            <p className="section-sub">{t("exec.sub")}</p>
-          </div>
-
-          <div className="exec-banner">
-            <div className="exec-kicker">VIP Professional Healthcare Visit</div>
-            <div className="exec-name">Executive <span>Benchmarking</span> Program</div>
-            <p className="exec-ko">{t("exec.banner")}</p>
-            <div className="exec-tags">
-              <span>{t("exec.t1")}</span>
-              <span>{t("exec.t2")}</span>
-              <span>{t("exec.t3")}</span>
-              <span>{t("exec.t4")}</span>
-            </div>
-          </div>
-
-          <div className="exec-grid">
-            <div className="exec-card">
-              <div className="exec-num">01</div>
-              <h3>{t("exec.c1.title")}</h3>
-              <ul>
-                <li>{t("exec.c1.l1")}</li>
-                <li>{t("exec.c1.l2")}</li>
-                <li>{t("exec.c1.l3")}</li>
-                <li>{t("exec.c1.l4")}</li>
-              </ul>
-            </div>
-            <div className="exec-card">
-              <div className="exec-num">02</div>
-              <h3>{t("exec.c2.title")}</h3>
-              <ul>
-                <li>{t("exec.c2.l1")}</li>
-                <li>{t("exec.c2.l2")}</li>
-                <li>{t("exec.c2.l3")}</li>
-              </ul>
-            </div>
-            <div className="exec-card">
-              <div className="exec-num">03</div>
-              <h3>{t("exec.c3.title")}</h3>
-              <ul>
-                <li>{t("exec.c3.l1")}</li>
-                <li>{t("exec.c3.l2")}</li>
-                <li>{t("exec.c3.l3")}</li>
-                <li>{t("exec.c3.l4")}</li>
-              </ul>
-            </div>
-          </div>
-
-          <div className="exec-bottom">
-            <div className="exec-price-card">
-              <span className="exec-price-eyebrow">Program Fee</span>
-              <div className="exec-price-amt">KRW 5,000,000<small> {t("exec.price.from")}</small></div>
-              <div className="exec-price-unit">{t("exec.price.unit")}</div>
-              <div className="exec-price-inc">
-                <div className="lbl">{t("exec.price.inclabel")}</div>
-                <div className="chips">
-                  <span>{t("exec.inc1")}</span>
-                  <span>{t("exec.inc2")}</span>
-                  <span>{t("exec.inc3")}</span>
-                  <span>{t("exec.inc4")}</span>
-                  <span>{t("exec.inc5")}</span>
-                </div>
-              </div>
-              <p className="exec-price-note">{t("exec.price.note")}</p>
-            </div>
-            <div className="exec-opt-card">
-              <span className="exec-opt-label">Optional Add-ons</span>
-              <h4>{t("exec.opt.title")}</h4>
-              <ul className="exec-opt-list">
-                <li>{t("exec.opt1")}</li>
-                <li>{t("exec.opt2")}</li>
-                <li>{t("exec.opt3")}</li>
-                <li>{t("exec.opt4")}</li>
-                <li>{t("exec.opt5")}</li>
-              </ul>
-            </div>
-          </div>
-
-          <div className="exec-cta">
-            <div className="t">
-              <b>{t("exec.cta.title")}</b>
-              <p>{t("exec.cta.desc")}</p>
-            </div>
-            <a href="#contact">{t("exec.cta.btn")}</a>
-          </div>
-        </div>
-      </section>
-
-      {/* REAL VOICES — 유형별 리뷰 */}
-      <section className="voices" id="voices" data-edit-key="voices">
+      {/* 어떤 고민이 어떻게 해결되었나 — 시술 목록 바로 아래 */}
+      <section className="voices h2-tight" id="voices" data-edit-key="voices">
         <div className="container">
           <div className="section-head">
             <span className="section-tag">{t("voices.tag")}</span>
-            <h2 className="section-title">
-              {t("voices.title1")} <strong>{t("voices.title2")}</strong>
-            </h2>
-            <p className="section-sub">{t("voices.sub")}</p>
+            <h2 className="section-title">{t("voices.title1")} <strong>{t("voices.title2")}</strong></h2>
           </div>
-
-          <div className="voices-grid">
+          <div className="voices-grid h2-voices">
             {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((n) => (
               <div key={n} className="voice-card">
                 <div className="voice-tag">{t(`voices.v${n}.tag`)}</div>
@@ -964,75 +247,161 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ABOUT — 회사 소개 (초창기: 증거 먼저, 스토리는 뒤로) */}
-      <section className="about" id="about" data-edit-key="about">
-        <div className="container about-grid">
-          <div className="about-text">
-            <span className="section-tag">{t("about.tag")}</span>
-            <h2 className="section-title">
-              {t("about.title1")}<br />
-              <strong>{t("about.title2")}</strong> {t("about.title3")}
-            </h2>
-            <p>{t("about.p1")}</p>
-            <p>{t("about.p2")}</p>
-            <ul className="about-points">
-              <li><span className="check">✓</span>{t("about.pt1")}</li>
-              <li><span className="check">✓</span>{t("about.pt2")}</li>
-              <li><span className="check">✓</span>{t("about.pt3")}</li>
-              <li><span className="check">✓</span>{t("about.pt4")}</li>
-              <li><span className="check">✓</span>{t("about.pt5")}</li>
-              <li><span className="check">✓</span>{t("about.pt6")}</li>
-            </ul>
+      {/* ═══ 협업 업체 소개 — 분야 탭 · 한 줄에 넷 · 더보기 ═══ */}
+      <section className="partners h2-tight" id="partners" data-edit-key="partners">
+        <div className="container">
+          <div className="section-head">
+            <span className="section-tag">{t("partners.tag")}</span>
+            <h2 className="section-title"><strong>{t("partners.title1")}</strong>{t("partners.title2")}</h2>
+            <p className="section-sub">{t("partners.sub")}</p>
           </div>
-          <div className="about-visual">
-            <div className="about-stats">
-              <div className="stat">
-                <div className="stat-num">{t("about.stat1.num")}</div>
-                <div className="stat-label">{t("about.stat1.lbl")}</div>
-              </div>
-              <div className="stat">
-                <div className="stat-num">{t("about.stat2.num")}</div>
-                <div className="stat-label">{t("about.stat2.lbl")}</div>
-              </div>
-              <div className="stat">
-                <div className="stat-num">{t("about.stat3.num")}</div>
-                <div className="stat-label">{t("about.stat3.lbl")}</div>
-              </div>
-              <div className="stat">
-                <div className="stat-num">{t("about.stat4.num")}</div>
-                <div className="stat-label">{t("about.stat4.lbl")}</div>
-              </div>
-            </div>
-          </div>
+          <PartnerBoard />
         </div>
       </section>
 
-      {/* KEYWORD LANDING — SEO 핵심 */}
-      <section className="keywords" id="keywords" data-edit-key="kw">
+      {/* ═══ 고민 · 예산 · 기간별 맞춤 케어 01~07 ═══ */}
+      <section className="h2-plan" id="concern" data-edit-key="concern">
         <div className="container">
           <div className="section-head">
-            <span className="section-tag">{t("kw.tag")}</span>
-            <h2 className="section-title">
-              {t("kw.title1")} <strong>{t("kw.title2")}</strong>
-            </h2>
-            <p className="section-sub">{t("kw.sub")}</p>
+            <span className="section-tag">{t("plan.tag")}</span>
+            <h2 className="section-title">{t("plan.title1")} <strong>{t("plan.title2")}</strong></h2>
+            <p className="section-sub">{t("plan.sub")}</p>
           </div>
 
-          <div className="kw-grid">
-            {[1, 2, 3, 4, 5, 6, 7, 8].map((n) => (
-              <div key={n} className="kw-card">
-                <h4>{t(`kw.c${n}.title`)}</h4>
-                <p>{t(`kw.c${n}.desc`)}</p>
+          {/* 01 고민 — 3 × 2 바둑판. 목적별 추가 패키지(예방형 ~ 웰니스)도 여기 합쳤다 */}
+          <Step n={1} title={t("plan.n1")} sub={t("concern.sub")}>
+            <div className="h2-concern">
+              {["a", "b", "c", "d", "e"].map((k, i) => (
+                <a key={k} href={KAKAO_URL} target="_blank" rel="noopener noreferrer" className="h2-concern-card"
+                   data-track="cta_click" data-category="concern" data-label={`concern_${k}`}>
+                  <span className="h2-concern-n">{i + 1}</span>
+                  <h4>{t(`concern.${k}.q`)}</h4>
+                  <div className="h2-concern-price">{t(`concern.${k}.price`)}</div>
+                  <div className="h2-chips">
+                    {t(`concern.${k}.items`).split(" · ").map((s) => <span key={s}>{s.trim()}</span>)}
+                  </div>
+                  <p className="h2-concern-for">{t(`concern.${k}.for`)}</p>
+                </a>
+              ))}
+              <div className="h2-concern-card h2-budget-card">
+                <h4>{t("plan.budget")}</h4>
+                <ul className="h2-budget">
+                  {["b1", "b2", "b3", "b4", "b5"].map((k) => (
+                    <li key={k}><b>{t(`budget.${k}.range`)}</b><span>{t(`budget.${k}.name`)}</span></li>
+                  ))}
+                </ul>
+                <p className="h2-concern-for">{t("concern.note")}</p>
               </div>
-            ))}
-          </div>
+            </div>
+            <h4 className="h2-sub-title">{t("plan.n1extra")}</h4>
+            <div className="h2-extra">
+              {[1, 2, 3, 4, 5, 6].map((n) => (
+                <div key={n} className="h2-extra-card">
+                  <span className="h2-concern-n">{n + 5}</span>
+                  <div className="h2-extra-tag">{t(`pkg.e${n}.tag`)}</div>
+                  <h5>{t(`pkg.e${n}.title`)}</h5>
+                  <p>{t(`pkg.e${n}.desc`)}</p>
+                </div>
+              ))}
+            </div>
+            <p className="price-disclaimer">{t("price.disclaimer")}</p>
+          </Step>
 
-          <div className="kw-cta">
-            <p>{t("kw.cta.text")}</p>
-            <a href={KAKAO_URL} target="_blank" rel="noopener noreferrer" className="btn btn-primary">
-              {t("kw.cta.btn")}
-            </a>
-          </div>
+          {/* 02 며칠 — 세 칸 한 줄 */}
+          <Step n={2} title={t("plan.n2")} sub={t("stay.sub")} id="stay">
+            <div className="h2-grid3">
+              {["s1", "s2", "s3"].map((k) => (
+                <div key={k} className="h2-card h2-stay">
+                  <div className="h2-stay-dur">{t(`stay.${k}.dur`)}</div>
+                  <h4>{t(`stay.${k}.name`)}</h4>
+                  <ul>{t(`stay.${k}.plan`).split(" · ").map((s) => <li key={s}>{s.trim()}</li>)}</ul>
+                  <p className="h2-concern-for">{t(`stay.${k}.for`)}</p>
+                </div>
+              ))}
+            </div>
+          </Step>
+
+          {/* 03 시그니처 패키지 */}
+          <Step n={3} title={t("plan.n3")} sub={t("pkg.sub")} id="packages">
+            {/* 패키지 카드는 어두운 바탕용으로 만들어져 있다 — 어두운 판 위에 올린다 */}
+            <div className="packages h2-pkg-wrap" data-edit-key="pkg">
+            <div className="pkg-grid">
+              {[1, 2, 3].map((n) => (
+                <div key={n} className="pkg-card">
+                  <span className="pkg-badge">{t(`pkg.s${n}.tag`)}</span>
+                  <h3>{t(`pkg.s${n}.title`)}</h3>
+                  <p>{t(`pkg.s${n}.sub`)}</p>
+                  <ul className="pkg-list">
+                    {[1, 2, 3, 4, 5].map((l) => <li key={l}>{t(`pkg.s${n}.l${l}`)}</li>)}
+                  </ul>
+                  <a href={KAKAO_URL} target="_blank" rel="noopener noreferrer" className="pkg-cta">{t(`pkg.s${n}.cta`)}</a>
+                </div>
+              ))}
+            </div>
+            </div>
+          </Step>
+
+          {/* 04 여행 · 문화 — K-pop Tour 프로그램을 바둑판으로 */}
+          <Step n={4} title={t("plan.n4")} sub={t("kpop.p1")} id="kpop">
+            <div className="h2-kpop">
+              {[["🏋️", "pr1"], ["🎤", "pr2"], ["👑", "pr3"], ["📸", "pr4"], ["🍸", "pr5"], ["💆", "pr6"], ["🧴", "pr7"], ["🫧", "pr8"]].map(([ico, p]) => (
+                <div key={p} className="h2-kpop-tile">
+                  <span className="h2-kpop-ico" aria-hidden="true">{ico}</span>
+                  <b>{t(`kpop.${p}.l`)}</b>
+                  <span>{t(`kpop.${p}.d`)}</span>
+                </div>
+              ))}
+            </div>
+            <ul className="h2-kpop-points">
+              {[1, 2, 3, 4].map((n) => <li key={n}>{t(`kpop.pt${n}`)}</li>)}
+            </ul>
+          </Step>
+
+          {/* 05 매년 관리 — 멤버십 */}
+          <Step n={5} title={t("plan.n5")} sub={t("plan.n5sub")} id="membership">
+            <div className="h2-grid3 h2-mem">
+              {([["silver", 4], ["gold", 6], ["platinum", 6]] as const).map(([tier, lines]) => (
+                <div key={tier} className={`h2-card h2-mem-card${tier === "gold" ? " is-featured" : ""}`}>
+                  <div className="h2-mem-tier">{t(`mem.${tier}.tier`)}</div>
+                  <div className="h2-mem-price">{t(`mem.${tier}.price`)}</div>
+                  <ul>{Array.from({ length: lines }, (_, i) => <li key={i}>{t(`mem.${tier}.l${i + 1}`)}</li>)}</ul>
+                </div>
+              ))}
+            </div>
+          </Step>
+
+          {/* 06 해외 CEO · 의사 방문 — 01 02 03 한 줄 */}
+          <Step n={6} title={t("plan.n6")} sub={t("plan.n6sub")} id="executive">
+            <div className="h2-exec-banner">
+              <div className="h2-exec-name">{t("exec.title1")} — {t("exec.title2")}</div>
+              <p>{t("exec.banner")}</p>
+              <div className="h2-chips">
+                {[1, 2, 3, 4].map((n) => <span key={n}>{t(`exec.t${n}`)}</span>)}
+              </div>
+            </div>
+            <div className="h2-grid3">
+              {([[1, 4], [2, 3], [3, 4]] as const).map(([c, lines]) => (
+                <div key={c} className="h2-card">
+                  <div className="h2-exec-num">0{c}</div>
+                  <h4>{t(`exec.c${c}.title`)}</h4>
+                  <ul>{Array.from({ length: lines }, (_, i) => <li key={i}>{t(`exec.c${c}.l${i + 1}`)}</li>)}</ul>
+                </div>
+              ))}
+            </div>
+            <div className="h2-exec-price">
+              <div><span className="h2-exec-eyebrow">Program Fee</span>
+                <b>KRW 5,000,000</b> <small>{t("exec.price.from")} · {t("exec.price.unit")}</small></div>
+              <div className="h2-chips">{[1, 2, 3, 4, 5].map((n) => <span key={n}>{t(`exec.inc${n}`)}</span>)}</div>
+              <p className="h2-concern-for">{t("exec.price.note")}</p>
+            </div>
+          </Step>
+
+          {/* 07 추가 옵션 (하이엔드) */}
+          <Step n={7} title={t("plan.n7")} sub={t("exec.opt.title")}>
+            <div className="h2-opts">
+              {[1, 2, 3, 4, 5].map((n) => <div key={n} className="h2-opt">{t(`exec.opt${n}`)}</div>)}
+            </div>
+          </Step>
         </div>
       </section>
 
@@ -1073,29 +442,21 @@ export default function Home() {
 
       {/* 플로팅 문의 버튼 — 카카오톡 · WhatsApp */}
       <div className="float-contact" aria-label={t("float.aria")}>
-        <a href={KAKAO_URL} target="_blank" rel="noopener noreferrer"
-          className="float-btn float-kakao"
+        <a href={KAKAO_URL} target="_blank" rel="noopener noreferrer" className="float-btn float-kakao"
           data-track="cta_click" data-category="contact" data-label="float_kakao">
           <span className="float-ico" aria-hidden="true">💬</span>
           <span className="float-label">{t("float.kakao")}</span>
         </a>
-        <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer"
-          className="float-btn float-whatsapp"
+        <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="float-btn float-whatsapp"
           data-track="cta_click" data-category="contact" data-label="float_whatsapp">
           <span className="float-ico" aria-hidden="true">📱</span>
           <span className="float-label">{t("float.whatsapp")}</span>
         </a>
-
         <a href="https://www.bookpublishingwithess.com" target="_blank" rel="noopener noreferrer"
-
           className="float-btn float-publish"
-
           data-track="cta_click" data-category="contact" data-label="float_publish">
-
           <span className="float-ico" aria-hidden="true">📚</span>
-
           <span className="float-label">{t("float.publish")}</span>
-
         </a>
       </div>
     </>

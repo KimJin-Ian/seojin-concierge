@@ -135,6 +135,17 @@ export default function SiteHeader() {
           >
             {t("nav.kakao")}
           </a>
+          {/* 맨 위 카톡 문의 옆에 WhatsApp 도 (대표님 요청 2026-10-13) — 외국 손님은 카톡이 없다 */}
+          <a
+            href="https://whatsapp.com/channel/0029VbD3dlqGU3BBeU7sKN15"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="nav-cta nav-cta-wa"
+            onClick={close}
+            data-track="cta_click" data-category="contact" data-label="header_whatsapp"
+          >
+            {t("nav.whatsapp")}
+          </a>
         </div>
         <button
           className={`menu-toggle ${open ? "open" : ""}`}

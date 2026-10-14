@@ -1,14 +1,25 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useLang } from "./LangContext";
 
 type Treatment = { icon: string; titleKey: string; descKey: string; fallbackTitle: string };
-type TabKey = "beauty" | "medical" | "wellness";
+type TabKey = "popular" | "beauty" | "medical" | "wellness";
 
 // 시술명(title)은 영어/원어 그대로 표시하기 위해 fallback 사용.
 // 상세 설명(desc)만 i18n.
 const DATA: Record<TabKey, Treatment[]> = {
+  // 인기 키워드 — 예전에는 따로 있던 "가장 많이 찾는 키워드" 칸을 시술 목록에 합쳤다 (2026-10-13 대표님 요청)
+  popular: [
+    { icon: "✧", titleKey: "kw.c1.title", descKey: "kw.c1.desc", fallbackTitle: "줄기세포" },
+    { icon: "✧", titleKey: "kw.c2.title", descKey: "kw.c2.desc", fallbackTitle: "피코토닝" },
+    { icon: "✧", titleKey: "kw.c3.title", descKey: "kw.c3.desc", fallbackTitle: "팔자주름" },
+    { icon: "✧", titleKey: "kw.c4.title", descKey: "kw.c4.desc", fallbackTitle: "탈모" },
+    { icon: "✧", titleKey: "kw.c5.title", descKey: "kw.c5.desc", fallbackTitle: "쥬베룩" },
+    { icon: "✧", titleKey: "kw.c6.title", descKey: "kw.c6.desc", fallbackTitle: "티타늄·레이저" },
+    { icon: "✧", titleKey: "kw.c7.title", descKey: "kw.c7.desc", fallbackTitle: "안티에이징·종합검진" },
+    { icon: "✧", titleKey: "kw.c8.title", descKey: "kw.c8.desc", fallbackTitle: "리프팅·HIFU·울쎄라" },
+  ],
   beauty: [
     { icon: "◈", titleKey: "", descKey: "treat.b1.d", fallbackTitle: "울쎄라 (Ulthera)" },
     { icon: "◇", titleKey: "", descKey: "treat.b2.d", fallbackTitle: "써마지 (Thermage FLX)" },
@@ -43,6 +54,7 @@ const DATA: Record<TabKey, Treatment[]> = {
 
 const TABS: { key: TabKey; labelKey: string }[] = [
   { key: "beauty", labelKey: "treat.tab.beauty" },
+  { key: "popular", labelKey: "treat.tab.popular" },
   { key: "medical", labelKey: "treat.tab.medical" },
   { key: "wellness", labelKey: "treat.tab.wellness" },
 ];
@@ -50,6 +62,14 @@ const TABS: { key: TabKey; labelKey: string }[] = [
 export default function Treatments() {
   const { t } = useLang();
   const [tab, setTab] = useState<TabKey>("beauty");
+
+  // 메뉴의 "키워드"(/#keywords)로 들어오면 인기 키워드 탭을 연다 — 예전 키워드 칸이 여기로 합쳐졌다
+  useEffect(() => {
+    const sync = () => { if (window.location.hash === "#keywords") setTab("popular"); };
+    sync();
+    window.addEventListener("hashchange", sync);
+    return () => window.removeEventListener("hashchange", sync);
+  }, []);
 
   return (
     <>
