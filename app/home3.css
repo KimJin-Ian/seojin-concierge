@@ -1,0 +1,218 @@
+/* ═══ 2026-10-23 첫 화면 2차 개편 (대표님 수정사항 10/21) ═══
+   투박함을 줄이려고: 한 칸에 말 한 덩이 · 넉넉한 여백 · 큰 네모 버튼 · 번호로 흐름을 보인다 */
+
+/* ── 1. 첫 화면 — 의료관광 소개 ── */
+.h3-hero { min-height: 92vh; }
+.h3-hero h1 { font-size: 50px; line-height: 1.22; word-break: keep-all; }
+.h3-hero .hero-sub { margin-bottom: 22px; }
+.h3-hero-points { list-style: none; padding: 0; margin: 0 0 30px; display: grid; gap: 8px; }
+.h3-hero-points li { font-size: 15.5px; color: var(--ink); display: flex; align-items: center; gap: 10px; }
+.h3-hero-points li::before { content: "✓"; width: 22px; height: 22px; border-radius: 50%; background: var(--gold); color: #fff; font-size: 12px; display: inline-flex; align-items: center; justify-content: center; flex: none; }
+
+/* ── 2. 회사 소개 ── */
+.h3-company .section-sub { max-width: 640px; margin-left: auto; margin-right: auto; }
+
+/* ── 3. 왜 더웰니스앤인가 ── */
+.h3-reasons { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 8px 0 40px; }
+.h3-reason { background: var(--white); border: 1px solid var(--line); border-radius: 18px; padding: 28px 24px; }
+.h3-reason-num { font-size: 40px; font-weight: 600; color: var(--gold-deep); line-height: 1; margin-bottom: 14px; letter-spacing: -.01em; }
+.h3-reason h3 { font-size: 19px; font-weight: 600; color: var(--ink); margin-bottom: 8px; }
+.h3-reason p { font-size: 14.5px; color: var(--ink-soft); line-height: 1.75; word-break: keep-all; }
+
+.h3-vs { border: 1px solid var(--line); border-radius: 16px; overflow: hidden; background: var(--white); }
+.h3-vs-row { display: grid; grid-template-columns: 120px 1fr 1fr; border-top: 1px solid var(--line); }
+.h3-vs-row:first-child { border-top: 0; }
+.h3-vs-row > span { padding: 14px 16px; font-size: 14.5px; line-height: 1.55; word-break: keep-all; display: flex; gap: 8px; align-items: flex-start; }
+.h3-vs-head > span { font-weight: 600; font-size: 13.5px; letter-spacing: .03em; padding: 12px 16px; }
+.h3-vs-head .h3-vs-old { background: #f4f1ec; color: var(--ink-soft); }
+.h3-vs-head .h3-vs-new { background: var(--accent); color: #fff; }
+.h3-vs-k { font-weight: 600; color: var(--ink); background: var(--cream); }
+.h3-vs-old { color: #7a7368; }
+.h3-vs-old i { color: #c0563f; font-style: normal; font-weight: 700; }
+.h3-vs-new { color: var(--ink); background: #f4f8f6; font-weight: 500; }
+.h3-vs-new i { color: var(--accent); font-style: normal; font-weight: 700; }
+
+/* ── 4. 진행 방법 — 01 → 06 ── */
+.h3-proc { background: var(--white); border-top: 1px solid var(--line); }
+.h3-steps { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; counter-reset: none; }
+.h3-step { position: relative; background: var(--bg); border: 1px solid var(--line); border-radius: 16px; padding: 22px 20px 20px; }
+.h3-step-n { display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 50%; background: var(--ink); color: #fff; font-weight: 600; font-size: 14px; margin-bottom: 12px; }
+.h3-step h3 { font-size: 17px; font-weight: 600; color: var(--ink); margin-bottom: 6px; }
+.h3-step p { font-size: 14px; color: var(--ink-soft); line-height: 1.7; word-break: keep-all; }
+.h3-step-by { margin-top: 10px; font-size: 12.5px; color: var(--gold-deep); background: var(--cream); border-radius: 8px; padding: 6px 10px; }
+/* 다음 칸으로 가는 화살표 — 같은 줄 안에서만 */
+.h3-step:not(:nth-child(3n))::after { content: "→"; position: absolute; right: -14px; top: 30px; color: var(--gold); font-size: 18px; z-index: 1; }
+
+/* ── 5. 이런 목적이라면? ── */
+.h3-purpose { background: var(--bg); }
+.h3-purpose .h2-extra-card { text-decoration: none; color: inherit; transition: border-color .2s, transform .2s; }
+.h3-purpose .h2-extra-card:hover { border-color: var(--gold); transform: translateY(-2px); }
+
+/* ── 6. 시술 예시 — 큰 네모 넷 ── */
+.tt-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+.tt-tile { background: var(--white); border: 1px solid var(--line); border-radius: 18px; padding: 24px 20px 18px; display: flex; flex-direction: column; min-height: 250px; transition: border-color .2s, box-shadow .2s; }
+.tt-tile.is-open { border-color: var(--gold); box-shadow: 0 10px 30px rgba(138, 109, 71, .12); }
+.tt-ico { font-size: 28px; color: var(--gold-deep); margin-bottom: 12px; }
+.tt-name { font-size: 18px; font-weight: 600; color: var(--ink); margin-bottom: 6px; }
+.tt-desc { font-size: 13.5px; color: var(--ink-soft); line-height: 1.65; margin-bottom: 12px; word-break: keep-all; }
+.tt-preview { list-style: none; padding: 0; margin: 0 0 14px; display: flex; flex-wrap: wrap; gap: 6px; }
+.tt-preview li { font-size: 12px; background: var(--cream); color: var(--gold-deep); border-radius: 999px; padding: 3px 10px; }
+.tt-more { margin-top: auto; align-self: flex-start; border: 0; background: var(--ink); color: #fff; border-radius: 999px; padding: 9px 18px; font-size: 13.5px; font-weight: 600; cursor: pointer; font-family: inherit; }
+.tt-tile.is-open .tt-more { background: var(--gold); }
+.tt-panel { margin-top: 18px; }
+.tt-panel[hidden] { display: none; }
+.tt-panel-title { font-size: 16px; font-weight: 600; color: var(--ink); margin-bottom: 12px; }
+
+/* ── 7. 고민 해결 — 큰 버튼 ── */
+.h3-vgrid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+.h3-vtile { text-align: left; background: var(--white); border: 1px solid var(--line); border-radius: 16px; padding: 18px 18px 16px; cursor: pointer; font-family: inherit; display: flex; flex-direction: column; gap: 8px; min-height: 120px; position: relative; transition: border-color .2s; }
+.h3-vtile:hover, .h3-vtile.is-open { border-color: var(--gold); }
+.h3-vtile .voice-tag { align-self: flex-start; }
+.h3-vtile-title { font-size: 16px; font-weight: 600; color: var(--ink); line-height: 1.45; word-break: keep-all; padding-right: 24px; }
+.h3-vtile-desc { font-size: 14px; color: var(--ink-soft); line-height: 1.7; word-break: keep-all; }
+.h3-vtile-more { position: absolute; right: 16px; top: 16px; width: 24px; height: 24px; border-radius: 50%; background: var(--cream); color: var(--gold-deep); display: inline-flex; align-items: center; justify-content: center; font-weight: 700; }
+.h3-vfoot { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; margin-top: 22px; }
+
+/* ── 8. 고민으로 병원 찾기 — 큰 네모 ── */
+.h3-find { background: var(--cream); }
+.cf-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; }
+.cf-tile { background: var(--white); border: 2px solid transparent; border-radius: 18px; padding: 22px 14px; cursor: pointer; font-family: inherit; display: flex; flex-direction: column; align-items: center; gap: 8px; text-align: center; box-shadow: 0 4px 16px rgba(0,0,0,.05); transition: border-color .2s, transform .2s; min-height: 150px; justify-content: center; }
+.cf-tile:hover { transform: translateY(-2px); }
+.cf-tile.active { border-color: var(--gold-deep); }
+.cf-ico { font-size: 30px; }
+.cf-name { font-size: 15px; font-weight: 600; color: var(--ink); line-height: 1.4; word-break: keep-all; }
+.cf-n { font-size: 12.5px; color: var(--gold-deep); font-weight: 600; }
+.cf-result { margin-top: 18px; background: var(--white); border-radius: 18px; padding: 18px; border: 1px solid var(--line); }
+.cf-result-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; font-size: 16px; color: var(--ink); }
+.cf-result-head .pb-more { margin-top: 0; }
+
+/* ── 9. 협력사 — 분야별로 펼침 · 한 줄에 다섯 ── */
+.pb3 .pb-jump { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 8px; margin-bottom: 26px; position: sticky; top: 70px; z-index: 5; background: rgba(250, 250, 247, .94); padding: 10px 6px; border-radius: 14px; backdrop-filter: blur(6px); }
+.pb-jump-label { font-size: 12.5px; color: var(--ink-soft); letter-spacing: .04em; margin-right: 4px; }
+.pb-section { scroll-margin-top: 140px; margin-bottom: 34px; }
+.pb-section-title { font-size: 19px; font-weight: 600; color: var(--ink); margin-bottom: 12px; padding-left: 10px; border-left: 3px solid var(--gold); }
+.pb-section-title .pb-n { color: var(--gold-deep); font-size: 15px; margin-left: 4px; }
+.pb3 .pb-grid, .cf .pb-grid { grid-template-columns: repeat(5, 1fr); gap: 10px; }
+.pb3 .pb-card, .cf .pb-card { padding: 14px 10px 10px; }
+.pb3 .pb-logo, .cf .pb-logo { height: 76px; }
+.pb3 .pb-name, .cf .pb-name { font-size: 14px; margin-top: 8px; }
+
+/* ── 10. 언론 보도 ── */
+.nw { background: var(--white); border-top: 1px solid var(--line); }
+.nw-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+.nw-card { display: flex; flex-direction: column; gap: 8px; background: var(--bg); border: 1px solid var(--line); border-radius: 16px; padding: 18px 18px 16px; text-decoration: none; color: inherit; transition: border-color .2s, transform .2s; }
+.nw-card:hover { border-color: var(--gold); transform: translateY(-2px); }
+.nw-meta { display: flex; justify-content: space-between; gap: 8px; font-size: 12.5px; color: var(--ink-soft); }
+.nw-meta b { color: var(--gold-deep); font-weight: 600; }
+.nw-title { font-size: 16px; font-weight: 600; color: var(--ink); line-height: 1.5; word-break: keep-all; }
+.nw-sum { font-size: 13.5px; color: var(--ink-soft); line-height: 1.65; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+.nw-read { margin-top: auto; font-size: 13px; font-weight: 600; color: var(--accent); }
+.nw-foot { display: flex; flex-direction: column; align-items: center; gap: 10px; margin-top: 22px; }
+.nw-updated { font-size: 12px; color: var(--ink-soft); }
+
+/* ── 11. 인스타그램 ── */
+.ig-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+.ig-grid .instagram-media { min-width: 0 !important; width: 100% !important; margin: 0 !important; }
+
+/* ── CEO 캠프 ── */
+.h3-camp { padding: 88px 0; background: linear-gradient(180deg, #1f2a25 0%, #2d4a3e 100%); color: #fff; }
+.h3-camp .section-tag { color: var(--gold); }
+.h3-camp .section-title { color: #fff; }
+.h3-camp .section-title strong { color: var(--gold); }
+.h3-camp .section-sub { color: rgba(255,255,255,.78); max-width: 680px; margin-left: auto; margin-right: auto; }
+.h3-camp-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-top: 8px; }
+.h3-camp-card { background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.14); border-radius: 16px; padding: 22px 18px; }
+.h3-camp-ico { font-size: 26px; display: block; margin-bottom: 10px; }
+.h3-camp-card h3 { font-size: 16.5px; font-weight: 600; margin-bottom: 6px; color: #fff; }
+.h3-camp-card p { font-size: 13.5px; line-height: 1.7; color: rgba(255,255,255,.78); word-break: keep-all; }
+.h3-camp-mem { margin-top: 16px; border-radius: 16px; padding: 18px 20px; background: rgba(184,149,106,.18); border: 1px solid rgba(184,149,106,.45); }
+.h3-camp-mem b { display: block; font-size: 16px; color: var(--gold); margin-bottom: 4px; }
+.h3-camp-mem p { font-size: 14px; line-height: 1.7; color: rgba(255,255,255,.88); word-break: keep-all; }
+.h3-camp-ev { margin-top: 16px; border-radius: 16px; padding: 22px 22px 18px; background: #fff; color: var(--ink); }
+.h3-camp-ev-tag { display: inline-block; font-size: 11.5px; font-weight: 600; color: var(--gold-deep); background: var(--cream); border-radius: 999px; padding: 3px 10px; margin-bottom: 8px; }
+.h3-camp-ev h3 { font-size: 19px; font-weight: 700; margin-bottom: 8px; }
+.h3-camp-ev-when, .h3-camp-ev-who { font-size: 14px; color: var(--ink); margin-bottom: 4px; }
+.h3-camp-ev ul { margin: 10px 0 0 18px; display: grid; gap: 6px; }
+.h3-camp-ev li { font-size: 14px; line-height: 1.65; color: var(--ink-soft); word-break: keep-all; }
+.h3-camp-ev-note { font-size: 12px; color: var(--ink-soft); margin-top: 8px; }
+
+/* ── 시술 전후 사진 (블로그) ── */
+.tw-ba-section { padding: 56px 0 24px; }
+.ba-tabs { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin: 6px 0 20px; }
+.ba-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+.ba-card { margin: 0; background: var(--white); border: 1px solid var(--line); border-radius: 16px; padding: 12px; }
+.ba-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+.ba-side { position: relative; border-radius: 10px; overflow: hidden; background: #eee; aspect-ratio: 4 / 3; }
+.ba-side img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.ba-lbl { position: absolute; left: 8px; top: 8px; font-size: 11.5px; font-weight: 700; letter-spacing: .06em; background: rgba(0,0,0,.6); color: #fff; border-radius: 6px; padding: 3px 8px; }
+.ba-lbl.is-after { background: var(--gold-deep); }
+.ba-card figcaption { font-size: 13px; color: var(--ink-soft); margin-top: 10px; text-align: center; }
+.ba-card figcaption b { color: var(--ink); }
+.ba-note { font-size: 12px; color: var(--ink-soft); text-align: center; margin-top: 16px; line-height: 1.6; word-break: keep-all; }
+
+/* ── 떠 있는 문의 버튼 — 카톡 · WhatsApp · 전화 ── */
+.float-contact.f3 .float-ico { display: inline-flex; }
+.float-phone { background: #1f2a25; color: #fff; }
+@media (max-width: 640px) {
+  /* 휴대폰 — 아이콘만이지만 모양으로 알아보게 (카톡 말풍선 · WhatsApp 로고 · 수화기) */
+  .float-contact.f3 .float-btn { width: 50px; height: 50px; padding: 0; justify-content: center; }
+  .float-contact.f3 .float-ico svg { width: 24px; height: 24px; }
+}
+
+/* ── 맨 아래 연락처 ── */
+.foot-reach { display: flex; flex-wrap: wrap; gap: 6px 16px; margin-top: 12px; font-size: 13.5px; }
+.foot-reach a { color: inherit; opacity: .9; text-decoration: underline; text-underline-offset: 3px; }
+
+/* ── 반응형 ── */
+@media (max-width: 1080px) {
+  .pb3 .pb-grid, .cf .pb-grid { grid-template-columns: repeat(4, 1fr); }
+  .tt-grid { grid-template-columns: repeat(2, 1fr); }
+  .h3-camp-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 900px) {
+  .h3-hero h1 { font-size: 36px; }
+  .h3-reasons { grid-template-columns: 1fr; }
+  .h3-steps { grid-template-columns: repeat(2, 1fr); }
+  .h3-step::after { display: none; }
+  .h3-vgrid { grid-template-columns: repeat(2, 1fr); }
+  .cf-grid { grid-template-columns: repeat(3, 1fr); }
+  .nw-grid { grid-template-columns: repeat(2, 1fr); }
+  .pb3 .pb-grid, .cf .pb-grid { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 560px) {
+  .h3-hero { min-height: auto; padding-bottom: 40px; }
+  .h3-hero h1 { font-size: 29px; }
+  .h3-vs-row { grid-template-columns: 74px 1fr 1fr; }
+  .h3-vs-row > span { padding: 10px 8px; font-size: 12.5px; }
+  .h3-steps { grid-template-columns: 1fr; }
+  .tt-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
+  .tt-tile { min-height: 0; padding: 16px 14px 14px; }
+  .tt-name { font-size: 16px; }
+  .tt-desc { display: none; }
+  .h3-vgrid { grid-template-columns: 1fr; }
+  .cf-grid { grid-template-columns: repeat(2, 1fr); }
+  .cf-tile { min-height: 120px; padding: 16px 10px; }
+  .nw-grid { grid-template-columns: 1fr; }
+  .ig-grid { grid-template-columns: 1fr; }
+  .h3-camp { padding: 64px 0; }
+  .h3-camp-grid { grid-template-columns: 1fr; }
+  .ba-grid { grid-template-columns: 1fr; }
+  .pb3 .pb-jump { top: 60px; }
+  .pb3 .pb-grid, .cf .pb-grid { grid-template-columns: repeat(3, 1fr); gap: 8px; }
+  .pb3 .pb-card, .cf .pb-card { padding: 10px 6px 8px; border-radius: 12px; }
+  .pb3 .pb-logo, .cf .pb-logo { height: 52px; }
+  .pb3 .pb-name, .cf .pb-name { font-size: 12.5px; }
+  .pb3 .pb-badge, .cf .pb-badge { display: none; }
+  .pb3 .pb-tag, .cf .pb-tag { font-size: 10.5px; }
+  .pb3 .pb-price, .cf .pb-price { font-size: 11px; }
+  .pb3 .pb-more, .cf .pb-more { font-size: 11.5px; padding: 5px 10px; }
+  .pb3 .pb-card.is-open, .cf .pb-card.is-open { grid-column: 1 / -1; }
+}
+
+/* 협력사 분야 칸 — 전역 section { padding: 120px } 이 붙어 분야 사이가 휑했다 */
+.pb3 .pb-section { padding: 0; }
+
+/* 맨 위 메뉴 — 메뉴가 많아 1440px 아래에서는 오른쪽 WhatsApp 버튼이 잘렸다.
+   WhatsApp 은 떠 있는 버튼에 늘 있으니 좁은 화면에서는 메뉴에서만 뺀다 */
+@media (max-width: 1440px) { .nav-right .nav-cta-wa { display: none; } }
+@media (max-width: 1360px) and (min-width: 1025px) { .nav-menu { gap: 18px; } .nav-menu a { font-size: 13px; } }

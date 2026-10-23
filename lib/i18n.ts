@@ -14,6 +14,7 @@ export const LANGS: { code: Lang; label: string; short: string }[] = [
 ];
 
 import { HOME2 } from "./i18n-home2";
+import { HOME3 } from "./i18n-home3";
 
 type Dict = Record<string, string>;
 
@@ -4470,15 +4471,15 @@ const id: Dict = {
   "proc.s6.desc": "Pengingat jadwal pasca pulang, booking ulang prioritas, keanggotaan: perawatan rutin + diskon 5~20% + konsultasi hukum",
 };
 
-// 2026-10-13 첫 화면 개편 문구는 i18n-home2.ts 에 따로 두고 여기서 덮어쓴다
+// 2026-10-13 첫 화면 개편 문구는 i18n-home2.ts, 10/23 2차 개편 문구는 i18n-home3.ts 에 따로 두고 여기서 덮어쓴다
 export const DICTIONARIES: Record<Lang, Dict> = {
-  ko: { ...ko, ...HOME2.ko },
-  en: { ...en, ...HOME2.en },
-  zh: { ...zh, ...HOME2.zh },
-  ja: { ...ja, ...HOME2.ja },
-  th: { ...th, ...HOME2.th },
-  vi: { ...vi, ...HOME2.vi },
-  id: { ...id, ...HOME2.id },
+  ko: { ...ko, ...HOME2.ko, ...HOME3.ko },
+  en: { ...en, ...HOME2.en, ...HOME3.en },
+  zh: { ...zh, ...HOME2.zh, ...HOME3.zh },
+  ja: { ...ja, ...HOME2.ja, ...HOME3.ja },
+  th: { ...th, ...HOME2.th, ...HOME3.th },
+  vi: { ...vi, ...HOME2.vi, ...HOME3.vi },
+  id: { ...id, ...HOME2.id, ...HOME3.id },
 };
 
 export function tFor(lang: Lang, key: string): string {

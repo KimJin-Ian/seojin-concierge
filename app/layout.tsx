@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import Script from "next/script";
 import "./globals.css";
 import "./home2.css"; // 2026-10-13 첫 화면 개편 (바둑판 배치)
+import "./home3.css"; // 2026-10-23 첫 화면 2차 개편
 import Analytics from "./components/Analytics";
 import { Analytics as VercelAnalytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";

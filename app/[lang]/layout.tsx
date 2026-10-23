@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { LangProvider } from "../components/LangContext";
+import FloatContact from "../components/FloatContact";
 import type { Lang } from "@/lib/i18n";
 import { VALID_LANGS } from "@/lib/langs";
 
@@ -30,13 +31,13 @@ const TITLE: Record<Lang, string> = {
 
 /** Meta description per language */
 const DESCRIPTION: Record<Lang, string> = {
-  ko: "더웰니스앤(The Wellness N) — 강남 프리미엄 병원 협업 · 줄기세포·피코토닝·리프팅·안티에이징·K-pop 투어. 방콕보다 저렴한 K-Beauty. 실시간 통역·맞춤 회복 케어.",
-  en: "Gangnam premium clinic network · Stem cell, Pico toning, lifting, anti-aging, K-pop tour packages. More affordable than Bangkok. Real-time interpreter & personalized recovery care.",
-  zh: "首尔江南高端诊所合作网络 · 干细胞·皮秒·提升·抗衰老·K-pop旅游套餐。比曼谷更实惠的K-Beauty。实时翻译·个性化恢复护理。",
-  ja: "江南プレミアムクリニック提携 · 幹細胞・ピコトーニング・リフトアップ・アンチエイジング・K-popツアー。バンコクより安いK-Beauty。リアルタイム通訳・カスタム回復ケア。",
-  th: "เครือข่ายคลินิกพรีเมียมย่านกังนัม · เซลล์ต้นกำเนิด·พิโคโทนนิ่ง·ยกกระชับ·ต้านวัย·K-pop ทัวร์ ราคาถูกกว่าบางกอก การแปลแบบเรียลไทม์",
-  vi: "Mạng lưới phòng khám cao cấp Gangnam · Tế bào gốc, Pico toning, nâng mặt, chống lão hóa, K-pop tour. Giá rẻ hơn Bangkok. Phiên dịch thời gian thực.",
-  id: "Jaringan klinik premium Gangnam · Sel punca, Pico toning, lifting, anti-penuaan, tur K-pop. Lebih terjangkau dari Bangkok. Penerjemah real-time & perawatan pemulihan.",
+  ko: "더웰니스앤(The Wellness N) — 강남 프리미엄 병원 협업 · 줄기세포·피코토닝·리프팅·안티에이징·K-pop 투어. 해외 대비 절반 이상 저렴한 Korea Medical Tour. 실시간 통역·맞춤 회복 케어.",
+  en: "Gangnam premium clinic network · Stem cell, Pico toning, lifting, anti-aging, K-pop tour packages. Less than half the cost of medical travel abroad. Real-time interpreter & personalized recovery care.",
+  zh: "首尔江南高端诊所合作网络 · 干细胞·皮秒·提升·抗衰老·K-pop旅游套餐。比海外便宜一半以上。实时翻译·个性化恢复护理。",
+  ja: "江南プレミアムクリニック提携 · 幹細胞・ピコトーニング・リフトアップ・アンチエイジング・K-popツアー。海外より半額以下。リアルタイム通訳・カスタム回復ケア。",
+  th: "เครือข่ายคลินิกพรีเมียมย่านกังนัม · เซลล์ต้นกำเนิด·พิโคโทนนิ่ง·ยกกระชับ·ต้านวัย·K-pop ทัวร์ ราคาถูกกว่าต่างประเทศครึ่งหนึ่ง การแปลแบบเรียลไทม์",
+  vi: "Mạng lưới phòng khám cao cấp Gangnam · Tế bào gốc, Pico toning, nâng mặt, chống lão hóa, K-pop tour. Rẻ hơn một nửa so với nước ngoài. Phiên dịch thời gian thực.",
+  id: "Jaringan klinik premium Gangnam · Sel punca, Pico toning, lifting, anti-penuaan, tur K-pop. Setengah harga dibanding luar negeri. Penerjemah real-time & perawatan pemulihan.",
 };
 
 type Props = {
@@ -92,6 +93,8 @@ export default function LangLayout({ children, params }: Props) {
     // → 서버 렌더 시 올바른 언어로 즉시 초기화 (SEO 최적화)
     <LangProvider initialLang={lang}>
       {children}
+      {/* 떠 있는 문의 버튼 — 모든 화면 (카카오톡 · WhatsApp · 전화) */}
+      <FloatContact />
     </LangProvider>
   );
 }

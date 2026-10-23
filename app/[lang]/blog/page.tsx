@@ -4,6 +4,7 @@ import Script from "next/script";
 import { notFound } from "next/navigation";
 import { getPublishedPosts } from "@/lib/content";
 import SiteHeader from "../../components/SiteHeader";
+import BeforeAfter from "../../components/BeforeAfter";
 import { VALID_LANGS } from "@/lib/langs";
 import type { Lang } from "@/lib/i18n";
 
@@ -100,6 +101,13 @@ export default async function BlogIndexPage({ params }: Props) {
             <p className="tw-blog-sub">
               의료관광·K-뷰티·웰니스 인사이트
             </p>
+          </div>
+        </section>
+
+        {/* 시술 전후 사진 — 유형별 버튼 (2026-10-23). 첫 화면 '고민 해결' 의 '전후 사진 보기' 가 #before-after 로 온다 */}
+        <section className="tw-ba-section">
+          <div className="container">
+            <BeforeAfter />
           </div>
         </section>
 

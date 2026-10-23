@@ -1,0 +1,34 @@
+# 언론 보도 — 매달 1일 네이버 뉴스에서 "더웰니스앤" 기사를 새로 모아 lib/news-data.json 에 더한다 (2026-10-23)
+# 바뀐 게 있으면 커밋 → Vercel 이 다시 배포해 홈페이지 '언론 보도' 칸이 바뀐다.
+# 화면에서 바로 돌리려면 GitHub → Actions → news-refresh → Run workflow.
+name: news-refresh
+
+on:
+  schedule:
+    - cron: "0 0 1 * *"   # 매달 1일 09:00 (KST)
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - name: 기사 모으기
+        run: node scripts/news-refresh.mjs
+      - name: 바뀌었으면 커밋
+        run: |
+          if git diff --quiet -- lib/news-data.json; then
+            echo "새 기사 없음"
+            exit 0
+          fi
+          git config user.name "news-refresh bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add lib/news-data.json
+          git commit -m "언론 보도: 네이버 뉴스 새 기사 반영 ($(date -u +%Y-%m))"
+          git push

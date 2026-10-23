@@ -59,42 +59,54 @@ const TABS: { key: TabKey; labelKey: string }[] = [
   { key: "wellness", labelKey: "treat.tab.wellness" },
 ];
 
+const TILE_ICON: Record<TabKey, string> = { beauty: "✦", popular: "🔥", medical: "✚", wellness: "❀" };
+
+/**
+ * 시술 예시 — 큰 네모 넷 · 더보기 (2026-10-23 대표님)
+ * 탭은 사람들이 안 눌렀다. 분야를 큰 칸으로 늘어놓고, 칸마다 시술 이름 몇 개를 미리 보여준 뒤
+ * "더보기" 를 누르면 그 분야의 자세한 시술이 칸 아래로 펼쳐진다. 문서에는 전부 그대로 둔다(검색엔진용).
+ */
 export default function Treatments() {
   const { t } = useLang();
-  const [tab, setTab] = useState<TabKey>("beauty");
+  const [open, setOpen] = useState<TabKey | null>(null);
 
-  // 메뉴의 "키워드"(/#keywords)로 들어오면 인기 키워드 탭을 연다 — 예전 키워드 칸이 여기로 합쳐졌다
+  // 메뉴의 "키워드"(/#keywords)로 들어오면 인기 키워드를 연다 — 예전 키워드 칸이 여기로 합쳐졌다
   useEffect(() => {
-    const sync = () => { if (window.location.hash === "#keywords") setTab("popular"); };
+    const sync = () => { if (window.location.hash === "#keywords") setOpen("popular"); };
     sync();
     window.addEventListener("hashchange", sync);
     return () => window.removeEventListener("hashchange", sync);
   }, []);
 
+  const name = (item: Treatment) => (item.titleKey ? t(item.titleKey) : item.fallbackTitle);
+
   return (
     <>
-      <div className="treat-tabs">
-        {TABS.map((tabItem) => (
-          <button
-            key={tabItem.key}
-            className={`tab ${tab === tabItem.key ? "active" : ""}`}
-            onClick={() => setTab(tabItem.key)}
-          >
-            {t(tabItem.labelKey)}
-          </button>
+      <div className="tt-grid">
+        {TABS.map(({ key, labelKey }) => (
+          <div key={key} className={`tt-tile${open === key ? " is-open" : ""}`}>
+            <div className="tt-ico" aria-hidden="true">{TILE_ICON[key]}</div>
+            <h3 className="tt-name">{t(labelKey)}</h3>
+            <p className="tt-desc">{t(`h3.tile.${key}`)}</p>
+            <ul className="tt-preview">
+              {DATA[key].slice(0, 4).map((item, i) => <li key={i}>{name(item)}</li>)}
+            </ul>
+            <button type="button" className="tt-more" aria-expanded={open === key}
+                    onClick={() => setOpen(open === key ? null : key)}>
+              {open === key ? t("ptn.less") : t("ptn.more")} <span aria-hidden="true">{open === key ? "−" : "+"}</span>
+            </button>
+          </div>
         ))}
       </div>
 
-      {TABS.map((tabItem) => (
-        <div
-          key={tabItem.key}
-          className={`treat-panel ${tab === tabItem.key ? "active" : ""}`}
-        >
+      {TABS.map(({ key, labelKey }) => (
+        <div key={key} className={`tt-panel${open === key ? " active" : ""}`} hidden={open !== key}>
+          <h4 className="tt-panel-title">{TILE_ICON[key]} {t(labelKey)}</h4>
           <div className="treat-grid">
-            {DATA[tabItem.key].map((item, i) => (
+            {DATA[key].map((item, i) => (
               <div key={i} className="treat-card">
                 <div className="treat-icon">{item.icon}</div>
-                <h4>{item.titleKey ? t(item.titleKey) : item.fallbackTitle}</h4>
+                <h4>{name(item)}</h4>
                 <p>{t(item.descKey)}</p>
               </div>
             ))}

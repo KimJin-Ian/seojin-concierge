@@ -9,6 +9,8 @@ import { useLang } from "./LangContext";
 import { supabase, SITE_KEY, isSupabaseConfigured } from "@/lib/supabase";
 
 const EMAIL = "dreamwithessmarketing@gmail.com";
+const PHONE = "+82 10-2068-0817";
+const TEL = "tel:+821020680817";
 
 interface DbLink {
   id: string;
@@ -75,7 +77,13 @@ export default function SiteFooter() {
             >
               더웰니스앤 · 한국 의료관광 컨시어지
             </div>
-            <p className="foot-desc">{t("footer.desc")}</p>
+            <p className="foot-desc">{t("h3.footer.desc")}</p>
+            {/* 맨 아래 연락처 — 메뉴(DB)가 바뀌어도 늘 보인다 (2026-10-23 대표님 "맨밑에 이메일") */}
+            <p className="foot-reach">
+              <a href={`mailto:${EMAIL}`}>✉ {EMAIL}</a>
+              <a href={TEL}>📞 {PHONE}</a>
+              <a href={`/${lang}#contact`}>💬 카카오톡 · WhatsApp 상담</a>
+            </p>
           </div>
 
           {useDb ? (
@@ -116,7 +124,7 @@ export default function SiteFooter() {
                   <li><a href="#diff">왜 우리인가</a></li>
                   <li><a href="#partners">협업 병원</a></li>
                   <li><a href="#voices">유형별 리뷰</a></li>
-                  <li><a href="#process">진행 과정</a></li>
+                  <li><a href="#process">진행 방법</a></li>
                 </ul>
               </div>
               <div className="foot-col">
@@ -124,8 +132,8 @@ export default function SiteFooter() {
                 <ul>
                   <li>Seoul · Gangnam, Korea</li>
                   <li><a href={`mailto:${EMAIL}`}>{EMAIL}</a></li>
-                  <li>KakaoTalk · 위드에스마케팅</li>
-                  <li>WhatsApp · Korea MEDICAL Tour</li>
+                  <li><a href={TEL}>{PHONE}</a></li>
+                  <li><a href={`/${lang}#contact`}>KakaoTalk · WhatsApp</a></li>
                   <li>24/7 Concierge Support</li>
                 </ul>
               </div>
