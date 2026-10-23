@@ -82,13 +82,13 @@ export default function MoreSections() {
               <h4>{t("diff.good.title")}</h4>
               <h3>{t("diff.good.sub")}</h3>
               <ul className="compare-list">
-                {[1, 2, 3, 4, 5, 6, 7].map((n) => <li key={n}><span className="icon-v">✓</span>{t(`diff.g${n}`)}</li>)}
+                {[1, 2, 3, 4, 5, 6, 7].map((n) => <li key={n}><span className="icon-v">✓</span>{n === 2 ? t("h3.more.g2") : t(`diff.g${n}`)}</li>)}
               </ul>
             </div>
           </div>
           <div className="reason-box">
-            <h4>{t("diff.reason.title")}</h4>
-            <p>{t("diff.reason.text")}</p>
+            <h4>{t("h3.vs.why.t")}</h4>
+            <p>{t("h3.vs.why.d")}</p>
           </div>
         </div>
       </section>
@@ -129,7 +129,7 @@ export default function MoreSections() {
                 <div className="proc-num">{String(n).padStart(2, "0")}</div>
                 <div>
                   <h4>{t(`proc.s${n}.title`)}</h4>
-                  <p>{t(`proc.s${n}.desc`)}</p>
+                  <p>{n === 6 ? t("h3.proc.s6.d") : t(`proc.s${n}.desc`)}</p>
                 </div>
               </div>
             ))}
@@ -156,8 +156,9 @@ export default function MoreSections() {
             <div className="about-stats">
               {[1, 2, 3, 4].map((n) => (
                 <div key={n} className="stat">
-                  <div className="stat-num">{t(`about.stat${n}.num`)}</div>
-                  <div className="stat-label">{t(`about.stat${n}.lbl`)}</div>
+                  {/* 10/23 — 퍼센트 할인 · 방콕 비교를 뺀 숫자 (첫 화면 '왜 더웰니스앤인가' 와 같게) */}
+                  <div className="stat-num">{n < 4 ? t(`h3.why.r${n}.num`) : t(`about.stat${n}.num`)}</div>
+                  <div className="stat-label">{n < 4 ? t(`h3.why.r${n}.t`) : t(`about.stat${n}.lbl`)}</div>
                 </div>
               ))}
             </div>

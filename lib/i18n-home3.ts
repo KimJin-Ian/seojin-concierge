@@ -10,6 +10,7 @@
 type Dict = Record<string, string>;
 
 const ko: Dict = {
+  "h3.more.g2": "부작용 · 안전 최우선 · 합리적인 비용 코스",
   // ── 첫 화면 — 의료관광 설명 ──
   "h3.hero.tag": "Korea Medical Tour · K-Beauty · Wellness",
   "h3.hero.t1": "한국 의료관광,",
@@ -158,6 +159,7 @@ const ko: Dict = {
 };
 
 const en: Dict = {
+  "h3.more.g2": "Safety first, sensible cost courses",
   "h3.hero.tag": "Korea Medical Tour · K-Beauty · Wellness",
   "h3.hero.t1": "Korea medical travel,",
   "h3.hero.t2": "from first chat to aftercare at home —",
@@ -280,6 +282,7 @@ const en: Dict = {
 
 const zh: Dict = {
   ...en,
+  "h3.more.g2": "安全第一 · 合理的费用方案",
   "h3.hero.t1": "韩国医疗旅游，",
   "h3.hero.t2": "从咨询到回国后",
   "h3.hero.t3": "一位管家全程陪伴",
@@ -348,6 +351,7 @@ const zh: Dict = {
 
 const ja: Dict = {
   ...en,
+  "h3.more.g2": "副作用 · 安全を最優先 · 適正な費用コース",
   "h3.hero.t1": "韓国の医療観光を、",
   "h3.hero.t2": "最初の相談から帰国後まで",
   "h3.hero.t3": "ひとりのコンシェルジュが伴走します",
